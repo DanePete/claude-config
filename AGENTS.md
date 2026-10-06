@@ -14,6 +14,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   scan how a domain is already handled here before writing in it
 - **Check what already exists before writing code we maintain** — `vendor/augustash/claude-config/memory/preferences/prefer-existing-tooling.md`  
   before building a cron, queue, cleanup or expiry mechanism; and before reporting a setting as unconfigured
+- **Shared tooling gets adopted only if easy and not policing** — `vendor/augustash/claude-config/memory/preferences/tooling-adoption-simple-not-policing.md`  
+  before choosing defaults, install steps or enforcement for shared dev tooling (CI, linters, hooks)
 - **Memory structure** — `vendor/augustash/claude-config/memory/preferences/memory-structure.md`  
   topic/specific.md layout and organization rules
 - **Reference scripts, don't embed** — `vendor/augustash/claude-config/memory/preferences/reference-scripts-not-embeds.md`  
