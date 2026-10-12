@@ -176,6 +176,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a receipt heading with nothing under it, or a missing address, on guest orders only
 - **mailsystem resolves a per-module sender before its defaults** — `vendor/augustash/claude-config/memory/drupal/mailsystem-per-module-overrides-defaults.md`  
   one module's mail vanishes with no error while everything else reaches Mailpit
+- **The Postmark plugin sends no attachments** — `vendor/augustash/claude-config/memory/drupal/postmark-drops-attachments.md`  
+  before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - **Commerce's required price blocks every variation save** — `vendor/augustash/claude-config/memory/drupal/commerce-price-required-on-a-catalog.md`  
   an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - **Webforms are live-only config** — `vendor/augustash/claude-config/memory/drupal/webforms-live-only-config.md`  

@@ -118,6 +118,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [An abandoned offsite payment leaves the order locked](memory/drupal/offsite-gateway-abandonment-lock.md) — a customer backs out at PayPal or Affirm and returns to an empty cart; also before tidying an order while someone is at a gateway
 - [A guest cannot view their own shipment](memory/drupal/guest-order-shipment-access.md) — a receipt heading with nothing under it, or a missing address, on guest orders only
 - [mailsystem resolves a per-module sender before its defaults](memory/drupal/mailsystem-per-module-overrides-defaults.md) — one module's mail vanishes with no error while everything else reaches Mailpit
+- [The Postmark plugin sends no attachments](memory/drupal/postmark-drops-attachments.md) — before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - [Commerce's required price blocks every variation save](memory/drupal/commerce-price-required-on-a-catalog.md) — an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - [Webforms are live-only config](memory/drupal/webforms-live-only-config.md) — before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - [Webform drops '#attached' from an element's YAML](memory/drupal/webform-element-attached-dropped.md) — a field renders with its data attributes and nothing listening to them
