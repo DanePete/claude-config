@@ -228,6 +228,26 @@ need it.
 Use `saveTo` for anything bulky -- full network logs, big snapshots, long page
 text -- and read the file. Do not flood context.
 
+## Phone widths: the window stops at 500px
+
+`set_viewport_size` reports the width you asked for, but Firefox won't make a
+window narrower than about 500px, so a "390" check lays out at 500. Nothing
+says so: the page looks a little wide and you go hunting an overflow that isn't
+there. Read `document.documentElement.clientWidth` after every resize, and
+believe that, not the number you passed.
+
+Below 500, load the page into a same-origin iframe of the width you need; its
+document lays out, and answers media queries, at that width (less a scrollbar):
+
+```js
+const f = document.createElement('iframe');
+f.src = location.pathname;
+f.style.cssText = 'position:fixed;inset:0 auto auto 0;width:390px;height:844px;z-index:99999;border:0';
+document.body.append(f);
+```
+
+Then read and act through `f.contentDocument` / `f.contentWindow`.
+
 ## Reading what happened
 
 Console and network capture are always on — no need to arm them first.
