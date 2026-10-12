@@ -42,6 +42,12 @@ stopped a hand-rolled deploy mid-command to say so.
   multidev deploy ran on the old code and reported success. So don't poll
   `workflow:list` for the dev sync yourself — Claude still did on kow 2026-10-02 from the old
   advice here. [[pantheon-build-lag]] still applies to scripts run *outside* launcher.
+- **A failed "Sync code" stays failed; re-running launcher won't rebuild it.** Launcher reads
+  the sync workflow for the pushed commit, so every retry reports the same "the code never
+  landed" without starting a build. When the failure was Pantheon's (on md 2026-10-12 it fell
+  in an outage: dashboard erroring, no workflow log, a clean build log), retrigger with
+  `terminus env:code-rebuild <site>.dev`, then run launcher again. Not an empty commit — that
+  works but leaves a commit behind (what Claude did before Kaza pointed at the command).
 - **Copying content DOWN is plain Terminus, not the launcher** — it has no clone command.
   `terminus env:clone-content <site>.live test --yes` (then `dev`) copies database and files;
   add `--db-only` only when you are sure no uploads differ. Clear caches on each target after
