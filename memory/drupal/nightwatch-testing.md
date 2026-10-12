@@ -6,12 +6,16 @@ type: reference
 
 ## One-time setup per project
 
-1. **Selenium container** — install the DDEV add-on that ships a chromedriver-capable Selenium container:
+1. **Selenium container** — on an `augustash/ddev-drupal` project it is already scaffolded, but
+   behind a compose profile since 1.1.65, so a plain `ddev start` leaves it off (an idle Chrome
+   per project was costing memory nobody used). Bring it up before a run:
    ```
-   ddev get ddev/ddev-selenium-standalone-chrome
-   ddev restart
+   ddev start --profiles=selenium
    ```
-   This drops `.ddev/config.selenium-standalone-chrome.yaml` which wires the `DRUPAL_TEST_WEBDRIVER_*` env vars for Nightwatch to reach the selenium container. No `.env` edit needed — env vars are injected at the container level.
+   Without ddev-drupal, install the add-on: `ddev add-on get ddev/ddev-selenium-standalone-chrome`.
+   Either way `.ddev/config.selenium-standalone-chrome.yaml` wires the `DRUPAL_TEST_WEBDRIVER_*`
+   env vars for Nightwatch to reach the container, and they stay set with the container off.
+   No `.env` edit needed — env vars are injected at the container level.
 
 2. **Nightwatch W3C patch — Drupal 10 ONLY. Do not add on Drupal 11.**
 

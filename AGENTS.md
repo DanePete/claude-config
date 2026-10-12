@@ -141,7 +141,7 @@ These files are authoritative and kept current by the team. Prefer conventions h
 - **An autocomplete endpoint is a PHP worker per keystroke** — `vendor/augustash/claude-config/memory/drupal/autocomplete-per-keystroke.md`  
   building or reviewing an as-you-type search box, or worker saturation traced to a suggest URL
 - **Search API / Solr convention** — `vendor/augustash/claude-config/memory/drupal/search-api-solr-convention.md`  
-  standard index/server names and the DDEV Solr build
+  standard index/server names and the DDEV Solr build; also solr1–solr3 containers still running, or a collection refusing 3 shards
 - **A subscriber naming a contrib class in getSubscribedEvents deadlocks deploy** — `vendor/augustash/claude-config/memory/drupal/event-subscriber-contrib-class-deadlock.md`  
   every drush command dies on a missing class right after a deploy, including the import that would fix it
 - **An adjustment reaches every gateway, and they disagree on how to read it** — `vendor/augustash/claude-config/memory/drupal/commerce-adjustment-reaches-every-gateway.md`  
