@@ -35,9 +35,11 @@ So: prod ignores settings.local.php → index `global` stays on `pantheon_search
 
 ## DDEV Solr build (standardized Docker)
 
-DDEV provides Solr via a standardized add-on: `.ddev/docker-compose.solr.yaml` — **Solr 8.11 Cloud**, 3 nodes (solr1/2/3, ports 8983–8985) + a ZooKeeper node, Basic Auth `solr`/`SolrRocks`, security.json at `.ddev/solr/security.json`. The web container links `solr1` as host `solr`.
+DDEV provides Solr via a standardized add-on: `.ddev/docker-compose.solr.yaml` — **Solr 8.11 Cloud** (or 9, per the ddev-setup prompt) as **one node with embedded ZooKeeper**, Basic Auth `solr`/`SolrRocks`, security.json at `.ddev/solr/security.json`. The web container links it as host `solr`.
 
-Upload the configset with **`ddev solrcollection`** (`.ddev/commands/host/solrcollection`): it enables `search_api_solr_admin`, finds the non-`pantheon` server from `drush sapi-sl`, and runs `drush solr-upload-conf <server> --alias=search`. Run it after creating the `local` server or after `ddev restart`.
+Before ddev-drupal 1.1.64 the Solr 8 build was a 3-node cluster (solr1/2/3) plus an external ZooKeeper. The collection is one shard, so two nodes did no work while each held a JVM — about 1.5 GB per project, enough to push the OrbStack VM into swap with two projects up. A project still showing `solr1`–`solr3`/`zoo` containers is on the old build; updating ddev-drupal and restarting moves it over, reindex and volume cleanup included (`solrcollection` handles both on that first start).
+
+Upload the configset with **`ddev solrcollection`** (`.ddev/commands/host/solrcollection`): it enables `search_api_solr_admin`, finds the non-`pantheon` server from `drush sapi-sl`, and runs `drush solr-upload-conf <server> --numShards=1 --alias=search`. The `--numShards=1` matters: the drush default is 3, which a single node refuses ("This requires 3 shards to be created (higher than the allowed number)"). Run it after creating the `local` server or after `ddev restart` (a post-start hook does). Each run re-marks the index for reindexing, so `search-api:status` reads 0% after a restart while Solr still holds and serves every document.
 
 ## Pantheon deploy
 

@@ -228,6 +228,15 @@ need it.
 Use `saveTo` for anything bulky -- full network logs, big snapshots, long page
 text -- and read the file. Do not flood context.
 
+## Phone widths
+
+`set_viewport_size` emulates the viewport the way Responsive Design Mode does,
+so phone widths work, and `devicePixelRatio` emulates a retina screen. It
+applies to the current tab. If its reply says the window was resized instead,
+the patched server isn't installed (`templates/firefox-mcp-patch`), and Firefox
+floors windows near 500px wide: the page lays out at 500 whatever you asked
+for.
+
 ## Reading what happened
 
 Console and network capture are always on — no need to arm them first.

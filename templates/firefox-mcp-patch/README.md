@@ -103,6 +103,18 @@ a focus ring, the tool reports success, and nothing is entered.
 
 Same applies to captchas and any embedded third-party widget.
 
+### 5. Emulate the viewport, like Responsive Design Mode
+
+| Site | Change |
+|------|--------|
+| `PageManagement.setViewportSize` | `browsingContext.setViewport` over BiDi, with an optional `devicePixelRatio`; resizing the window is the fallback when BiDi is unavailable. |
+| wrapper `setViewportSize`, `setViewportSizeTool`, `handleSetViewportSize` | Pass `devicePixelRatio` through; the response says whether it was emulated or the window was resized. |
+
+Upstream resized the window, and Firefox won't make one narrower than about
+500px, so `set_viewport_size` 390 laid the page out at 500 while reporting
+390. Emulation is what DevTools' Responsive Design Mode does: any width, the
+device pixel ratio too, and the window is left alone.
+
 ## Maintaining across upgrades
 
 The patch is managed by `patch-package` and applied by the `postinstall` hook,
