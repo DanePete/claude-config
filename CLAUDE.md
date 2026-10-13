@@ -44,6 +44,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [Show the option and require the sign-in](memory/preferences/show-the-option-require-the-signin.md) — before gating a control on the visitor already being signed in, subscribed or otherwise qualified; a missing control reads as a broken one
 - [An aside opens from its trigger's side](memory/preferences/aside-opens-over-its-trigger.md) — before choosing which edge an off-canvas panel, drawer or filter sheet slides in from
 - [A defect nobody can see still gets fixed](memory/preferences/fix-what-nobody-sees.md) — before dismissing a sub-pixel or off-screen flaw as too small to bother with, or filing it as an acceptable quirk
+- [Write client copy in the client's English](memory/preferences/us-spelling-in-client-copy.md) — before writing any copy a visitor or editor reads; Claude drifts into British spelling and a client audit caught it
 - [Use scale classes, not arbitrary Tailwind values](memory/preferences/tailwind-no-arbitrary-values.md) — Cyle's rule: no bracket utilities like `text-[2rem]`, snap to the scale
 - [Check mobile on every CSS change](memory/preferences/mobile-breakpoint-check.md) — before calling any CSS done; Neo previews each component at its breakpoints, so look rather than reason
 - [Tables sidescroll, never restack into records](memory/preferences/table-sidescroll-default.md) — reach for a scroll cue, not a mobile card layout, whenever a table meets a narrow screen

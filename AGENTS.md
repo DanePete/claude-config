@@ -34,6 +34,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   before choosing which edge an off-canvas panel, drawer or filter sheet slides in from
 - **A defect nobody can see still gets fixed** — `vendor/augustash/claude-config/memory/preferences/fix-what-nobody-sees.md`  
   before dismissing a sub-pixel or off-screen flaw as too small to bother with, or filing it as an acceptable quirk
+- **Write client copy in the client's English** — `vendor/augustash/claude-config/memory/preferences/us-spelling-in-client-copy.md`  
+  before writing any copy a visitor or editor reads; Claude drifts into British spelling and a client audit caught it
 - **Use scale classes, not arbitrary Tailwind values** — `vendor/augustash/claude-config/memory/preferences/tailwind-no-arbitrary-values.md`  
   Cyle's rule: no bracket utilities like `text-[2rem]`, snap to the scale
 - **Check mobile on every CSS change** — `vendor/augustash/claude-config/memory/preferences/mobile-breakpoint-check.md`  
