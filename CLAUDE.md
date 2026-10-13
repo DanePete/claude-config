@@ -121,6 +121,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [mailsystem resolves a per-module sender before its defaults](memory/drupal/mailsystem-per-module-overrides-defaults.md) — one module's mail vanishes with no error while everything else reaches Mailpit
 - [The Postmark plugin sends no attachments](memory/drupal/postmark-drops-attachments.md) — before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - [Commerce's required price blocks every variation save](memory/drupal/commerce-price-required-on-a-catalog.md) — an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
+- [A fixed media alt still renders the old one](memory/drupal/media-thumbnail-alt.md) — an alt corrected on the media entity while cards and product pages keep printing the old text
 - [Webforms are live-only config](memory/drupal/webforms-live-only-config.md) — before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - [Webform drops '#attached' from an element's YAML](memory/drupal/webform-element-attached-dropped.md) — a field renders with its data attributes and nothing listening to them
 - [Drupal PHPUnit testing](memory/drupal/phpunit-testing.md) — DDEV setup; D9/10 vs D11 phpunit.xml; PHPUnit 11 metadata; fixtures that pass or fail for the wrong reason
@@ -176,6 +177,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [component:// srcs get no image style](memory/augustash/neo-image-local-src-no-derivatives.md) — images that load slowly, or a naturalWidth far bigger than the slot, while the twig plainly asks for a crop
 - [A spent neo-animate reveal seals a stacking context](memory/augustash/neo-animate-identity-transform-stacking.md) — a sibling won't layer between two children no matter what z-index it gets
 - [Neo's metatag defaults leave the social tags unresolvable](memory/augustash/neo-metatag-description-slogan.md) — a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
+- [neo_modal lets Tab out of an open modal](memory/augustash/neo-modal-no-inert.md) — Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
 - [neo_icon renders an empty span for a style-prefixed id](memory/augustash/neo-icon-id-prefix.md) — an icon silently renders empty; also before pasting what `neoi-list` prints
 - [drupal_cache_protection](memory/augustash/drupal_cache_protection.md) — tracking-param strip/redirect, plus the facets, search, node_access and empty-listing submodules; also before acting on a listing report, when its robots rules are missing from robots.txt, or a custom f[] param 400s
 - [recently_read (augustash fork)](memory/augustash/recently-read.md) — a fork we own; never re-sync with upstream, the divergence is the point

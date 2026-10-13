@@ -24,6 +24,6 @@ avoidable flaw that undercuts good work. See [[fix-what-nobody-sees]].
 - Code identifiers and comments can stay as they are (`field_map_colour`, `colourOf()`). Renaming
   a machine name to fix spelling costs a migration and buys nothing.
 - When you finish a copy-heavy piece, grep it for `our\b|ise\b|isation|lled\b|grey|centre|
-  catalogue|whilst`.
+  catalogue|whilst|enquir`. "Enquiry" slipped past the first sweep on md and sat in five pages.
 - Copy the client wrote themselves, such as their legal terms, is theirs. Flag it; don't silently
   respell it.

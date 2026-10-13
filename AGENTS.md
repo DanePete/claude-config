@@ -182,6 +182,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - **Commerce's required price blocks every variation save** — `vendor/augustash/claude-config/memory/drupal/commerce-price-required-on-a-catalog.md`  
   an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
+- **A fixed media alt still renders the old one** — `vendor/augustash/claude-config/memory/drupal/media-thumbnail-alt.md`  
+  an alt corrected on the media entity while cards and product pages keep printing the old text
 - **Webforms are live-only config** — `vendor/augustash/claude-config/memory/drupal/webforms-live-only-config.md`  
   before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - **Webform drops '#attached' from an element's YAML** — `vendor/augustash/claude-config/memory/drupal/webform-element-attached-dropped.md`  
@@ -289,6 +291,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a sibling won't layer between two children no matter what z-index it gets
 - **Neo's metatag defaults leave the social tags unresolvable** — `vendor/augustash/claude-config/memory/augustash/neo-metatag-description-slogan.md`  
   a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
+- **neo_modal lets Tab out of an open modal** — `vendor/augustash/claude-config/memory/augustash/neo-modal-no-inert.md`  
+  Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
 - **neo_icon renders an empty span for a style-prefixed id** — `vendor/augustash/claude-config/memory/augustash/neo-icon-id-prefix.md`  
   an icon silently renders empty; also before pasting what `neoi-list` prints
 - **drupal_cache_protection** — `vendor/augustash/claude-config/memory/augustash/drupal_cache_protection.md`  
