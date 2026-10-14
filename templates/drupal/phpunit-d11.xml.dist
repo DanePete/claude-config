@@ -17,7 +17,7 @@
   <extensions> classes below do not exist before D11, so this file hard-fails
   on D10 — verified against 10.5.1.
 
-  Running `phpunit --migrate-configuration` on a D10 config gets you the new
+  Running phpunit's migrate-configuration option on a D10 config gets you the new
   schema but silently DROPS the printer and listeners without adding the
   <extensions> replacements, which loses browser-test HTML output. Use this
   file rather than trusting that migration.
