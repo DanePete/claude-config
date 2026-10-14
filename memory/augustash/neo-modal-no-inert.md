@@ -26,7 +26,7 @@ opens over a layer, and returns focus to it when that modal closes.
 **Upstream fix, 2026-10-14:** `NeoModal::contain()`, called after each `restack()`, on
 `kazajhodo/neo_modal` develop (`fa72344`), with a Nightwatch case in `modalSmokeTest.js`. It
 spares `[aria-live]` (inerting `#drupal-live-announce` silences `Drupal.announce()`) and skips
-modals with no backdrop. PR to jacerider pending.
+modals with no backdrop. PR to jacerider opened 2026-10-14.
 
 **How to apply:** Once a neo_modal release carries `contain()`, delete md's script and its
 attachment in `md_core_page_attachments()`; until then, on another neo site, reuse that script
