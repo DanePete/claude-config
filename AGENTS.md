@@ -101,6 +101,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a redirect rule 403s on a token that works for everything else; also before pointing a retired domain at its replacement
 - **A WAF rule keyed on http.referer inverts** — `vendor/augustash/claude-config/memory/cloudflare/referer-is-not-a-security-condition.md`  
   before gating a rule on referer, or when a bot rule fires far less than the traffic it targets
+- **Proxying a Pantheon site through Cloudflare** — `vendor/augustash/claude-config/memory/cloudflare/proxying-pantheon-ssl-mode.md`  
+  before orange-clouding a Pantheon domain; a 301 to the identical URL; or trusting a rule on a zone that may be DNS-only
 
 ## Drupal
 
@@ -126,6 +128,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a legacy URL with real traffic 404s and is absent from the redirect batch; nothing was looking for its kind
 - **A redirect never fires while its source path still has an alias** — `vendor/augustash/claude-config/memory/drupal/redirect-shadowed-by-alias.md`  
   a correct 301 sits in the table unreachable; retiring a node is three steps, not two
+- **Visitor IPs behind Cloudflare** — `vendor/augustash/claude-config/memory/drupal/visitor-ip-behind-cloudflare.md`  
+  Drupal logs or flood control show Cloudflare IPs; before pasting the CF-Connecting-IP snippet into settings.php
 - **Gating a Drupal file takes three things** — `vendor/augustash/claude-config/memory/drupal/private-file-gate.md`  
   a restricted file still downloads though `file_managed` says `private://`; also after any migration whose source had private files
 - **BigPipe is not viable on Pantheon** — `vendor/augustash/claude-config/memory/drupal/bigpipe-pantheon.md`  

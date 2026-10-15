@@ -53,6 +53,9 @@ it means DNS points at Cloudflare rather than Pantheon, so Pantheon can't valida
 issues a cert for that domain. Don't chase it, and don't "fix" it by repointing DNS at
 Pantheon without also handling the edge cert.
 
+Benign for serving — but under **Full (strict)** the origin cert still matters, and it may stop
+renewing in exactly this state. See [[proxying-pantheon-ssl-mode]].
+
 ## The rule to add
 
 Give `/.well-known/` an unconditional skip that **also clears remaining custom rules**, or the

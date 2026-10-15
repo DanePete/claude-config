@@ -79,6 +79,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [Cloudflare WAF and event tool](memory/cloudflare/waf-rule-tool.md) — before hand-rolling Cloudflare API calls, when a valid token reads as Invalid API Token, or for Free-plan rate limiting limits
 - [A Single Redirect needs its own token permission](memory/cloudflare/single-redirect-permission.md) — a redirect rule 403s on a token that works for everything else; also before pointing a retired domain at its replacement
 - [A WAF rule keyed on http.referer inverts](memory/cloudflare/referer-is-not-a-security-condition.md) — before gating a rule on referer, or when a bot rule fires far less than the traffic it targets
+- [Proxying a Pantheon site through Cloudflare](memory/cloudflare/proxying-pantheon-ssl-mode.md) — before orange-clouding a Pantheon domain; a 301 to the identical URL; or trusting a rule on a zone that may be DNS-only
 
 #### Drupal
 
@@ -93,6 +94,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [A DB push makes cim uninstall the whole dev split at once](memory/drupal/config-split-db-push-mass-uninstall.md) — `cim` dies "terminated abnormally" and half-applied after pushing a local DB to Pantheon; re-running walks it forward
 - [A redirect pass built on aliases and hrefs cannot see view paths](memory/drupal/redirect-discovery-misses-view-paths.md) — a legacy URL with real traffic 404s and is absent from the redirect batch; nothing was looking for its kind
 - [A redirect never fires while its source path still has an alias](memory/drupal/redirect-shadowed-by-alias.md) — a correct 301 sits in the table unreachable; retiring a node is three steps, not two
+- [Visitor IPs behind Cloudflare](memory/drupal/visitor-ip-behind-cloudflare.md) — Drupal logs or flood control show Cloudflare IPs; before pasting the CF-Connecting-IP snippet into settings.php
 - [Gating a Drupal file takes three things](memory/drupal/private-file-gate.md) — a restricted file still downloads though `file_managed` says `private://`; also after any migration whose source had private files
 - [BigPipe is not viable on Pantheon](memory/drupal/bigpipe-pantheon.md) — lazy_builder is a no-op there; also how to actually diagnose whether a page caches
 - [GTranslate integration](memory/drupal/gtranslate-integration.md) — choosing hosted-subdomain vs the subdirectory addon, which saturates PHP-FPM
