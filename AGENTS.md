@@ -226,6 +226,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   listings show their empty message while the content plainly exists; reads as content loss or a stalled search index
 - **Exo list "Enhanced Cache" keys on almost nothing** — `vendor/augustash/claude-config/memory/drupal/exo-list-enhanced-cache.md`  
   before ticking Enhanced Cache on an entity list; also when every page shows the results of whichever one was hit first
+- **An exo modal whose class is another modal's id is deleted** — `vendor/augustash/claude-config/memory/drupal/exo-modal-class-collision.md`  
+  a modal in the server HTML is missing from the DOM and its trigger does nothing; also before giving modals a shared class
 - **Exo optional link field** — `vendor/augustash/claude-config/memory/drupal/exo-alchemist-optional-link.md`  
   `required: FALSE` is a no-op on a link field
 - **Exo modifier checkbox + class** — `vendor/augustash/claude-config/memory/drupal/exo-alchemist-modifier-checkbox.md`  

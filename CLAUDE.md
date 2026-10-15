@@ -143,6 +143,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [Cachetags garbage collection](memory/drupal/cachetags-garbage-collection.md) — the cachetags table has no GC and grows unbounded
 - [A node access rebuild permanently caches every listing empty](memory/drupal/node-access-rebuild-empties-listings.md) — listings show their empty message while the content plainly exists; reads as content loss or a stalled search index
 - [Exo list "Enhanced Cache" keys on almost nothing](memory/drupal/exo-list-enhanced-cache.md) — before ticking Enhanced Cache on an entity list; also when every page shows the results of whichever one was hit first
+- [An exo modal whose class is another modal's id is deleted](memory/drupal/exo-modal-class-collision.md) — a modal in the server HTML is missing from the DOM and its trigger does nothing; also before giving modals a shared class
 - [Exo optional link field](memory/drupal/exo-alchemist-optional-link.md) — `required: FALSE` is a no-op on a link field
 - [Exo modifier checkbox + class](memory/drupal/exo-alchemist-modifier-checkbox.md) — adding a per-instance toggle that emits a class
 - [Exo slider mobile overflow](memory/drupal/exo-alchemist-slider-mobile-overflow.md) — a slider that overflows on mobile only
