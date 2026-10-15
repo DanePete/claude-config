@@ -1,6 +1,6 @@
 ---
 name: log-audit
-description: Audit a site's traffic through its server logs — nginx access/error, php-error/fpm/slow, New Relic. Two entry points, one job. Incident-driven, use when an integration or API consumer breaks, a client reports errors from a system you can't see, you need a third party's egress IP without asking them, or you must pin exactly when behavior changed and tie it to a deploy. Recurring, use when a dev drops a log export for a health-and-security review of scanners, abusive clients, 502/504s, fatals and slow requests. NOT for auditing site CONTENT — that's content-audit. This establishes what actually happened on the wire.
+description: Audit a site's traffic through its server logs — nginx access/error, php-error/fpm/slow, New Relic. Two entry points, one job. Incident-driven, use when an integration or API consumer breaks, a client reports errors from a system you can't see, you need a third party's egress IP without asking them, or you must pin exactly when behavior changed and tie it to a deploy. Recurring, use when a dev drops a log export for a health-and-security review of scanners, abusive clients, 502/504s, fatals and slow requests. Also when choosing the depth at which to challenge a facet or filter crawler, measured against how deep real visitors go. NOT for auditing site CONTENT — that's content-audit. This establishes what actually happened on the wire.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
@@ -218,6 +218,46 @@ perf and error-trend portion of a sweep, keep the logs as the spine and add an N
 see [templates/newrelic/](../../templates/newrelic/). NRQL aggregates server-side, so you pull
 back summarized numbers rather than raw log bodies.
 
+## Sizing a bot threshold from human behavior
+
+When a crawler is walking a faceted catalog — thousands of IPs, browser UAs, each
+combination a fresh URL no cache can hold — the fix is a challenge or block above some
+filter depth, and the question is *which* depth. Don't pick it by feel (ar-md's was set at
+6 "to be safe"; humans turned out to stop at 3). Measure it:
+[templates/logs/filter-depth-humans.awk](../../templates/logs/filter-depth-humans.awk)
+prints how deep real visitors go, then cost each candidate threshold two ways — share of
+crawler PHP time caught vs real visitors who would hit it — and pick where the first
+flattens. On ar-md (2026-10-14): 4+ caught 90% of facet PHP time and touched 14 of 221
+humans in 18 days; 3+ caught only 2 points more for double the humans.
+
+What separated the two populations, in order of how much each was worth:
+
+- **Pace.** Humans open the shelf, pick, apply — minutes between filter requests.
+  Crawlers fire a new combination every ~1s. The median gap is the strongest single test.
+- **Referer is not a humanity test.** Link-following crawlers send *genuine* referers.
+  It filters out the no-referer swarm (51k IPs, 1.8 requests each) and nothing more. A
+  `google.com` referer on a robots-disallowed URL is spoofed by definition.
+- **Shape of the selection.** Humans narrow — about one value per group (voltage +
+  waveform + watts). Crawlers stack values in one group (three DC voltages at once), and
+  repeat values outright. A real deep selection usually ticks *every* option in a group,
+  meaning "either".
+- **Browser-only side fetches.** `site.webmanifest`, an autocomplete typed letter by
+  letter. Present on every deep human session read by hand; absent from crawlers.
+- **A frozen UA across many IPs** (Chrome/146 while real clients reported 155) is one
+  actor; strip it and check the human cohort barely moves, which proves the cohort was
+  already clean of it.
+
+Read the deepest few "human" sessions by hand before quoting the table — on ar-md the
+first cut's 4-value humans were all 1-request-per-second crawlers that had passed the
+referer test, and the cut that survived needed the pace gate. A Cloudflare Managed
+Challenge makes a low threshold cheap: a real browser mostly passes it silently, and once
+per session. Count depth with an exact `f[N]` match on the Nth key — in a Free-plan
+expression, `lower(http.request.uri.query) contains "f%5b3%5d" or … contains "f[3]"`.
+
+**Parsing slip worth not repeating:** stripping non-digits from an encoded key leaves the
+5s of `%5B`/`%5D` (`f%5B0%5D` → `505`), so every request reads as out of order. Strip the
+bracket encoding first, then read the index.
+
 ## The traps
 
 Each of these has cost a wrong conclusion.
@@ -265,7 +305,9 @@ Two follow-ons worth expecting. Gates that *combine* signals (a stale browser ve
 submitting quote forms. And cleaning can move a headline *away* from where you expect:
 bot traffic had been padding the non-searcher baseline, so the conversion gap widened
 from 2.0x to 3.5x after filtering, and one "top page" fell from 13,366 views to 392.
-Treat every pre-filter figure as unsafe, not merely noisy.
+Treat every pre-filter figure as unsafe, not merely noisy. For choosing a block or
+challenge threshold from the human side, see
+[Sizing a bot threshold](#sizing-a-bot-threshold-from-human-behavior).
 
 **6. An empty result is a finding only if coverage is proven.** "No traffic from X"
 means nothing until you've shown the log window covers the period X should have been

@@ -15,10 +15,16 @@ for it.
 
 Two halves: the MCP server, and a Firefox launched so the server can attach.
 
-**1. Register the server** (once, per machine):
+**1. Register the server** (once, per machine). Use the **patched** build from
+`templates/firefox-mcp-patch/` -- plain `npx @mozilla/firefox-devtools-mcp@latest`
+works, but addresses tabs by a positional index that shifts whenever the dev opens
+or closes a tab, and walks every open tab before every operation (see "Tab
+addressing" below, and that directory's README):
+
+    ~/path/to/claude-config/templates/firefox-mcp-patch/install.sh
 
     claude mcp add firefox-devtools --scope user -- \
-      npx -y @mozilla/firefox-devtools-mcp@latest \
+      node ~/.local/share/firefox-devtools-mcp-patched/node_modules/@mozilla/firefox-devtools-mcp/dist/index.js \
       --toolPreset developer --connectExisting --marionettePort 2828
 
 `--toolPreset developer` matters: the default `basic` preset omits console and
@@ -32,17 +38,24 @@ needs a wrapper. Something like `~/.local/bin/firefox-claude`:
 
     #!/bin/zsh
     APP="Firefox Developer Edition"   # release channel: "Firefox"
-    if pgrep -qf "$APP.app"; then
+    # skip headless instances, e.g. firefox-solo's own browser
+    if pgrep -lf "$APP.app/Contents/MacOS/firefox" | grep -qv -- '-headless'; then
       print -u2 "Quit $APP fully (Cmd-Q) first — the remote agent only starts with the process."
       exit 1
     fi
-    open -a "$APP" --args --marionette --remote-debugging-port="${BIDI_PORT:-9222}"
+    open -n -a "$APP" --args --marionette --remote-debugging-port="${BIDI_PORT:-9222}"
 
 Both flags are required; the server uses WebDriver Classic and BiDi for different
 capabilities. `open` rather than exec'ing the binary matters: launchd owns the
 process, so it survives the terminal that started it. The guard matters too —
 `open --args` only passes arguments when the app is not already running, so
 relaunching over a live instance silently yields a Firefox with the agent off.
+The guard must skip headless processes: the `firefox-solo` server runs the same
+app bundle headless, and a bare `pgrep -f "$APP.app"` then refuses to launch while
+no GUI Firefox is open at all (su, 2026-09-27).
+And `open -n`, not `open -a`: while that headless instance runs, macOS counts the
+app as open, so a plain `open -a` only focuses it, drops the flags, and starts no GUI
+Firefox at all. The guard is what makes `-n` safe.
 
 Requires Node 20.19+ and Firefox 100+. MCP servers and skills both load at Claude
 Code startup, so a session started before setup needs `claude --continue` to pick
@@ -51,22 +64,141 @@ them up.
 ## Startup
 
 1. `list_pages` to see the dev's open tabs.
-2. `select_page` to focus one; `navigate_page` to move it; `new_page` for a new tab.
+2. `select_page` to focus one; `navigate_page` to move it. To open something for
+   the dev, open a **window**, not `new_page` — see "Opening a page" below.
 
 There is no tab-context handshake (unlike Claude in Chrome).
 
-**If attaching fails**, the cause is almost always Firefox launched normally instead
-of through the wrapper. Tell the dev to quit fully and relaunch — do not work around
-it by starting a second instance.
+**Do not pass `wait: "complete"` by reflex.** It waits on every subresource --
+analytics, chat widgets, pixels -- which on a marketing or commerce page can
+exceed the server's own 10s BiDi command timeout and fail a navigation that
+actually succeeded. The default (`interactive`, i.e. DOMContentLoaded) is right
+almost always. Reserve `complete` for when you genuinely need subresources
+settled, such as before stopping a performance recording.
 
-## Interacting with the page: the uid workflow
+## Tab addressing: use pageId, not pageIdx
 
-Interaction is snapshot-driven, not coordinate-driven:
+**This is the single biggest thing to get right when sharing the dev's browser.**
+
+`list_pages` prints each tab as `[idx|pageId]`. The `idx` is a position in a flat
+list of every tab in every window; the `pageId` is a Marionette window handle,
+stable for that tab's lifetime.
+
+**Always pass `pageId`. Never pass `pageIdx`.**
+
+    select_page   { pageId: "..." }        not { pageIdx: 3 }
+    navigate_page { pageId: "...", url }   targets a tab directly
+
+Two reasons, and neither is cosmetic:
+
+- **The index goes stale silently.** The dev is working in this browser. The moment
+  they open, close or reorder a tab, every index after it shifts -- and `pageIdx: 3`
+  now acts on a *different page*, with no error. There is no way to detect this
+  after the fact. `pageId` either resolves to the tab you meant or fails loudly.
+- **`pageId` is one round-trip; `pageIdx` is ~3 per open tab.** Index and URL
+  lookups both rebuild the entire tab list first, switching to and querying every
+  tab -- which is also what makes Firefox visibly strobe through the dev's tabs.
+  The `pageId` path skips it entirely.
+
+`new_page` returns `[idx|pageId]`, so **capture the pageId when you open a tab** and
+reuse it for the rest of the session. A tab Claude opened never needs a lookup.
+
+Re-run `list_pages` only when you need a tab you did not open, or when a `pageId`
+errors as stale (tab closed, or Firefox restarted -- handles do not survive that).
+
+If `select_page` reports no `pageId` parameter, the unpatched upstream server is
+installed; see Setup.
+
+**If attaching fails**, check which of two causes it is before telling the dev to
+do anything:
+
+- **Firefox was launched normally**, not through the wrapper: nothing listens on
+  2828. Tell the dev to quit fully and relaunch — do not work around it by
+  starting a second instance.
+- **Another client holds the Marionette session.** Marionette takes one client at
+  a time, and an MCP server from an older Claude session — still running,
+  possibly in a terminal nobody is looking at — keeps it until that process dies.
+  Every call then fails with a bare `unknown error` while 2828 is plainly
+  listening and the address bar shows its remote-control stripes. Find the
+  holder: `lsof -nP -iTCP:2828 -iTCP:9222 | grep -v LISTEN` names a geckodriver
+  whose parent is the other session's MCP node process. With the dev's OK, kill
+  that node process; the next call here connects.
+
+## Opening a page: a window, not new_page
+
+`new_page` does not reliably make a new tab. It can take over a tab that already
+exists and navigate it — on sisal (2026-09-24) it returned the pageId of the
+dev's open GitHub tab, sent *that tab* to the test URL, and left an empty
+`about:blank` tab behind. There is no error; it looks like a successful open.
+
+Open a real window from any page you already control instead:
+
+    evaluate_script { function: "() => !!window.open(url, 'claudeWork', 'popup=yes,width=1440,height=960')" }
+
+It is not popup-blocked from a Marionette script, and it keeps your work out of
+the dev's tab strip altogether. Then `list_pages` once to pick up its pageId.
+If `new_page` was already used, `list_pages` straight after and compare against
+the list from before it: a tab whose pageId you already knew but whose URL has
+changed is one it hijacked — put it back with `navigate_page`.
+
+For checks the dev does not need to watch (measurements, screenshots, layout),
+don't use their browser at all: the `firefox-solo` server runs its own headless
+Firefox, with no shared tabs to disturb. It is also the fast one, so it should be
+the default for Claude's own checks.
+
+**Register solo through `firefox-solo.sh`, not `--autoProfile`.** `--autoProfile`
+gives every session one shared profile, so two live Claude sessions lock each
+other out: the second Firefox starts, finds the profile locked and quits, and
+every call fails with `Process (pid=N) unexpectedly closed with status 0`. It
+hit on every session start after the first, and mid-session when a forked
+background session launched its own (Kaza, 2026-09-30). The wrapper gives each
+session `~/.firefox-devtools-mcp/solo-<claude pid>` and reaps profiles whose
+owner has exited, with any Firefox still on them. Registration is printed by
+`templates/firefox-mcp-patch/install.sh`.
+
+**If solo fails anyway, find the owner before killing anything.** Run
+`~/.local/share/firefox-devtools-mcp-patched/firefox-reap.sh --dry`. It walks each
+headless MCP Firefox up its chain (firefox → geckodriver → MCP node → claude) and
+prints the owning Claude pid and `--session-id`:
+
+- **orphan** — the chain reached launchd before any claude. Its session is gone;
+  kill it (drop `--dry`). No need to ask.
+- **in use by another claude** — a live session, possibly a forked background one
+  the dev isn't watching. Killing it breaks that session. Tell the dev which
+  session holds it and let them decide.
+
+The dev's own Firefox is never a candidate: it runs neither `--marionette
+-headless` nor an MCP profile, and a GUI Firefox with a parent of launchd is
+normal, not an orphan. Do not fall back to curl or to the dev's browser because
+of this error.
+
+The same stale browser is left behind when the solo server **disconnects mid-session** (the
+tools vanish from the session). Run `firefox-reap.sh` first (it kills only orphans), then ask the dev to run
+`/mcp` and reconnect `firefox-solo`. Claude cannot reconnect an MCP server itself.
+
+The first screenshot after a navigation may be mid-page, because Firefox restores
+scroll position. It can look like a solid block of colour. `window.scrollTo(0, 0)`
+before capturing.
+
+## Interacting with the page: selector first, uid second
+
+`click_by_uid`, `fill_by_uid` and `hover_by_uid` each take **either** a
+`selector` **or** a `uid`. Reach for `selector`:
+
+    click_by_uid { selector: 'label[for="edit-options-5-33"]' }
+    fill_by_uid  { selector: '#edit-name', value: 'Test' }
+
+That is one call. The uid route is three -- `take_snapshot` to mint the uid,
+then the action, then usually a read to confirm you got the element you meant --
+and the snapshot itself costs a lot of context on any component-heavy page.
+
+Fall back to `uid` only when there is genuinely no stable selector: a generated
+class with no id, name or data attribute, or an element you can only identify by
+its position or accessible name. Then:
 
 1. `take_snapshot` returns an accessibility tree with a `uid` per element.
-2. Act on those uids: `click_by_uid`, `fill_by_uid`, `hover_by_uid`,
-   `fill_form_by_uid`, `drag_by_uid_to_uid`, `upload_file_by_uid`,
-   `screenshot_by_uid`.
+2. Act on it: `click_by_uid`, `fill_by_uid`, `hover_by_uid`, `fill_form_by_uid`,
+   `drag_by_uid_to_uid`, `upload_file_by_uid`, `screenshot_by_uid`.
 
 **uids go stale.** Any navigation, re-render, or element removal invalidates them.
 A stale-uid error means re-run `take_snapshot`, not retry the same uid.
@@ -74,6 +206,36 @@ A stale-uid error means re-run `take_snapshot`, not retry the same uid.
 a uid into a CSS selector when you need a reference that survives a reload.
 
 For keyboard work not tied to an element: `press_key`, `type_text`.
+
+**Styled form controls.** Design systems (exo, and most component libraries) hide
+the real `input` and paint a proxy over it. Clicking the visible swatch does
+nothing -- the wrapper is not the control. Click the label instead:
+`label[for="<input id>"]`. A click that reports success but changes no state is
+almost always this.
+
+## Reading the page: prefer evaluate_script
+
+For *reading* -- a value, a computed style, whether an element exists, what a
+form contains -- use `evaluate_script`, not `take_snapshot`. One call returns
+exactly the shape you asked for.
+
+`take_snapshot` is for minting uids to click, and little else. On a real
+component-built page its tree is mostly anonymous structural wrappers
+(`div > div > div`) that answer no question you actually had, and it is one of
+the largest things you can put in context. Scope it with `selector` when you do
+need it.
+
+Use `saveTo` for anything bulky -- full network logs, big snapshots, long page
+text -- and read the file. Do not flood context.
+
+## Phone widths
+
+`set_viewport_size` emulates the viewport the way Responsive Design Mode does,
+so phone widths work, and `devicePixelRatio` emulates a retina screen. It
+applies to the current tab. If its reply says the window was resized instead,
+the patched server isn't installed (`templates/firefox-mcp-patch`), and Firefox
+floors windows near 500px wide: the page lays out at 500 whatever you asked
+for.
 
 ## Reading what happened
 
@@ -122,7 +284,7 @@ the bar on care rather than lowering it:
 - Confirm before any irreversible click — submit, delete, publish, purchase — and
   before accepting a dialog guarding one.
 - These are the dev's actual tabs. Do not close or navigate a tab you did not open
-  without asking; there may be unsaved work in it. Prefer `new_page`.
+  without asking; there may be unsaved work in it. Open your own window instead (see "Opening a page").
 - On a client production site, prefer read-only inspection. Anything that writes
   goes through the dev.
 
