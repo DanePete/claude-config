@@ -591,7 +591,19 @@ curl -sk -o /dev/null -w '%{http_code}\n' https://<site>.ddev.site/
 curl -sk https://<site>.ddev.site/ | grep -oiE "the website encountered|TypeError|Fatal error"
 ddev drush ws --count=25 --severity=Error
 ddev drush core:requirements --severity=1
+ddev drush cron && ddev drush php:eval 'echo date("c", \Drupal::state()->get("system.cron_last"));'
 ```
+
+**Cron has to complete, not just start.** Nothing else in this list runs it, and it
+runs code no page touches: every module's `hook_cron()` and every queue worker. One
+`\Error` (a `TypeError`, a removed-API call) aborts the whole run, the failing queue
+item is never deleted, so *every* later run dies on the same item and the work
+queued behind it — feed syncs, scheduler, search indexing — silently stops. The
+site looks perfect. On metro a D11 deploy did exactly this; a NeoGov jobs listing
+sat three weeks stale before anyone noticed. `drush cron` must exit 0 and
+`cron_last` must read *now*. Run it against a fresh pull of the live DB: queue
+workers only execute when their queue holds items, and an empty local queue
+proves nothing.
 
 Then **exercise what you actually changed**. Find where the updated module is
 used and hit it:
@@ -828,6 +840,11 @@ code. See
 [pantheon-build-lag](../../memory/drupal/pantheon-build-lag.md), and confirm
 before any `terminus` against `.live`/`.test`
 ([confirm-before-live-terminus](../../memory/preferences/confirm-before-live-terminus.md)).
+
+After a live deploy, come back past the next hourly cron and check that
+`system.cron_last` on live moved (`terminus drush <site>.live -- php:eval` as in
+Phase 5, read-only). Local cron passing doesn't prove live's queues, which hold
+different items.
 
 ---
 

@@ -558,6 +558,10 @@ curl cannot tell that from a broken query.
       themes included
 - [ ] Patch *output* verified on the build, not just the patch files
 - [ ] Site **curled**, not just drush-statused; watchdog clean under a watermark
+- [ ] **Cron completes**, locally on a fresh live pull and on live after the
+      deploy (`system.cron_last` moves). See site-update Phase 5. On metro the D11
+      deploy killed cron with a removed-API `TypeError` in a custom queue worker,
+      and nothing else on this list noticed for three weeks.
 - [ ] Console errors captured on list + detail pages (jQuery 4 fallout)
 - [ ] **Every entity add/edit form opened, one per bundle** — not just the admin
       menu. Sweeping the client's whole admin menu (26 paths) came back clean
