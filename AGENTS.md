@@ -297,8 +297,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a sibling won't layer between two children no matter what z-index it gets
 - **Neo's metatag defaults leave the social tags unresolvable** — `vendor/augustash/claude-config/memory/augustash/neo-metatag-description-slogan.md`  
   a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
-- **neo_modal lets Tab out of an open modal** — `vendor/augustash/claude-config/memory/augustash/neo-modal-no-inert.md`  
-  Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
+- **neo_modal focus on close, and why not inert** — `vendor/augustash/claude-config/memory/augustash/neo-modal-no-inert.md`  
+  closing a neo modal drops focus on <body>; also before making a page inert to trap focus
 - **neo_icon renders an empty span for a style-prefixed id** — `vendor/augustash/claude-config/memory/augustash/neo-icon-id-prefix.md`  
   an icon silently renders empty; also before pasting what `neoi-list` prints
 - **drupal_cache_protection** — `vendor/augustash/claude-config/memory/augustash/drupal_cache_protection.md`  

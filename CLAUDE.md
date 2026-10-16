@@ -180,7 +180,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [component:// srcs get no image style](memory/augustash/neo-image-local-src-no-derivatives.md) — images that load slowly, or a naturalWidth far bigger than the slot, while the twig plainly asks for a crop
 - [A spent neo-animate reveal seals a stacking context](memory/augustash/neo-animate-identity-transform-stacking.md) — a sibling won't layer between two children no matter what z-index it gets
 - [Neo's metatag defaults leave the social tags unresolvable](memory/augustash/neo-metatag-description-slogan.md) — a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
-- [neo_modal lets Tab out of an open modal](memory/augustash/neo-modal-no-inert.md) — Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
+- [neo_modal focus on close, and why not inert](memory/augustash/neo-modal-no-inert.md) — closing a neo modal drops focus on <body>; also before making a page inert to trap focus
 - [neo_icon renders an empty span for a style-prefixed id](memory/augustash/neo-icon-id-prefix.md) — an icon silently renders empty; also before pasting what `neoi-list` prints
 - [drupal_cache_protection](memory/augustash/drupal_cache_protection.md) — tracking-param strip/redirect, plus the facets, search, node_access and empty-listing submodules; also before acting on a listing report, when its robots rules are missing from robots.txt, or a custom f[] param 400s
 - [recently_read (augustash fork)](memory/augustash/recently-read.md) — a fork we own; never re-sync with upstream, the divergence is the point
