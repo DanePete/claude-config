@@ -124,6 +124,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [The Postmark plugin sends no attachments](memory/drupal/postmark-drops-attachments.md) — before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - [Commerce's required price blocks every variation save](memory/drupal/commerce-price-required-on-a-catalog.md) — an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - [A fixed media alt still renders the old one](memory/drupal/media-thumbnail-alt.md) — an alt corrected on the media entity while cards and product pages keep printing the old text
+- [A scheduled transition with no state loops forever](memory/drupal/scheduler-scmi-revision-loop.md) — cron warns "Unpublishing failed … returned a failure code" every run; a node with tens of thousands of revisions
 - [Webforms are live-only config](memory/drupal/webforms-live-only-config.md) — before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - [Webform drops '#attached' from an element's YAML](memory/drupal/webform-element-attached-dropped.md) — a field renders with its data attributes and nothing listening to them
 - [Drupal PHPUnit testing](memory/drupal/phpunit-testing.md) — DDEV setup; D9/10 vs D11 phpunit.xml; PHPUnit 11 metadata; fixtures that pass or fail for the wrong reason

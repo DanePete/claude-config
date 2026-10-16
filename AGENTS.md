@@ -188,6 +188,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - **A fixed media alt still renders the old one** — `vendor/augustash/claude-config/memory/drupal/media-thumbnail-alt.md`  
   an alt corrected on the media entity while cards and product pages keep printing the old text
+- **A scheduled transition with no state loops forever** — `vendor/augustash/claude-config/memory/drupal/scheduler-scmi-revision-loop.md`  
+  cron warns "Unpublishing failed … returned a failure code" every run; a node with tens of thousands of revisions
 - **Webforms are live-only config** — `vendor/augustash/claude-config/memory/drupal/webforms-live-only-config.md`  
   before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - **Webform drops '#attached' from an element's YAML** — `vendor/augustash/claude-config/memory/drupal/webform-element-attached-dropped.md`  
