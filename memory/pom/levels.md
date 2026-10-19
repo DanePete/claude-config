@@ -35,3 +35,6 @@ value, we're not helping them, we're helping ourselves. If we are more important
 will come out eventually, and they will not want to work with someone that behaves like that."
 He treats clients the way he would want to be treated. It is the same aim as client-report's
 opening: help the client grow, and the work follows.
+
+Quoted work is priced at the shared hourly rate in
+[../pricing/hourly-rate.json](../pricing/hourly-rate.json).

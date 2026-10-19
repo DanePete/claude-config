@@ -47,6 +47,9 @@ The first assessment and what it turns up are the quoted hours. After that the p
 settles into adjusting and fine refinement, and small adjustments can land in the round
 without a Work row. Exceptions come later, once that first assessment is done.
 
+Work rows price at the rate in
+[memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json).
+
 Read last round's record before starting each pass. A number means little alone and a lot
 next to last month's.
 

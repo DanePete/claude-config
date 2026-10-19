@@ -604,7 +604,7 @@ typical drawing by room and energy code*):
    hours."* The estimate is the dev's call. Propose one and confirm it before it
    goes in, rather than printing a number you made up.
 
-   Render the offer as a §7 **Work** marker: the price as hours @ rate = total,
+   Render the offer as a §7 **Work** marker: the price as hours @ rate = total (rate from memory/pricing/hourly-rate.json),
    nothing after it. Break the estimate down internally first, since that
    breakdown is what you confirm with the dev. When the idea is a stopgap ahead of
    a rebuild pitched under Horizon, say so in the idea and say that nothing built
@@ -922,8 +922,11 @@ earns its place.
 - **A Work row carries an offer**: the price as math and nothing else,
   *Approximately 2 hrs @ $200 = $400*. The idea above it already says what the
   work buys, so a trailing description only repeats it. Showing the hours and the rate lets the
-  client check the total, which is worth more than a bare number. The rate is the
-  dev's; record it in the project's round record. The tag reads *Work*, not *Quote*
+  client check the total, which is worth more than a bare number. **Take the rate
+  from [memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json)**, never
+  from memory or an old doc: it will change, and that file is the one place it changes.
+  Record the rate a round quoted at in the project's round record, since a later rate
+  rise mustn't rewrite what a client was offered. The tag reads *Work*, not *Quote*
   (Kaza, cal 2026-10-19).
 - **A Limit row names what holds the site back**, stated as the case: what it could
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
