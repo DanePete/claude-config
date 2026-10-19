@@ -362,8 +362,9 @@ feels careful. All of these were cut from a single document in one sitting:
   side, before and after; a paragraph then explained what they demonstrated. If the exhibit
   works, delete the caption.
 - **Cross-reference links inside prose.** *"— see §4, item 1"* breaks the reading line to
-  offer navigation nobody asked for. State the outcome. In a document short enough to scan,
-  the reader finds the detail themselves.
+  offer navigation nobody asked for. State the outcome. The exception is a finding whose fix
+  lives in another section: that gets a link on its own line (§7, *a finding that needs
+  action links to the item that acts on it*), never a pointer in the sentence.
 - **Words carrying no load.** *"the auditing tools normally used"* → *"the auditing tools
   used"*.
 
@@ -921,6 +922,15 @@ The reader closes what they've read and keeps the page to what they're working t
   the doc still reads in full without JavaScript, and it prints in full
   (`.sec-body[hidden]{display:block!important}` in the print sheet, chevrons hidden).
   The nav highlights only an open section.
+- **A finding that needs action links to the item that acts on it.** When a section
+  says something needs doing (POM+ → Search) and another section holds the fix (its
+  Next item), link the first to the second. Otherwise the doc says something needs
+  doing without establishing the next step (Kaza, cal 2026-10-19). The link goes on its
+  own line under the finding, bold, underlined, with a trailing "→", named with the
+  target's title, never inside a sentence. Give the target an `id`, and
+  `scroll-margin-top` to clear the sticky nav. Clicking it opens the target's section
+  through the same handler the nav uses: one document-level click listener on
+  `a[href^="#"]` that opens whichever section holds the target.
 - **A section's description line stays with its heading.** It sits between the `h2` and
   the collapsing body, not inside it, so a closed section still says what it's for
   (Kaza, cal 2026-10-19). Only where a section already has one: don't write a
