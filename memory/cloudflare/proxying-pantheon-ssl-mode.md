@@ -44,7 +44,16 @@ Update this note with the outcome once one is observed (cal's cert: Jan 12 2027)
 A zone can hold a full set of custom rules while its records are DNS-only, and none of them
 apply. cal had geo, cron and RSS rules sitting inert because someone had unproxied it. Before
 reasoning about what a rule does to traffic, confirm the zone is in the path: `dig +short A`
-returns `104.x`/`172.6x.x` (not Pantheon's `23.185.0.x`) and responses carry `cf-ray`.
+returns `104.x`/`172.6x.x`, not a Pantheon address (`23.185.0.x`, or `185.178.196.x` on
+Pantheon's newer edge).
+
+**Cloudflare headers don't prove it.** Pantheon's newer edge is itself Cloudflare-backed:
+a DNS-only site answering from `185.178.196.x` still sends `cf-ray`, `cf-cache-status: HIT`
+and `cf-mitigated: challenge` (Pantheon's bot protection). On cal (2026-10-19) that read as
+"the client's Cloudflare caches HTML with no purge", and a 3-hour purge-on-save fix was
+nearly quoted. That cache is Pantheon's, and Pantheon Advanced Page Cache already purges it
+on save: re-saving a listing on dev turned a 20-second-old HIT into a MISS on the next
+request. Most of our client zones don't cache HTML at all (Kaza). Decide from the DNS answer.
 
 Cloudflare IPs in the origin's X-Forwarded-For are **not** proof — other services hosted on
 Cloudflare (Workers, WARP) call the site from those ranges too.

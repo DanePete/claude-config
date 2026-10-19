@@ -489,9 +489,10 @@ smaller genre.
    least one comes from this round's search; see *One idea per round* below.
    Directly under the heading goes a small muted description line, so the
    client reads the section as a standing habit rather than a sales insert.
-   Write it as a plain statement of what we can do for their visitors: *"We can
-   help buyers find the right business faster."* Not a question and not a
-   "How we…" fragment (Kaza, cal 2026-10-19). Keep it to one short line.
+   Write it as an invitation to improve something for their visitors together:
+   *"Let's help buyers find the right business faster."* Not a question, not a
+   "How we…" fragment, and not "We can…", which reads as us selling rather than
+   working with them (Kaza, cal 2026-10-19). Keep it to one short line.
 6a. **Plan** — offer the next POM plan up, only when it is the right plan for
    this site, and never one that isn't approved yet. Never on an AshenRayne site: they
    have no plans. Which plan fits, and the rule
@@ -906,6 +907,26 @@ title block and lists them:
   by an `IntersectionObserver` on a 1px sentinel just above it. At rest the title
   block's rule already separates it.
 
+**Every section collapses, and the nav opens what it jumps to** (Kaza, cal 2026-10-19).
+The reader closes what they've read and keeps the page to what they're working through.
+- The `h2` holds a `<button type="button" aria-expanded aria-controls>` wrapping the
+  heading text and a chevron to its right. Down means open, rotated -90° means closed.
+  Everything after the heading sits in one `.sec-body` wrapper, which carries the
+  heading indent in place of the per-child `section > :not(h2)` rule. A caption that
+  set its own left indent then has to drop it, or it doubles.
+- **One section open at a time, the first one on load** (Kaza, cal 2026-10-19).
+  Opening a section, by its heading or the nav, closes whichever was open, and clicking
+  an open heading closes it. A `#hash` on load opens that section instead of the first.
+  The markup ships open and the script sets the state on load, so
+  the doc still reads in full without JavaScript, and it prints in full
+  (`.sec-body[hidden]{display:block!important}` in the print sheet, chevrons hidden).
+  A closed section drops most of its padding so the stacked headings don't float apart,
+  and the nav highlights only an open section.
+- A nav click opens its section in the click handler, before the browser's own jump,
+  so the anchor lands on content rather than a closed heading. Do the same for a
+  `#hash` on load.
+- Cal's October 2026 record is the reference implementation.
+
 ### Components
 
 The standing parts our docs are built from. Each one was settled through review, so
@@ -925,6 +946,8 @@ earns its place.
   are alarmed, the next thing they read is what to do, with a link to do it (a
   licence, a renewal). Don't end on a stopgap sentence instead. An Action is never
   "contact us".
+- **An Action row says what the client does, and nothing about cost.** "No cost from
+  us" on a task of theirs reads as a favour being counted (Kaza, cal 2026-10-19).
 - **No action, no Action row.** When the hold is ours to resolve (waiting on an
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
