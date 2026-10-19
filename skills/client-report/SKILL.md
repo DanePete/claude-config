@@ -1016,6 +1016,12 @@ for the client's own team) is not.
 - State lives in the markup as `data-approved="true"`, and the saved file is a snapshot
   reset to how the page ships (sections open, script-added controls stripped), so the
   returned copy opens with their choices marked and still reads in full without script.
+- **The client's own tasks get a done toggle instead** (Kaza, cal 2026-10-19). A list
+  they work through themselves, like cal's 37 listings to check, isn't approvable work,
+  but they should be able to tick it off. Each entry is a small card with a red **×**
+  in its corner on a red tint; clicking marks it done, turning the × into a check and
+  the tint to green, and clicking again reverts it. It's stored as `data-done`, counts
+  toward Save's unsaved state, and doesn't trigger the approval note.
 - Print shows only the approved checks.
 - Cal's October 2026 record is the reference implementation, tested through a full
   save-and-reopen round trip.
