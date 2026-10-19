@@ -929,7 +929,8 @@ The reader closes what they've read and keeps the page to what they're working t
   right-aligned on its own line under the finding, never inside a sentence: an `<a>`
   styled as a pill button (it navigates, so it stays a link), with an `aria-label` that
   names the target (`Fix: Tell search engines and AI who Calhoun is`), since "Fix" alone
-  says nothing to a screen reader. Give the target an `id`, and
+  says nothing to a screen reader. **Every follow-up link in a doc works this way**, wherever it points
+  (Kaza): the same button, the same open-scroll-flash. Give the target an `id`, and
   `scroll-margin-top` to clear the sticky nav. Clicking it opens the target's section
   through the same handler the nav uses: one document-level click listener on
   `a[href^="#"]` that opens whichever section holds the target.
