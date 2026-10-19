@@ -971,10 +971,11 @@ earns its place.
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
   more potential than it can reach today, and getting there takes a rebuild."* It's a
   statement, not an ask.
-- **A Time row records billed work** (*"Two hours billed to move the site to PHP 8.3 and
-  verify."*). It is always green, whatever panel it sits in, so paid work reads as a win:
-  a green tag on a green-tinted row (about 12%; lighter vanishes on a coloured panel), no
-  border and no top rule. An outline was tried and cut (Kaza, su 2026-10-19).
+- **Billed work gets a Work row too**, in the same math and nothing else
+  (*2 hrs @ $150 = $300*). It is always green, whatever panel it sits in, so paid work
+  reads as a win: a green tag on a green-tinted row (about 12%; lighter vanishes on a
+  coloured panel), no border and no top rule. An outline was tried and cut (Kaza, su
+  2026-10-19). Every amount in a doc takes this `x hrs @ $rate = $total` form.
 
 **Severity panels.** A note that grades something (urgency, risk, status) becomes a
 tinted panel of its own, coloured by severity: red for urgent, amber for plan-for-it,
