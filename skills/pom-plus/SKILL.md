@@ -62,6 +62,11 @@ each claim, and test anything that would become a Work row, before presenting it
 into the doc and hand it over; no separate walkthrough first. That is client-report's
 review rule.
 
+**A finding two passes touch goes to the pass that matches its nature.** Headings are
+the usual case: heading structure, ARIA and roles are accessibility, while titles,
+summaries and what a page says about itself are search (Kaza, cal 2026-10-19). Quote it
+once, in that pass, so the client isn't billed twice for one fix.
+
 Work rows price at the rate in
 [memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json).
 
