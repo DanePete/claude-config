@@ -582,7 +582,7 @@ typical drawing by room and energy code*):
    hours."* The estimate is the dev's call. Propose one and confirm it before it
    goes in, rather than printing a number you made up.
 
-   Render the offer as a §7 **Quote** marker: the
+   Render the offer as a §7 **Work** marker: the
    hours, then what they buy in one line. Break the estimate down internally first, since that
    breakdown is what you confirm with the dev. When the idea is a stopgap ahead of
    a rebuild pitched under Horizon, say so in the idea and say that nothing built
@@ -881,7 +881,7 @@ reach for these before inventing a new device, and extend this list when a new o
 earns its place.
 
 **Markers: a tag and hanging copy.** A row with a small solid pill tag (*Action*,
-*Quote*, *Urgent*, *All good*) followed by the copy, laid out as a grid:
+*Work*, *Urgent*, *All good*) followed by the copy, laid out as a grid:
 - The tag sits in a fixed-width column (about 84px), so every row's copy and link
   start at the same x down the whole panel. Wrapped text hangs under the copy, not
   under the tag.
@@ -897,7 +897,8 @@ earns its place.
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
   panels where something is (Kaza, kow 2026-09-29).
-- **A Quote row carries an offer**: the hours, then what they buy in one line.
+- **A Work row carries an offer**: the hours, then what they buy in one line. The
+  tag reads *Work*, not *Quote* (Kaza, cal 2026-10-19).
 - **A Limit row names what holds the site back**, stated as the case: what it could
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
   more potential than it can reach today, and getting there takes a rebuild."* It's a
