@@ -77,8 +77,10 @@ clients, 502/504s, fatals, slow requests. Add the site's own error log,
 Three layers, checked on the pages that matter (home, the main listing or catalog, the top
 landing pages):
 
-- **CDN.** Cloudflare's `cf-cache-status`, if the zone is proxied. First confirm it is
-  proxied: [proxying-pantheon-ssl-mode](../../memory/cloudflare/proxying-pantheon-ssl-mode.md).
+- **CDN.** First work out *whose* edge it is, from the DNS answer, not the headers:
+  Pantheon's own edge sends Cloudflare headers too, and most client zones don't cache HTML
+  ([proxying-pantheon-ssl-mode](../../memory/cloudflare/proxying-pantheon-ssl-mode.md)).
+  Before calling a page stale, test it: re-save a node on dev and watch the next request.
 - **Host.** Pantheon's edge: `age`, `x-served-by`, and whether `cache-control` allows it to
   cache at all.
 - **Site.** `x-drupal-cache` and `x-drupal-dynamic-cache`; a page that is `UNCACHEABLE` or
