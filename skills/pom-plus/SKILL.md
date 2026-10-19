@@ -1,6 +1,6 @@
 ---
 name: pom-plus
-description: The extra work a POM+ client gets on top of the routine update round — every round a log, performance, bot-protection and SEO pass; every quarter an accessibility scan, with the first year opening on a full audit and a year plan. Use during a site-update round for a client listed as POM+ in memory/pom/levels.md, after the update is verified and before the client record is written. NOT for POM clients (the update round is the whole job), and not for a one-off audit nobody scheduled — load accessibility-audit or log-audit directly for those.
+description: The extra work a POM+ client gets on top of the routine update round — every round a log, performance, bot-protection and search (SEO and AI findability) pass; every quarter an accessibility scan, with the first year opening on a full audit and a year plan. Use during a site-update round for a client listed as POM+ in memory/pom/levels.md, after the update is verified and before the client record is written. NOT for POM clients (the update round is the whole job), and not for a one-off audit nobody scheduled — load accessibility-audit or log-audit directly for those.
 ---
 
 # POM+ round
@@ -36,13 +36,13 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
   rounds.
 - **Performance: quoted.** Cache tuning across the host, site and CDN layers is
   usually additional hours, so it goes in as a recommendation with a Work row.
-- **SEO: quoted.** Sweeping scans, deploy hooks written for live, and broad
+- **Search: quoted.** Sweeping scans, deploy hooks written for live, and broad
   adjustments are project-sized. The same shape applies: front-loaded, then monitor and
   adjust.
 - **Accessibility: quoted.** The quarterly scan comes with the plan; the fixes it
   finds are additional hours, quoted per quarter from the year plan.
 
-Access logs, performance, SEO and accessibility share a shape: the work is front-loaded.
+Access logs, performance, search and accessibility share a shape: the work is front-loaded.
 The first assessment and what it turns up are the quoted hours. After that the pass
 settles into adjusting and fine refinement, and small adjustments can land in the round
 without a Work row. Exceptions come later, once that first assessment is done.
@@ -88,20 +88,34 @@ change, because that failure surfaces two months later. On a Drupal site with fa
 search, [drupal_cache_protection](../../memory/augustash/drupal_cache_protection.md) is the
 site-side half.
 
-### SEO
+### Search: being found, by search engines and AI
 
-The technical layer we own, not content strategy:
+The goal is that the site presents itself correctly in its space, so the people looking
+for this client find them. Most of them no longer scroll organic listings: they ask an AI,
+or read Google's AI answer above a page of sponsored results, and almost nobody reaches
+page two. So the pass asks whether search engines *and* answer engines can read the site,
+and whether what they read says plainly who the client is, what they do, for whom and
+where (Kaza, 2026-10-19).
 
-- titles and meta descriptions: present, and unique per page
-- canonicals, `robots.txt` ([pantheon-robots-txt](../../memory/drupal/pantheon-robots-txt.md)),
-  and the sitemap: present and fresh
-- structured data and share cards
-  ([neo-metatag-description-slogan](../../memory/augustash/neo-metatag-description-slogan.md))
-- stray `noindex`
-- 404s that carry traffic, and the redirects they need
-  ([redirect-shadowed-by-alias](../../memory/drupal/redirect-shadowed-by-alias.md))
+- **Can it be read?** robots.txt and the CDN's bot settings must not shut out the AI
+  crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) by accident. Cloudflare's
+  AI-crawler blocking is a one-click default that does exactly this. Key content has to be
+  in the server HTML, not rendered by script alone. Note whether there's an `llms.txt`.
+- **Does it say who they are?** Organization or LocalBusiness structured data, and one
+  consistent name, address, phone number, service area and office list across the site.
+  The things a client sells or lists (products, listings, services) should be described as
+  what they are.
+- **Does it answer what people ask?** The main pages should state the offer the way
+  someone asking an AI would need to read it ("how do I sell my business in Minnesota").
+  Plain answers and FAQ-shaped content get quoted, and marketing copy doesn't.
+- **The technical basics still count:** unique titles and meta descriptions, canonicals,
+  the sitemap ([pantheon-robots-txt](../../memory/drupal/pantheon-robots-txt.md)), share
+  cards ([neo-metatag-description-slogan](../../memory/augustash/neo-metatag-description-slogan.md)),
+  stray `noindex`, and 404s that carry traffic
+  ([redirect-shadowed-by-alias](../../memory/drupal/redirect-shadowed-by-alias.md)).
 
-This pass is the thinnest so far. Sharpen it as rounds run.
+This pass is the newest. Sharpen it as rounds run, and keep it pointed at how people
+actually look for businesses now, not at how they did.
 
 ---
 

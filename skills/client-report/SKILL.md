@@ -465,7 +465,7 @@ smaller genre.
 4a. **POM+** — POM+ clients only (roster in
    [memory/pom/levels.md](../../memory/pom/levels.md)), filled by the
    [pom-plus](../pom-plus/SKILL.md) passes. One-word subheadings: *Logs*,
-   *Performance*, *Bots*, *SEO*, *Accessibility*. Each is a short finding in the
+   *Performance*, *Bots*, *Search*, *Accessibility*. *Search* covers search engines and AI answers alike. Each is a short finding in the
    client's terms, set against last round where a number moved. *Accessibility*
    carries the year plan, split into quarters by importance, with each quarter's
    status once it runs. The split is a direction, not a schedule: say so in a
