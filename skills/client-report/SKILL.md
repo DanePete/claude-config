@@ -920,8 +920,14 @@ The reader closes what they've read and keeps the page to what they're working t
   The markup ships open and the script sets the state on load, so
   the doc still reads in full without JavaScript, and it prints in full
   (`.sec-body[hidden]{display:block!important}` in the print sheet, chevrons hidden).
-  A closed section drops most of its padding so the stacked headings don't float apart,
-  and the nav highlights only an open section.
+  The nav highlights only an open section.
+- **Toggling must not move the heading** (Kaza: "the header lowers, then moves back up").
+  Keep the space *above* every heading constant and give an open section its extra room
+  *below* (`section:has(> h2 [aria-expanded="true"]){padding-bottom}`); padding that
+  changes above the heading shifts it on every click. When opening one section closes
+  another above it, hold the clicked heading still: measure its top before, then
+  `scrollBy` the difference after. Near the top of the page there isn't enough page to
+  hold it, and it settles at its natural spot, still in view.
 - A nav click opens its section in the click handler, before the browser's own jump,
   so the anchor lands on content rather than a closed heading. Do the same for a
   `#hash` on load.
