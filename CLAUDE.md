@@ -83,6 +83,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 
 #### Drupal
 
+- [Standard log settings](memory/drupal/dblog-standard.md) — each update round, or a dblog that reaches back only hours because cron lines fill it
 - [Drupal caching](memory/drupal/caching.md) — cache debugging, session poisoning, Exo component cache, Redis compress_length
 - [D11.4 symfony/runtime allow-plugin](memory/drupal/d11-symfony-runtime.md) — every web request WSODs after a 11.4 bump while drush still works fine
 - [A stored NULL placeholder WSODs every order page on D11](memory/drupal/commerce-log-null-placeholder-d11.md) — admin order pages 500 right after a D11 deploy, old and new alike; the data is far older than the outage

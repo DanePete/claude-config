@@ -106,6 +106,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
 
 ## Drupal
 
+- **Standard log settings** — `vendor/augustash/claude-config/memory/drupal/dblog-standard.md`  
+  each update round, or a dblog that reaches back only hours because cron lines fill it
 - **Drupal caching** — `vendor/augustash/claude-config/memory/drupal/caching.md`  
   cache debugging, session poisoning, Exo component cache, Redis compress_length
 - **D11.4 symfony/runtime allow-plugin** — `vendor/augustash/claude-config/memory/drupal/d11-symfony-runtime.md`  

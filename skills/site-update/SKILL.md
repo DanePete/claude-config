@@ -634,6 +634,12 @@ curl -sk -c "$J" -b "$J" -o /tmp/o.html -w '%{http_code}\n' "https://<site>.ddev
 grep -oiE "the website encountered|TypeError|ArgumentCountError" /tmp/o.html
 ```
 
+### Hold the standard log settings
+
+Every site runs with cron logging off and a 10,000-row dblog. Check it each round and
+apply it where it's missing, in its own commit:
+[dblog-standard](../../memory/drupal/dblog-standard.md).
+
 ### When a core *minor* bump breaks something
 
 Core minors move typed signatures and default behaviour, and the fallout lands in
