@@ -584,8 +584,8 @@ typical drawing by room and energy code*):
    hours."* The estimate is the dev's call. Propose one and confirm it before it
    goes in, rather than printing a number you made up.
 
-   Render the offer as a §7 **Work** marker: the
-   hours, then what they buy in one line. Break the estimate down internally first, since that
+   Render the offer as a §7 **Work** marker: the price as hours @ rate = total,
+   nothing after it. Break the estimate down internally first, since that
    breakdown is what you confirm with the dev. When the idea is a stopgap ahead of
    a rebuild pitched under Horizon, say so in the idea and say that nothing built
    for it is thrown away (Kaza, Meridian Display 2026-09-28).
@@ -899,8 +899,9 @@ earns its place.
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
   panels where something is (Kaza, kow 2026-09-29).
-- **A Work row carries an offer**: the price as math, then what it buys in one line:
-  *Approximately 2 hrs @ $200 = $400 for …*. Showing the hours and the rate lets the
+- **A Work row carries an offer**: the price as math and nothing else,
+  *Approximately 2 hrs @ $200 = $400*. The idea above it already says what the
+  work buys, so a trailing description only repeats it. Showing the hours and the rate lets the
   client check the total, which is worth more than a bare number. The rate is the
   dev's; record it in the project's round record. The tag reads *Work*, not *Quote*
   (Kaza, cal 2026-10-19).
