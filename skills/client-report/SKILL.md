@@ -559,6 +559,14 @@ reads as the sale rather than the result. On ilc a traffic-and-caching log
 review was first drafted as a separate *Recommended* section, pitched as extra
 work. It belonged under Ideas, framed as *keep the site fast for real visitors*.
 
+**When the finding is a gap in work already done, say so.** On dmx 2026.10 the
+migration had already redirected the old site's links; the round's traffic scan
+found the document downloads that slipped through. The draft pitched redirecting
+them as though nothing had been done, which hid the work the client had paid for and
+oversold the new ask. Kaza: *"this is us scanning the actual activity and finding
+things missed, plugging holes."* Frame it that way: what's in place, what the real
+traffic showed it missed, and closing the gap.
+
 **The round finds one; the dev may add more.** The search below produces one
 idea. When the dev brings another, such as a service they want to offer, it
 goes under the same heading with the same three-paragraph shape, not a section
