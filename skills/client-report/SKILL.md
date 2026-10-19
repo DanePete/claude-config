@@ -923,6 +923,8 @@ earns its place.
   are alarmed, the next thing they read is what to do, with a link to do it (a
   licence, a renewal). Don't end on a stopgap sentence instead. An Action is never
   "contact us".
+- **An Action row says what the client does, and nothing about cost.** "No cost from
+  us" on a task of theirs reads as a favour being counted (Kaza, cal 2026-10-19).
 - **No action, no Action row.** When the hold is ours to resolve (waiting on an
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
