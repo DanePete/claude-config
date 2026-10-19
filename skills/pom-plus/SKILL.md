@@ -42,6 +42,11 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
 - **Accessibility: quoted.** The quarterly scan comes with the plan; the fixes it
   finds are additional hours, quoted per quarter from the year plan.
 
+Access logs, performance, SEO and accessibility share a shape: the work is front-loaded.
+The first assessment and what it turns up are the quoted hours. After that the pass
+settles into adjusting and fine refinement, and small adjustments can land in the round
+without a Work row. Exceptions come later, once that first assessment is done.
+
 Read last round's record before starting each pass. A number means little alone and a lot
 next to last month's.
 
