@@ -459,9 +459,13 @@ take it. Stable → alpha/beta/rc: **no**, ever, even if it's a higher number.
 
 **Hold — and say why in the reply, don't silently skip:**
 
-- **Suite members.** A package versioned in lockstep with a family
-  (`jacerider/escort` 4.x pairs with Aeon, 5.x with Neo). Bumping one member of a
-  suite in isolation breaks it. Update the suite together or not at all.
+- **Suite members.** A package versioned in lockstep with a family. Bumping one
+  member of a suite in isolation breaks it. Update the suite together or not at all.
+  **Prove the membership before holding on it:** the new major's `require` and its
+  diff against the old branch say whether it depends on the family. A jacerider
+  package is not a suite member by authorship. `jacerider/escort` was held on cal
+  (2026-10-19) as "5.x is Neo"; 5.0 requires only core and micon, and is a D10/D11
+  compatibility pass that 4.0 needed, since 4.0 still called services D11 removed.
 - **Pinned by the upstream.** `tecnickcom/tcpdf` is `^6.7` in
   `pantheon-upstreams/drupal-project`. Widening the root constraint fights the
   upstream for no gain. Check `composer why <pkg>` before assuming a root require
