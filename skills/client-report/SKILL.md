@@ -1018,7 +1018,8 @@ for the client's own team) is not.
   approving work, and once they've chosen, they press Save and email the doc back.
   Don't name us in it: who it goes back to is implied (Kaza).
 - **They have to save**, because a browser can't write back to the file it opened. Save
-  sits at the end of the nav bar, gold (the client's own yellow where they have one)
+  sits at the right edge of the nav bar, aligned with the content while the section links
+  stay centred (Kaza), and falls back to the end of the scrolling row on a phone. It is gold (the client's own yellow where they have one)
   while there are unsaved choices, green once saved. It uses `showSaveFilePicker`
   where the browser has it (Chrome, Edge) and downloads a copy everywhere else, and a
   `beforeunload` prompt guards unsaved choices.

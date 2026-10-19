@@ -62,3 +62,12 @@ Capture each alias **before** deleting it — after deletion
 silently checks nothing and reports all-clear. Collect the paths in the same loop
 that deletes them. Reference implementation: md's
 `scripts/retire-howto-articles.php`.
+
+## Creating one in code
+
+`Redirect::setRedirect()` takes a bare path and adds `internal:/` itself. Pass it a URI
+(`internal:/find-a-business`) and the target saves as `/internal%3A/find-a-business`, a
+broken URL that is live the moment the entity saves. Pass `find-a-business`, then read back
+`redirect_redirect->uri` before calling it done. Hit on cal live (2026-10-19), caught on
+read-back.
+
