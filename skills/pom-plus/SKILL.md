@@ -171,15 +171,17 @@ quarter opens a year:
    the project's `.claude/memory/accessibility-plan.md` so next quarter starts from it.
    **The plan is ours.** The client never sees it, only each quarter's first pass (Kaza,
    cal 2026-10-19).
-3. **Recommend the first quarter.** Each fix is its own Work item in *Next*, ordered by
-   importance among everything else there, so the client can approve them one at a time.
+3. **Recommend the first quarter.** Each fix is its own Work item under the record's
+   *POM+ → Accessibility* heading, not in *Next*, ordered by importance, so the client can
+   approve them one at a time.
    Expect the dev to cut the hours. The audit agent priced cal's first quarter at 16 h, and
    Kaza quoted 4.
 
 ### Later quarters
 
 Rescan to catch regressions and new content. Report progress against the plan, adjust the
-plan where the site has changed, and put the coming quarter's items in *Next* with Work rows.
+plan where the site has changed, and put the coming quarter's items under *POM+ →
+Accessibility* with Work rows.
 
 ### Marking it done
 

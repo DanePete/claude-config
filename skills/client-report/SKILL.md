@@ -477,9 +477,11 @@ smaller genre.
    *Accessibility*. The per-round log, performance, bot and search passes get no
    write-up of their own (Kaza, cal 2026-10-19). What they turn up that needs doing
    goes in *Next*; what we did in the round goes in *Checked* as a one-line item.
-   *Accessibility* says what was tested and what already works, then hands off to this
-   quarter's items with a Fix button. The year plan isn't shown: it's ours, kept in the
-   project's `.claude/memory/accessibility-plan.md`.
+   *Accessibility* says what was tested and what already works, and this quarter's items
+   follow directly under it, as Work items ordered by importance. **POM+ items stay in
+   POM+** under their own headings; *Next* is only for the work we should do soon (Kaza,
+   cal 2026-10-19). The year plan isn't shown: it's ours, kept in the project's
+   `.claude/memory/accessibility-plan.md`.
 5. **Next**: items in order of importance across every pass, not grouped by where
    they came from (Kaza, cal 2026-10-19). Urgent first. Only when something is actually coming that the client needs to
    know about. A paragraph whose message is "nothing is required of you" is
