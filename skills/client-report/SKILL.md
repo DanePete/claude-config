@@ -1001,6 +1001,10 @@ earns its place.
 **Approving work: the client picks what we do and sends the doc back** (Kaza, cal
 2026-10-19). Every item carrying a Work row is approvable; anything without one (a task
 for the client's own team) is not.
+- **Approved, the whole item turns the deep brand green**, whatever severity it started
+  as (Kaza): outline, heading, tags, the price, and the divider lines. Set the dividers
+  to the deep green at full strength, because a 1px line in a tint of it reads as grey.
+  An Urgent red item that stayed red once approved looked unapproved.
 - A large plain **?** in the item's top-right corner, grey, with no circle or border
   behind it (Kaza), `title` "Approve this work". The approved checkmark matches it:
   plain, same size, in the brand green. Keep a ~40px click area around the glyph. Clicking it
