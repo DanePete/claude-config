@@ -13,7 +13,7 @@ Each plan includes everything in the one before it.
 |---|---|---|
 | **POM** | Updates and defense: the [site-update](../../skills/site-update/SKILL.md) round. | Live. Every client not listed below. |
 | **POM+** | Every round: access log and error log review, performance across the cache layers (host, site, CDN), bot protection, SEO audit. Quarterly: an accessibility scan; the first year opens with a full audit and a year plan. Procedure: [pom-plus](../../skills/pom-plus/SKILL.md). | Live. |
-| **POM+FR** | FR monitoring and response (Vincent). | **Not yet approved.** Recorded here only. Never name or offer it in a client document until it is. |
+| **POM+FR** | First Response: monitoring and response (Vincent). | **Not yet approved.** Recorded here only. Never name or offer it in a client document until it is. |
 
 ## Clients on POM+
 
