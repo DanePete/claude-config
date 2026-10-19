@@ -482,7 +482,9 @@ smaller genre.
 5. **Next**: where the action is (Kaza, cal 2026-10-19). Work from the ordinary POM
    round comes first, Urgent first and then by importance. Then come the POM+ headings
    that have work, mirrored from *POM+* in the same order, each holding its own items
-   (a `.next-group`). Findings live in POM+ and
+   (a `.next-group`). A group's items are indented under its heading by the same
+   indent the sections use, and the groups sit well apart (cal: 43px, 25% up on the first
+   draft) so each heading reads as its own block (Kaza). Findings live in POM+ and
    actions live in Next, so the two never repeat each other, and a pass with nothing to
    act on (a quiet bot month) gets no Next heading. Only when something is actually
    coming that the client needs to know about. A paragraph whose message is "nothing
