@@ -472,18 +472,18 @@ smaller genre.
 4. **Checked** — site-update's Phase 5 verification, in their vocabulary. *Careers
    listing and its job search filters*, not *`/careers` returned 200*.
 4a. **POM+**: POM+ clients only (roster in
-   [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*. It holds
-   only the sections specific to POM+, each under its own heading: today that's
-   *Accessibility*. The per-round log, performance, bot and search passes get no
-   write-up of their own (Kaza, cal 2026-10-19). What they turn up that needs doing
-   goes in *Next*; what we did in the round goes in *Checked* as a one-line item.
-   *Accessibility* says what was tested and what already works, and this quarter's items
-   follow directly under it, as Work items ordered by importance. **POM+ items stay in
-   POM+** under their own headings; *Next* is only for the work we should do soon (Kaza,
-   cal 2026-10-19). The year plan isn't shown: it's ours, kept in the project's
-   `.claude/memory/accessibility-plan.md`.
-5. **Next**: items in order of importance across every pass, not grouped by where
-   they came from (Kaza, cal 2026-10-19). Urgent first. Only when something is actually coming that the client needs to
+   [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*, with one
+   heading per pass: *Access log*, *Error log*, *Performance*, *Bot protection*,
+   *Search*, *Accessibility* (Kaza, cal 2026-10-19). Under each: a short write-up in the
+   client's terms, including what we did in the round, then that pass's items (Work
+   items, client tasks, Urgent ones), ordered by importance within the heading. A pass
+   with nothing to act on, like a quiet bot month, is a write-up and nothing else. POM+
+   items stay here; they never move to *Next*. *Accessibility* says what was tested and
+   what already works, then this quarter's fixes. The year plan isn't shown: it's ours,
+   in the project's `.claude/memory/accessibility-plan.md`.
+5. **Next**: work outside the POM+ passes that should happen soon, Urgent first and
+   then by importance. On a POM+ record it's often empty, and then it's cut. Only when
+   something is actually coming that the client needs to
    know about. A paragraph whose message is "nothing is required of you" is
    nothing, so cut it. On ilc a line about core 12's release date and core 11
    staying covered was struck as not needed. It sits before Ideas, so the

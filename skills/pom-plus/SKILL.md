@@ -20,8 +20,8 @@ findings, sorted three ways:
 
 - **Fixed in the round.** Small, safe and clearly ours: a missing redirect, a stray
   `noindex`. Commit it on its own, per site-update Phase 6.
-- **Quoted.** Worth doing and bigger than the round. It goes in the record's *Next* with
-  a Work row.
+- **Quoted.** Worth doing and bigger than the round. It goes under that pass's heading in
+  the record's *POM+* section, with a Work row.
 - **Watched.** Not worth acting on yet. One line in the round record
   (`.claude/memory/records/<round>.md`), so next round can tell a trend from a blip.
 
@@ -31,8 +31,8 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
 - **Error logs: mostly fixed in the round.** Most fatals and warnings are
   straightforward. Quote only the exception that is real work.
 - **A finding that can hold up traffic is Urgent.** Even when the fix is small, it's
-  work on the client's site, so it goes in *Next* as an Urgent item with a Work row
-  rather than being fixed quietly. Tell the client it needs fixing and bill it. Cal's
+  work on the client's site, so it goes under its pass as an Urgent item with a Work
+  row rather than being fixed quietly. Tell the client it needs fixing and bill it. Cal's
   Campaign Monitor timeout (one hour) was the first (Kaza, 2026-10-19).
 - **Access logs, and the bot protection built on them: quoted.** Doing these properly
   usually means installing a module and tuning it, which is additional hours on a Work
@@ -172,7 +172,7 @@ quarter opens a year:
    **The plan is ours.** The client never sees it, only each quarter's first pass (Kaza,
    cal 2026-10-19).
 3. **Recommend the first quarter.** Each fix is its own Work item under the record's
-   *POM+ → Accessibility* heading, not in *Next*, ordered by importance, so the client can
+   *POM+ → Accessibility* heading, ordered by importance, so the client can
    approve them one at a time.
    Expect the dev to cut the hours. The audit agent priced cal's first quarter at 16 h, and
    Kaza quoted 4.
@@ -194,6 +194,7 @@ skill, so the project's lock doesn't need to move for it.
 
 ## The record
 
-[client-report](../client-report/SKILL.md) §6 owns the layout, including the *POM+*
-section these passes fill and the *Accessibility* plan inside it. Write each finding in the
+[client-report](../client-report/SKILL.md) §6 owns the layout. The *POM+* section has one
+heading per pass (*Access log*, *Error log*, *Performance*, *Bot protection*, *Search*,
+*Accessibility*), each with its write-up and its own items. Write each finding in the
 client's terms, the same as *Checked*.
