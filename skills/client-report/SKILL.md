@@ -905,6 +905,21 @@ title block and lists them:
   by an `IntersectionObserver` on a 1px sentinel just above it. At rest the title
   block's rule already separates it.
 
+**Every section collapses, and the nav opens what it jumps to** (Kaza, cal 2026-10-19).
+The reader closes what they've read and keeps the page to what they're working through.
+- The `h2` holds a `<button type="button" aria-expanded aria-controls>` wrapping the
+  heading text and a chevron to its right. Down means open, rotated -90° means closed.
+  Everything after the heading sits in one `.sec-body` wrapper, which carries the
+  heading indent in place of the per-child `section > :not(h2)` rule. A caption that
+  set its own left indent then has to drop it, or it doubles.
+- Sections start open, and the wrapper is hidden only by script, so the doc reads in
+  full without JavaScript and prints in full (`.sec-body[hidden]{display:block!important}`
+  in the print sheet, chevrons hidden).
+- A nav click opens its section in the click handler, before the browser's own jump,
+  so the anchor lands on content rather than a closed heading. Do the same for a
+  `#hash` on load.
+- Cal's October 2026 record is the reference implementation.
+
 ### Components
 
 The standing parts our docs are built from. Each one was settled through review, so
