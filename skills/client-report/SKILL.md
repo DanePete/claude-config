@@ -430,10 +430,13 @@ smaller genre.
 2. **Updated** — a version table of the ten or so components a non-developer
    recognises, each with a plain-language gloss (*Webform — contact and request
    forms*). One caption line absorbs the rest: *"plus 36 supporting libraries."*
-   **Everything under a section heading is indented to the heading's words**:
-   the indent is the heading icon's width plus its gap
-   (`--indent: calc(var(--bm) + var(--bm-gap))`), so content hangs under the
-   title, not the icon. The table takes the indent on both sides, and its
+   **Everything under a section heading steps in past the heading's words**:
+   `--indent` is the heading icon's width plus its gap
+   (`calc(var(--bm) + var(--bm-gap))`), and the section body sits at
+   `calc(var(--indent) * 1.5)`, half an indent past the title, so it reads as
+   belonging to it (cal 2026-10; flush with the title read as unindented, Kaza on dmx
+   2026.10). A sub-heading's text steps in another half indent. On a phone the body
+   drops to 12px. The description line stays at `--indent`, level with the title. The table takes the indent on both sides, and its
    caption line rides with it. Everything else takes it on the left only. On a
    phone the table gives back its right side, or the component column wraps
    to six lines. One `section > :not(h2)` rule does it, so give component
