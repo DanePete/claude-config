@@ -912,8 +912,10 @@ The reader closes what they've read and keeps the page to what they're working t
   Everything after the heading sits in one `.sec-body` wrapper, which carries the
   heading indent in place of the per-child `section > :not(h2)` rule. A caption that
   set its own left indent then has to drop it, or it doubles.
-- **Sections are closed by default** (Kaza, cal 2026-10-19): the page opens as a table
-  of contents. The markup ships open and the script closes every section on load, so
+- **One section open at a time, the first one on load** (Kaza, cal 2026-10-19).
+  Opening a section, by its heading or the nav, closes whichever was open, and clicking
+  an open heading closes it. A `#hash` on load opens that section instead of the first.
+  The markup ships open and the script sets the state on load, so
   the doc still reads in full without JavaScript, and it prints in full
   (`.sec-body[hidden]{display:block!important}` in the print sheet, chevrons hidden).
   A closed section drops most of its padding so the stacked headings don't float apart,
