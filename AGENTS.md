@@ -271,7 +271,7 @@ These files are authoritative and kept current by the team. Prefer conventions h
 ## Augustash internal modules
 
 - **POM plans** — `vendor/augustash/claude-config/memory/pom/levels.md`  
-  at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
+  at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+, and AshenRayne having none
 
 ## Augustash internal modules
 
