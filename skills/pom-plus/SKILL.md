@@ -51,6 +51,13 @@ The first assessment and what it turns up are the quoted hours. After that the p
 settles into adjusting and fine refinement, and small adjustments can land in the round
 without a Work row. Exceptions come later, once that first assessment is done.
 
+**When agents run the passes, verify every finding before it reaches the developer.**
+Splitting the passes across agents is quick, but they are often wrong with confidence.
+On cal (2026-10-19) one read Pantheon's edge as the client's Cloudflare and proposed a
+purge fix for staleness that didn't exist; a dev test disproved it in a minute. The
+accessibility agent caught two of its own false findings. Re-check the evidence behind
+each claim, and test anything that would become a Work row, before presenting it.
+
 **Walk each pass's results through with the developer, one idea at a time,** before
 anything reaches the record. That is client-report's review rule, and it applies here
 pass by pass.
