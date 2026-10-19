@@ -474,20 +474,19 @@ smaller genre.
 4a. **POM+**: POM+ clients only (roster in
    [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*, with one
    heading per pass: *Access log*, *Error log*, *Performance*, *Bot protection*,
-   *Search*, *Accessibility* (Kaza, cal 2026-10-19). Under each: a short write-up in the
-   client's terms, including what we did in the round, then that pass's items (Work
-   items, client tasks, Urgent ones), ordered by importance within the heading. A pass
-   with nothing to act on, like a quiet bot month, is a write-up and nothing else. POM+
-   items stay here; they never move to *Next*. *Accessibility* says what was tested and
-   what already works, then this quarter's fixes. The year plan isn't shown: it's ours,
-   in the project's `.claude/memory/accessibility-plan.md`.
-5. **Next**: work outside the POM+ passes that should happen soon, Urgent first and
-   then by importance. On a POM+ record it's often empty, and then it's cut. Only when
-   something is actually coming that the client needs to
-   know about. A paragraph whose message is "nothing is required of you" is
-   nothing, so cut it. On ilc a line about core 12's release date and core 11
-   staying covered was struck as not needed. It sits before Ideas, so the
-   site's own obligations close out before the offer (Kaza, sal 2026-09-29).
+   *Search*, *Accessibility*. Each heading is a write-up in the client's terms: what
+   the pass found and what we did in the round. A heading whose pass produced work ends
+   in a **Fix** button that jumps to that heading in *Next*. *Accessibility* says what was
+   tested and what already works. The year plan isn't shown: it's ours, in the
+   project's `.claude/memory/accessibility-plan.md`.
+5. **Next**: where the action is (Kaza, cal 2026-10-19). Work from the ordinary POM
+   round comes first, Urgent first and then by importance. Then come the POM+ headings
+   that have work, mirrored from *POM+* in the same order, each holding its own items
+   (a `.next-group` with an `id` the Fix button targets). Findings live in POM+ and
+   actions live in Next, so the two never repeat each other, and a pass with nothing to
+   act on (a quiet bot month) gets no Next heading. Only when something is actually
+   coming that the client needs to know about. A paragraph whose message is "nothing
+   is required of you" is nothing, so cut it.
 6. **Ideas** — improvements to the site, each one work we'd do. At
    least one comes from this round's search; see *One idea per round* below.
    Directly under the heading goes a small muted description line, so the
