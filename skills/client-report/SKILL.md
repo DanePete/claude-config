@@ -488,9 +488,10 @@ smaller genre.
    least one comes from this round's search; see *One idea per round* below.
    Directly under the heading goes a small muted description line, so the
    client reads the section as a standing habit rather than a sales insert.
-   Write it as a plain statement of what we can do for their visitors: *"We can
-   help buyers find the right business faster."* Not a question and not a
-   "How we…" fragment (Kaza, cal 2026-10-19). Keep it to one short line.
+   Write it as an invitation to improve something for their visitors together:
+   *"Let's help buyers find the right business faster."* Not a question, not a
+   "How we…" fragment, and not "We can…", which reads as us selling rather than
+   working with them (Kaza, cal 2026-10-19). Keep it to one short line.
 6a. **Plan** — offer the next POM plan up, only when it is the right plan for
    this site, and never one that isn't approved yet. Which plan fits, and the rule
    behind offering it, are in [memory/pom/levels.md](../../memory/pom/levels.md).
