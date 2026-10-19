@@ -39,6 +39,8 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
 - **SEO: quoted.** Sweeping scans, deploy hooks written for live, and broad
   adjustments are project-sized. The same shape applies: front-loaded, then monitor and
   adjust.
+- **Accessibility: quoted.** The quarterly scan comes with the plan; the fixes it
+  finds are additional hours, quoted per quarter from the year plan.
 
 Read last round's record before starting each pass. A number means little alone and a lot
 next to last month's.
