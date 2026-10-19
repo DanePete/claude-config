@@ -443,7 +443,12 @@ smaller genre.
    blocks `margin-block`, not `margin:0`, or they drop back out of the
    indent. Kaza's standard, sisal 2026-09-23. It replaced a narrower centred
    44rem column, which was too much margin and gave the table a treatment of
-   its own. All three column heads share the small-caps label style. A `.num` rule
+   its own. **Since cal 2026-10-19 the body steps half an indent further in**
+   (`.sec-body{margin-left:calc(var(--indent) * 1.5)}`, 12px on a phone), so it
+   reads as sitting under the heading rather than level with it. The section's
+   description line stays at `--indent`, level with the heading text. su's
+   October record shipped without the step and Kaza caught it, so carry it on
+   every doc. All three column heads share the small-caps label style. A `.num` rule
    applied to the `th` makes FROM/TO render as large mono with a stray arrow
    beside COMPONENT, so reset `thead th.num` and keep the arrow on the value
    cells only.
