@@ -34,6 +34,8 @@ Before anything else, look the client up in
 [memory/pom/levels.md](../../memory/pom/levels.md). On **POM** this skill is the whole
 round. On **POM+**, load [pom-plus](../pom-plus/SKILL.md) after Phase 5: it adds a log,
 performance, bot and search pass every round, and an accessibility scan every quarter.
+**AshenRayne sites (`ar-` on Pantheon) have no plans**: run the pom-plus passes every round,
+and keep plan names out of the record.
 
 ---
 

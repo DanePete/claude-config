@@ -23,6 +23,14 @@ The code is the project's short name, upper-cased (`cal` → CAL). Every other c
 POM. When a client moves plans, edit this list; the accessibility tracker
 ([accessibility.json](accessibility.json)) gains or loses their key at the same time.
 
+## AshenRayne clients have no plans
+
+POM is an August Ash offering. AshenRayne sites (Pantheon `ar-` sites, tests tagged `ar` —
+see [[test-tags]]) are not tiered: every round covers everything — the updates plus the
+POM+ passes — and the client gets one report, billed monthly. So on an AshenRayne site, run
+the whole round and never name POM, POM+ or a plan in the record or offer an upgrade (Kaza,
+2026-10-19).
+
 ## Offering the next plan
 
 A client document may offer the next plan up, and only when it is the right plan for that

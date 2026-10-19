@@ -471,7 +471,8 @@ smaller genre.
 4. **Checked** — site-update's Phase 5 verification, in their vocabulary. *Careers
    listing and its job search filters*, not *`/careers` returned 200*.
 4a. **POM+** — POM+ clients only (roster in
-   [memory/pom/levels.md](../../memory/pom/levels.md)), filled by the
+   [memory/pom/levels.md](../../memory/pom/levels.md)), and every AshenRayne client, where
+   it runs untiered and unnamed: give it a plain heading and never the word POM. Filled by the
    [pom-plus](../pom-plus/SKILL.md) passes. One-word subheadings: *Logs*,
    *Performance*, *Bots*, *Search*, *Accessibility*. *Search* covers search engines and AI answers alike. Each is a short finding in the
    client's terms, set against last round where a number moved. *Accessibility*
@@ -493,7 +494,8 @@ smaller genre.
    "How we…" fragment, and not "We can…", which reads as us selling rather than
    working with them (Kaza, cal 2026-10-19). Keep it to one short line.
 6a. **Plan** — offer the next POM plan up, only when it is the right plan for
-   this site, and never one that isn't approved yet. Which plan fits, and the rule
+   this site, and never one that isn't approved yet. Never on an AshenRayne site: they
+   have no plans. Which plan fits, and the rule
    behind offering it, are in [memory/pom/levels.md](../../memory/pom/levels.md).
    Name what the plan would do for *this* site, from what the round found: a
    commerce site's bot traffic, a listing site's search. When it doesn't fit, cut
