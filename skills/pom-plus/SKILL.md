@@ -25,6 +25,19 @@ findings, sorted three ways:
 - **Watched.** Not worth acting on yet. One line in the round record
   (`.claude/memory/records/<round>.md`), so next round can tell a trend from a blip.
 
+Which way a finding goes depends on the pass. These are defaults, not rules (Kaza,
+2026-10-19):
+
+- **Error logs: mostly fixed in the round.** Most fatals and warnings are
+  straightforward. Quote only the exception that is real work.
+- **Access logs, and the bot protection built on them: quoted.** Doing these properly
+  usually means installing a module and tuning it, which is additional hours on a Work
+  row. Expect the work to be front-loaded, then become monitoring and tweaking in later
+  rounds.
+- **SEO: quoted.** Sweeping scans, deploy hooks written for live, and broad
+  adjustments are project-sized. The same shape applies: front-loaded, then monitor and
+  adjust.
+
 Read last round's record before starting each pass. A number means little alone and a lot
 next to last month's.
 
