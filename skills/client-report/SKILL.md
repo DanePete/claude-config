@@ -897,8 +897,11 @@ earns its place.
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
   panels where something is (Kaza, kow 2026-09-29).
-- **A Work row carries an offer**: the hours, then what they buy in one line. The
-  tag reads *Work*, not *Quote* (Kaza, cal 2026-10-19).
+- **A Work row carries an offer**: the price as math, then what it buys in one line:
+  *Approximately 2 hrs @ $200 = $400 for …*. Showing the hours and the rate lets the
+  client check the total, which is worth more than a bare number. The rate is the
+  dev's; record it in the project's round record. The tag reads *Work*, not *Quote*
+  (Kaza, cal 2026-10-19).
 - **A Limit row names what holds the site back**, stated as the case: what it could
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
   more potential than it can reach today, and getting there takes a rebuild."* It's a
