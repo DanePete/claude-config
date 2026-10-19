@@ -47,6 +47,13 @@ The first assessment and what it turns up are the quoted hours. After that the p
 settles into adjusting and fine refinement, and small adjustments can land in the round
 without a Work row. Exceptions come later, once that first assessment is done.
 
+**Walk the results through with the developer, one idea at a time.** Each pass ends
+in a touchpoint, not in the record. Bring one finding or one proposed Work item, with
+its evidence and a recommendation, and settle it (take it, cut it, reword it, re-price
+it) before bringing the next. The record gets only what came through that conversation.
+A wall of every pass's results at once gets skimmed, and the dev's judgement is what
+turns findings into an offer the client should actually see (Kaza, cal 2026-10-19).
+
 Work rows price at the rate in
 [memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json).
 
