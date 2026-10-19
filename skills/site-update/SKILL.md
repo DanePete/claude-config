@@ -639,7 +639,9 @@ grep -oiE "the website encountered|TypeError|ArgumentCountError" /tmp/o.html
 Every round, on every plan, walk the *August Ash standards* in the index
 ([how standards work](../../memory/standards/how-they-work.md)). Apply any standard
 the site is missing, each in its own commit, unless the project's
-`.claude/memory/standards-overrides.md` declines it. Standards are a baseline that
+`.claude/memory/standards-overrides.md` declines it. Some standards are a fix to the
+client's site rather than a setting of ours; those become a quoted *Next* item instead
+(the standards memory says which). Standards are a baseline that
 devs may override, not rules. When the round turns up a fix every site should have,
 write it up as a new standard.
 

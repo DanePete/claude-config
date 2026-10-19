@@ -18,8 +18,10 @@ than leaving it as one site's fix. The first, [[drupal-log-settings]], came out 
 first POM+ round (Kaza, 2026-10-19).
 
 **Applying them.** [site-update](../../skills/site-update/SKILL.md) walks the list every
-round, on every plan, and applies any standard a site is missing in its own commit. A
-standard that would take real hours on a given site is quoted rather than applied.
+round, on every plan, and applies any standard a site is missing in its own commit. A standard that is a setting of ours (log retention) is applied in the round. One that
+is a fix to the client's site is a *Next* item with a Work row, marked Urgent when it
+can hold up traffic ([[outbound-call-timeouts]] is the example). The dev decides in
+review which a given case is.
 
 **Overriding one.** When a dev decides a standard doesn't fit a site, record it in that
 project's `.claude/memory/standards-overrides.md`: the standard, and why. The round reads

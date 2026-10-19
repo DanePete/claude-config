@@ -93,6 +93,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
 
 - **How standards work** — `vendor/augustash/claude-config/memory/standards/how-they-work.md`  
   every update round, before writing a standard, or when a dev wants to override one
+- **Outbound call timeouts** — `vendor/augustash/claude-config/memory/standards/outbound-call-timeouts.md`  
+  any call to a vendor during a page request; also php-slow led by a third-party call, or workers maxing out
 - **Drupal log settings** — `vendor/augustash/claude-config/memory/standards/drupal-log-settings.md`  
   cron logging off, 10,000-row dblog; also a log that reaches back only hours
 
