@@ -134,8 +134,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   choosing hosted-subdomain vs the subdirectory addon, which saturates PHP-FPM
 - **Cache bin that survives drush cr** — `vendor/augustash/claude-config/memory/drupal/persistent-cache-bin.md`  
   keeping a warm store from being wiped by a full cache flush
-- **Short edge TTL vs tag-purge for volatile pages** — `vendor/augustash/claude-config/memory/drupal/edge-ttl-vs-tag-purge.md`  
-  giving ONE page a short external Cache-Control, and why TTL beats tag-purge
+- **Edge TTL apart from the browser TTL** — `vendor/augustash/claude-config/memory/drupal/edge-ttl-vs-tag-purge.md`  
+  giving one page a shorter edge TTL, or the edge a longer one than browsers; and why TTL beats tag-purge
 - **A Solr core keeps documents under an old site hash** — `vendor/augustash/claude-config/memory/drupal/solr-stale-site-hash.md`  
   a Search API view returns far more results than the site has content, while status says 100% and clear + reindex change nothing
 - **A cloned environment reports 100% indexed and returns nothing** — `vendor/augustash/claude-config/memory/drupal/solr-empty-after-content-clone.md`  
