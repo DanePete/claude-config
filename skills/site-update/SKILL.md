@@ -920,7 +920,7 @@ worth surfacing before the client asks.
 
 ### Every round ends with a client record
 
-Reviewed by the dev before it goes anywhere, built one idea at a time: see
+The dev reviews the finished record before it goes anywhere; the doc is the review. See
 [client-report](../client-report/SKILL.md)'s review rule.
 
 **Write it with the [client-report](../client-report/SKILL.md) skill, §6 *The

@@ -58,9 +58,9 @@ purge fix for staleness that didn't exist; a dev test disproved it in a minute. 
 accessibility agent caught two of its own false findings. Re-check the evidence behind
 each claim, and test anything that would become a Work row, before presenting it.
 
-**Walk each pass's results through with the developer, one idea at a time,** before
-anything reaches the record. That is client-report's review rule, and it applies here
-pass by pass.
+**The developer reviews the passes in the record itself.** Write the verified findings
+into the doc and hand it over; no separate walkthrough first. That is client-report's
+review rule.
 
 Work rows price at the rate in
 [memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json).

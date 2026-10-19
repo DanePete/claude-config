@@ -23,13 +23,13 @@ such as a higher maintenance plan their site doesn't need, helps us, not them, a
 shows eventually. Treat clients the way we would want to be treated (Kaza, cal
 2026-10-19).
 
-**No client doc goes out without a developer reviewing it.** That covers every genre and
-every plan. Review happens while the doc is being built, not once it's finished: walk the
-findings and proposed work through with the dev one idea at a time (evidence plus a
-recommendation), settle each one (take it, cut it, reword it, re-price it), then bring
-the next. The doc gets only what came through that conversation. A wall of results at
-once gets skimmed, and the dev's judgement is what turns findings into something the
-client should see (Kaza, cal 2026-10-19).
+**No client doc goes out without a developer reviewing it, and the doc is the review.**
+Build it complete, open it for the dev, and revise from their notes: take, cut, reword,
+re-price. Don't walk the findings through one at a time first; that recap says what the
+doc already says, and the dev reviews it better on the page, in the form the client will
+read it. What has to happen before the doc is verification: every finding re-checked
+against its evidence, and anything that becomes a Work row tested (Kaza, md 2026-10-19,
+replacing the one-idea-at-a-time walkthrough set on cal the same day).
 
 **The deliverable is one HTML file.** Self-contained, branded, opens by
 double-click in any browser, zips for email. Clients open these in a browser —
