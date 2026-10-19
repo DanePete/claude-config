@@ -1014,6 +1014,9 @@ earns its place.
   Record the rate a round quoted at in the project's round record, since a later rate
   rise mustn't rewrite what a client was offered. The tag reads *Work*, not *Quote*
   (Kaza, cal 2026-10-19).
+  **AshenRayne clients get the price alone** (*$600*): Kaza doesn't bill them by the
+  hour, he states what he's billing (dmx 2026-10-19). No hours, no rate, no
+  *Approximately*. The same goes for billed work and anything else priced in the doc.
 - **A Limit row names what holds the site back**, stated as the case: what it could
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
   more potential than it can reach today, and getting there takes a rebuild."* It's a
@@ -1022,7 +1025,8 @@ earns its place.
   (*2 hrs @ $150 = $300*). It is always green, whatever panel it sits in, so paid work
   reads as a win: a green tag on a green-tinted row (about 12%; lighter vanishes on a
   coloured panel), no border and no top rule. An outline was tried and cut (Kaza, su
-  2026-10-19). Every amount in a doc takes this `x hrs @ $rate = $total` form.
+  2026-10-19). Every amount in a doc takes this `x hrs @ $rate = $total` form,
+  except on AshenRayne docs, which state the price alone.
 
 **Approving work: the client picks what we do and sends the doc back** (Kaza, cal
 2026-10-19). The colours below are cal's; carry the concept, not the hexes. Approved
