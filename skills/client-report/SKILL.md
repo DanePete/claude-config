@@ -998,6 +998,28 @@ earns its place.
   coloured panel), no border and no top rule. An outline was tried and cut (Kaza, su
   2026-10-19). Every amount in a doc takes this `x hrs @ $rate = $total` form.
 
+**Approving work: the client picks what we do and sends the doc back** (Kaza, cal
+2026-10-19). Every item carrying a Work row is approvable; anything without one (a task
+for the client's own team) is not.
+- A round **?** in the item's top-right corner, `title` "Approve this work". Clicking it
+  marks the whole item approved (brand-green outline and tint) and swaps the ? for a
+  checkmark; clicking again undoes it. It's a `<button aria-pressed>` whose
+  `aria-label` names the item.
+- The first approval opens a short note (a `<dialog>`, never `alert()`): they're
+  approving work, and once they've chosen, they press Save and email the doc back to
+  August Ash.
+- **They have to save**, because a browser can't write back to the file it opened. Save
+  sits at the end of the nav bar, gold (the client's own yellow where they have one)
+  while there are unsaved choices, green once saved. It uses `showSaveFilePicker`
+  where the browser has it (Chrome, Edge) and downloads a copy everywhere else, and a
+  `beforeunload` prompt guards unsaved choices.
+- State lives in the markup as `data-approved="true"`, and the saved file is a snapshot
+  reset to how the page ships (sections open, script-added controls stripped), so the
+  returned copy opens with their choices marked and still reads in full without script.
+- Print shows only the approved checks.
+- Cal's October 2026 record is the reference implementation, tested through a full
+  save-and-reopen round trip.
+
 **Severity panels.** A note that grades something (urgency, risk, status) becomes a
 tinted panel of its own, coloured by severity: red for urgent, amber for plan-for-it,
 green for no rush.
