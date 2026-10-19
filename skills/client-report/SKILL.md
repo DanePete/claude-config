@@ -925,9 +925,11 @@ The reader closes what they've read and keeps the page to what they're working t
 - **A finding that needs action links to the item that acts on it.** When a section
   says something needs doing (POM+ → Search) and another section holds the fix (its
   Next item), link the first to the second. Otherwise the doc says something needs
-  doing without establishing the next step (Kaza, cal 2026-10-19). The link goes on its
-  own line under the finding, bold, underlined, with a trailing "→", named with the
-  target's title, never inside a sentence. Give the target an `id`, and
+  doing without establishing the next step (Kaza, cal 2026-10-19). It's a **Fix** button,
+  right-aligned on its own line under the finding, never inside a sentence: an `<a>`
+  styled as a pill button (it navigates, so it stays a link), with an `aria-label` that
+  names the target (`Fix: Tell search engines and AI who Calhoun is`), since "Fix" alone
+  says nothing to a screen reader. Give the target an `id`, and
   `scroll-margin-top` to clear the sticky nav. Clicking it opens the target's section
   through the same handler the nav uses: one document-level click listener on
   `a[href^="#"]` that opens whichever section holds the target.
