@@ -18,6 +18,19 @@ measured against what their site is for. When a line reads as selling rather tha
 helping them grow, it's aimed wrong, so rewrite it toward what they gain (Kaza,
 Meridian Display 2026-09-28).
 
+The same holds for what we offer them to buy. An offer of little value to the client,
+such as a higher maintenance plan their site doesn't need, helps us, not them, and it
+shows eventually. Treat clients the way we would want to be treated (Kaza, cal
+2026-10-19).
+
+**No client doc goes out without a developer reviewing it.** That covers every genre and
+every plan. Review happens while the doc is being built, not once it's finished: walk the
+findings and proposed work through with the dev one idea at a time (evidence plus a
+recommendation), settle each one (take it, cut it, reword it, re-price it), then bring
+the next. The doc gets only what came through that conversation. A wall of results at
+once gets skimmed, and the dev's judgement is what turns findings into something the
+client should see (Kaza, cal 2026-10-19).
+
 **The deliverable is one HTML file.** Self-contained, branded, opens by
 double-click in any browser, zips for email. Clients open these in a browser —
 they do not read markdown, and a parallel `<report>.md` twin is not wanted.
@@ -457,6 +470,15 @@ smaller genre.
    each mapped to something on their site, and the section got sharper for it.
 4. **Checked** — site-update's Phase 5 verification, in their vocabulary. *Careers
    listing and its job search filters*, not *`/careers` returned 200*.
+4a. **POM+** — POM+ clients only (roster in
+   [memory/pom/levels.md](../../memory/pom/levels.md)), filled by the
+   [pom-plus](../pom-plus/SKILL.md) passes. One-word subheadings: *Logs*,
+   *Performance*, *Bots*, *Search*, *Accessibility*. *Search* covers search engines and AI answers alike. Each is a short finding in the
+   client's terms, set against last round where a number moved. *Accessibility*
+   carries the year plan, split into quarters by importance, with each quarter's
+   status once it runs. The split is a direction, not a schedule: say so in a
+   line, and front-loading is fine. The quarter's actual work is quoted in *Next*,
+   not here.
 5. **Next** — only when something is actually coming that the client needs to
    know about. A paragraph whose message is "nothing is required of you" is
    nothing, so cut it. On ilc a line about core 12's release date and core 11
@@ -464,9 +486,17 @@ smaller genre.
    site's own obligations close out before the offer (Kaza, sal 2026-09-29).
 6. **Ideas** — improvements to the site, each one work we'd do. At
    least one comes from this round's search; see *One idea per round* below.
-   Directly under the heading goes a small muted description line, *"How can
-   we improve…"*, so the client reads the section as a standing habit rather
-   than a sales insert. Kaza cut a full-sentence version to this.
+   Directly under the heading goes a small muted description line, so the
+   client reads the section as a standing habit rather than a sales insert.
+   Write it as a plain statement of what we can do for their visitors: *"We can
+   help buyers find the right business faster."* Not a question and not a
+   "How we…" fragment (Kaza, cal 2026-10-19). Keep it to one short line.
+6a. **Plan** — offer the next POM plan up, only when it is the right plan for
+   this site, and never one that isn't approved yet. Which plan fits, and the rule
+   behind offering it, are in [memory/pom/levels.md](../../memory/pom/levels.md).
+   Name what the plan would do for *this* site, from what the round found: a
+   commerce site's bot traffic, a listing site's search. When it doesn't fit, cut
+   the section rather than offer it anyway.
 7. **The studio mark**, centred at the very bottom. For August Ash that means the A
    shape alone, not the wordmark. See
    [doc-studio-mark](../../memory/preferences/doc-studio-mark.md). Once a
@@ -582,8 +612,8 @@ typical drawing by room and energy code*):
    hours."* The estimate is the dev's call. Propose one and confirm it before it
    goes in, rather than printing a number you made up.
 
-   Render the offer as a §7 **Quote** marker: the
-   hours, then what they buy in one line. Break the estimate down internally first, since that
+   Render the offer as a §7 **Work** marker: the price as hours @ rate = total (rate from memory/pricing/hourly-rate.json),
+   nothing after it. Break the estimate down internally first, since that
    breakdown is what you confirm with the dev. When the idea is a stopgap ahead of
    a rebuild pitched under Horizon, say so in the idea and say that nothing built
    for it is thrown away (Kaza, Meridian Display 2026-09-28).
@@ -881,7 +911,7 @@ reach for these before inventing a new device, and extend this list when a new o
 earns its place.
 
 **Markers: a tag and hanging copy.** A row with a small solid pill tag (*Action*,
-*Quote*, *Urgent*, *All good*) followed by the copy, laid out as a grid:
+*Work*, *Urgent*, *All good*) followed by the copy, laid out as a grid:
 - The tag sits in a fixed-width column (about 84px), so every row's copy and link
   start at the same x down the whole panel. Wrapped text hangs under the copy, not
   under the tag.
@@ -897,7 +927,15 @@ earns its place.
   upstream release, a test we'll schedule), leave the row out rather than writing
   "None needed". A row that says nothing is required is filler, and it dilutes the
   panels where something is (Kaza, kow 2026-09-29).
-- **A Quote row carries an offer**: the hours, then what they buy in one line.
+- **A Work row carries an offer**: the price as math and nothing else,
+  *Approximately 2 hrs @ $200 = $400*. The idea above it already says what the
+  work buys, so a trailing description only repeats it. Showing the hours and the rate lets the
+  client check the total, which is worth more than a bare number. **Take the rate
+  from [memory/pricing/hourly-rate.json](../../memory/pricing/hourly-rate.json)**, never
+  from memory or an old doc: it will change, and that file is the one place it changes.
+  Record the rate a round quoted at in the project's round record, since a later rate
+  rise mustn't rewrite what a client was offered. The tag reads *Work*, not *Quote*
+  (Kaza, cal 2026-10-19).
 - **A Limit row names what holds the site back**, stated as the case: what it could
   be, and what stands in the way. Meridian's order-process panel ends on one: *"far
   more potential than it can reach today, and getting there takes a rebuild."* It's a

@@ -72,6 +72,12 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [A legacy URL's pageviews say nothing about the words in it](memory/preferences/traffic-count-is-not-a-search-signal.md) — before citing an old URL's traffic as evidence for a word, a label, a slug or a heading
 - [Prove code is dead against its consumers](memory/preferences/prove-code-is-dead.md) — before deleting code that looks dead, or concluding a change is a no-op because saved state is unchanged
 
+#### August Ash standards
+
+- [How standards work](memory/standards/how-they-work.md) — every update round, before writing a standard, or when a dev wants to override one
+- [Outbound call timeouts](memory/standards/outbound-call-timeouts.md) — any call to a vendor during a page request; also php-slow led by a third-party call, or workers maxing out
+- [Drupal log settings](memory/standards/drupal-log-settings.md) — cron logging off, 10,000-row dblog; also a log that reaches back only hours
+
 #### Cloudflare
 
 - [WAF rules silently break SSL renewal](memory/cloudflare/waf-blocks-acme-renewal.md) — before adding or reviewing any WAF/geo/bot rule; the site looks fine for two months, then every browser rejects it
@@ -162,6 +168,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 
 #### Augustash internal modules
 
+- [POM plans](memory/pom/levels.md) — at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
 - [Augustash repositories](memory/augustash/repositories.md) — GitHub orgs to check before building from scratch; also who a handle is, before naming a module's maintainer
 - [Deploys run through launcher](memory/augustash/launcher-deploy.md) — before any Pantheon deploy, or reaching for raw `terminus env:deploy`; the tool, its invocation, and running live when asked
 - [Neo module skills sync](memory/augustash/neo-skills-sync.md) — after bumping a neo module, the project's `.claude/skills/` copies still hold the old text
@@ -303,7 +310,7 @@ Same rule as the memory index: a line per skill, saying when it fires. The
 authoritative trigger is each SKILL.md's own `description:` frontmatter — that's
 what Claude Code actually loads for discovery, so keep it sharp there.
 
-- [accessibility-audit](skills/accessibility-audit/SKILL.md) — testing a site's accessibility and writing a defensible record: an ADA demand letter, a compliance question, or a pre-launch check
+- [accessibility-audit](skills/accessibility-audit/SKILL.md) — testing a site's accessibility and writing a defensible record: an ADA demand letter, a compliance question, or a pre-launch check; also the quarterly POM+ scan
 - [client-proposal-review](skills/client-proposal-review/SKILL.md) — a client hands over a set of decisions (a menu, a design round, a feature list) and some of it would make the site worse
 - [client-report](skills/client-report/SKILL.md) — writing any client doc: a pitch, an audit, a request response or the monthly maintenance record; owns the doc design system
 - [content-audit](skills/content-audit/SKILL.md) — reducing a legacy CMS's content before migrating it, plus the overlap sweeps for both sides of the migration
@@ -312,4 +319,5 @@ what Claude Code actually loads for discovery, so keep it sharp there.
 - [firefox-devtools](skills/firefox-devtools/SKILL.md) — driving a real Firefox from Claude: console, network, DOM, logpoints and profiling on a running site, for Firefox-specific bugs or devs who prefer its DevTools to Chrome's
 - [log-audit](skills/log-audit/SKILL.md) — auditing site traffic: an integration broke, a client reports errors from a system you can't see, or a dev drops a log export for a health-and-security sweep; also sizing a facet-crawler challenge threshold
 - [memory-management](skills/memory-management/SKILL.md) — writing, curating, or auditing a memory: qualification, tier, index-entry form, and the commit steps
+- [pom-plus](skills/pom-plus/SKILL.md) — an update round for a POM+ client: the per-round log, performance, bot and search passes, and the quarterly accessibility scan
 - [site-update](skills/site-update/SKILL.md) — a dependency round on a site (Drupal or WordPress); owns patch triage, so also when a patch fails to apply or an edited one seems ignored; and after upgrading ddev

@@ -89,6 +89,15 @@ These files are authoritative and kept current by the team. Prefer conventions h
 - **Prove code is dead against its consumers** — `vendor/augustash/claude-config/memory/preferences/prove-code-is-dead.md`  
   before deleting code that looks dead, or concluding a change is a no-op because saved state is unchanged
 
+## August Ash standards
+
+- **How standards work** — `vendor/augustash/claude-config/memory/standards/how-they-work.md`  
+  every update round, before writing a standard, or when a dev wants to override one
+- **Outbound call timeouts** — `vendor/augustash/claude-config/memory/standards/outbound-call-timeouts.md`  
+  any call to a vendor during a page request; also php-slow led by a third-party call, or workers maxing out
+- **Drupal log settings** — `vendor/augustash/claude-config/memory/standards/drupal-log-settings.md`  
+  cron logging off, 10,000-row dblog; also a log that reaches back only hours
+
 ## Cloudflare
 
 - **WAF rules silently break SSL renewal** — `vendor/augustash/claude-config/memory/cloudflare/waf-blocks-acme-renewal.md`  
@@ -258,6 +267,11 @@ These files are authoritative and kept current by the team. Prefer conventions h
   "menu broken in normal Chrome, fine in private" from an oversized chat container
 - **LiveChat from your own trigger** — `vendor/augustash/claude-config/memory/drupal/livechat-custom-launcher.md`  
   putting chat in a menu instead of the floating bubble; also a chat window that opens with its title bar off-screen
+
+## Augustash internal modules
+
+- **POM plans** — `vendor/augustash/claude-config/memory/pom/levels.md`  
+  at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
 
 ## Augustash internal modules
 

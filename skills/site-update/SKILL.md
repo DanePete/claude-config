@@ -1,6 +1,6 @@
 ---
 name: site-update
-description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
+description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On a POM+ client it also hands off to pom-plus. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
 ---
 
 # Site update pass
@@ -27,6 +27,13 @@ pages — including one authenticated form for anything whose *widget* changed.
 request; see
 [d11-symfony-runtime](../../memory/drupal/d11-symfony-runtime.md) for a case
 where `drush status` reported perfect health through a full anonymous WSOD.
+
+## Know the client's plan
+
+Before anything else, look the client up in
+[memory/pom/levels.md](../../memory/pom/levels.md). On **POM** this skill is the whole
+round. On **POM+**, load [pom-plus](../pom-plus/SKILL.md) after Phase 5: it adds a log,
+performance, bot and search pass every round, and an accessibility scan every quarter.
 
 ---
 
@@ -459,9 +466,13 @@ take it. Stable → alpha/beta/rc: **no**, ever, even if it's a higher number.
 
 **Hold — and say why in the reply, don't silently skip:**
 
-- **Suite members.** A package versioned in lockstep with a family
-  (`jacerider/escort` 4.x pairs with Aeon, 5.x with Neo). Bumping one member of a
-  suite in isolation breaks it. Update the suite together or not at all.
+- **Suite members.** A package versioned in lockstep with a family. Bumping one
+  member of a suite in isolation breaks it. Update the suite together or not at all.
+  **Prove the membership before holding on it:** the new major's `require` and its
+  diff against the old branch say whether it depends on the family. A jacerider
+  package is not a suite member by authorship. `jacerider/escort` was held on cal
+  (2026-10-19) as "5.x is Neo"; 5.0 requires only core and micon, and is a D10/D11
+  compatibility pass that 4.0 needed, since 4.0 still called services D11 removed.
 - **Pinned by the upstream.** `tecnickcom/tcpdf` is `^6.7` in
   `pantheon-upstreams/drupal-project`. Widening the root constraint fights the
   upstream for no gain. Check `composer why <pkg>` before assuming a root require
@@ -642,6 +653,17 @@ curl -sk -c "$J" -b "$J" -L -o /dev/null "$URL"
 curl -sk -c "$J" -b "$J" -o /tmp/o.html -w '%{http_code}\n' "https://<site>.ddev.site/node/<id>/edit"
 grep -oiE "the website encountered|TypeError|ArgumentCountError" /tmp/o.html
 ```
+
+### Apply the August Ash standards
+
+Every round, on every plan, walk the *August Ash standards* in the index
+([how standards work](../../memory/standards/how-they-work.md)). Apply any standard
+the site is missing, each in its own commit, unless the project's
+`.claude/memory/standards-overrides.md` declines it. Some standards are a fix to the
+client's site rather than a setting of ours; those become a quoted *Next* item instead
+(the standards memory says which). Standards are a baseline that
+devs may override, not rules. When the round turns up a fix every site should have,
+write it up as a new standard.
 
 ### When a core *minor* bump breaks something
 
@@ -895,6 +917,9 @@ that lands with the upgrade. A hold list that quietly becomes an upgrade scope i
 worth surfacing before the client asks.
 
 ### Every round ends with a client record
+
+Reviewed by the dev before it goes anywhere, built one idea at a time: see
+[client-report](../client-report/SKILL.md)'s review rule.
 
 **Write it with the [client-report](../client-report/SKILL.md) skill, §6 *The
 maintenance record*.** That section owns the record end to end: where it is saved,
