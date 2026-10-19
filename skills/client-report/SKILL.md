@@ -1001,8 +1001,9 @@ earns its place.
 **Approving work: the client picks what we do and sends the doc back** (Kaza, cal
 2026-10-19). Every item carrying a Work row is approvable; anything without one (a task
 for the client's own team) is not.
-- A round **?** in the item's top-right corner, solid grey with a white ? and no border
-  (Kaza), `title` "Approve this work". Clicking it
+- A large plain **?** in the item's top-right corner, grey, with no circle or border
+  behind it (Kaza), `title` "Approve this work". The approved checkmark matches it:
+  plain, same size, in the brand green. Keep a ~40px click area around the glyph. Clicking it
   marks the whole item approved (brand-green outline and tint) and swaps the ? for a
   checkmark; clicking again undoes it. It's a `<button aria-pressed>` whose
   `aria-label` names the item.
