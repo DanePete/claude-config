@@ -880,6 +880,9 @@ worth surfacing before the client asks.
 
 ### Every round ends with a client record
 
+Reviewed by the dev before it goes anywhere, built one idea at a time: see
+[client-report](../client-report/SKILL.md)'s review rule.
+
 **Write it with the [client-report](../client-report/SKILL.md) skill, §6 *The
 maintenance record*.** That section owns the record end to end: where it is saved,
 its layout, the urgency grading of held items, the one-idea search and ideas log,
