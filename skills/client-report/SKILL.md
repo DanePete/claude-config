@@ -1008,8 +1008,8 @@ for the client's own team) is not.
   checkmark; clicking again undoes it. It's a `<button aria-pressed>` whose
   `aria-label` names the item.
 - The first approval opens a short note (a `<dialog>`, never `alert()`): they're
-  approving work, and once they've chosen, they press Save and email the doc back to
-  August Ash.
+  approving work, and once they've chosen, they press Save and email the doc back.
+  Don't name us in it: who it goes back to is implied (Kaza).
 - **They have to save**, because a browser can't write back to the file it opened. Save
   sits at the end of the nav bar, gold (the client's own yellow where they have one)
   while there are unsaved choices, green once saved. It uses `showSaveFilePicker`
