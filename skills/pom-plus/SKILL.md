@@ -30,6 +30,10 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
 
 - **Error logs: mostly fixed in the round.** Most fatals and warnings are
   straightforward. Quote only the exception that is real work.
+- **A finding that can hold up traffic is Urgent.** Even when the fix is small, it's
+  work on the client's site, so it goes in *Next* as an Urgent item with a Work row
+  rather than being fixed quietly. Tell the client it needs fixing and bill it. Cal's
+  Campaign Monitor timeout (one hour) was the first (Kaza, 2026-10-19).
 - **Access logs, and the bot protection built on them: quoted.** Doing these properly
   usually means installing a module and tuning it, which is additional hours on a Work
   row. Expect the work to be front-loaded, then become monitoring and tweaking in later
