@@ -34,6 +34,8 @@ Which way a finding goes depends on the pass. These are defaults, not rules (Kaz
   usually means installing a module and tuning it, which is additional hours on a Work
   row. Expect the work to be front-loaded, then become monitoring and tweaking in later
   rounds.
+- **Performance: quoted.** Cache tuning across the host, site and CDN layers is
+  usually additional hours, so it goes in as a recommendation with a Work row.
 - **SEO: quoted.** Sweeping scans, deploy hooks written for live, and broad
   adjustments are project-sized. The same shape applies: front-loaded, then monitor and
   adjust.
