@@ -931,6 +931,10 @@ The reader closes what they've read and keeps the page to what they're working t
   `scroll-margin-top` to clear the sticky nav. Clicking it opens the target's section
   through the same handler the nav uses: one document-level click listener on
   `a[href^="#"]` that opens whichever section holds the target.
+  Then the target flashes once, a brand-accent ring fading out over about a second and a
+  half, so the eye lands on it (Kaza). Start the flash on `scrollend`, with a short fallback
+  timer for when the target is already in view and nothing scrolls, and clear the class
+  on `animationend`. Under reduced motion it shows the ring without the fade.
 - **A section's description line stays with its heading.** It sits between the `h2` and
   the collapsing body, not inside it, so a closed section still says what it's for
   (Kaza, cal 2026-10-19). Only where a section already has one: don't write a
