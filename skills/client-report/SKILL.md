@@ -464,9 +464,11 @@ smaller genre.
    site's own obligations close out before the offer (Kaza, sal 2026-09-29).
 6. **Ideas** — improvements to the site, each one work we'd do. At
    least one comes from this round's search; see *One idea per round* below.
-   Directly under the heading goes a small muted description line, *"How can
-   we improve…"*, so the client reads the section as a standing habit rather
-   than a sales insert. Kaza cut a full-sentence version to this.
+   Directly under the heading goes a small muted description line, so the
+   client reads the section as a standing habit rather than a sales insert.
+   Write it as a plain statement of what we can do for their visitors: *"We can
+   help buyers find the right business faster."* Not a question and not a
+   "How we…" fragment (Kaza, cal 2026-10-19). Keep it to one short line.
 7. **The studio mark**, centred at the very bottom. For August Ash that means the A
    shape alone, not the wordmark. See
    [doc-studio-mark](../../memory/preferences/doc-studio-mark.md). Once a
