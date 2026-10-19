@@ -471,17 +471,17 @@ smaller genre.
    each mapped to something on their site, and the section got sharper for it.
 4. **Checked** — site-update's Phase 5 verification, in their vocabulary. *Careers
    listing and its job search filters*, not *`/careers` returned 200*.
-4a. **POM+** — POM+ clients only (roster in
-   [memory/pom/levels.md](../../memory/pom/levels.md)), and every AshenRayne client, where
-   it runs untiered and unnamed: give it a plain heading and never the word POM. Filled by the
-   [pom-plus](../pom-plus/SKILL.md) passes. One-word subheadings: *Logs*,
-   *Performance*, *Bots*, *Search*, *Accessibility*. *Search* covers search engines and AI answers alike. Each is a short finding in the
-   client's terms, set against last round where a number moved. *Accessibility*
-   carries the year plan, split into quarters by importance, with each quarter's
-   status once it runs. The split is a direction, not a schedule: say so in a
-   line, and front-loading is fine. The quarter's actual work is quoted in *Next*,
-   not here.
-5. **Next** — only when something is actually coming that the client needs to
+4a. **POM+**: POM+ clients only (roster in
+   [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*. It holds
+   only the sections specific to POM+, each under its own heading: today that's
+   *Accessibility*. The per-round log, performance, bot and search passes get no
+   write-up of their own (Kaza, cal 2026-10-19). What they turn up that needs doing
+   goes in *Next*; what we did in the round goes in *Checked* as a one-line item.
+   *Accessibility* says what was tested and what already works, then hands off to this
+   quarter's items with a Fix button. The year plan isn't shown: it's ours, kept in the
+   project's `.claude/memory/accessibility-plan.md`.
+5. **Next**: items in order of importance across every pass, not grouped by where
+   they came from (Kaza, cal 2026-10-19). Urgent first. Only when something is actually coming that the client needs to
    know about. A paragraph whose message is "nothing is required of you" is
    nothing, so cut it. On ilc a line about core 12's release date and core 11
    staying covered was struck as not needed. It sits before Ideas, so the

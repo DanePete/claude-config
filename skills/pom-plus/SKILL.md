@@ -169,8 +169,12 @@ quarter opens a year:
 2. **Plan the year.** Split the findings across four quarters, most important first. The
    split doesn't need to be precise, and front-loading is expected and fine. Keep the plan in
    the project's `.claude/memory/accessibility-plan.md` so next quarter starts from it.
-3. **Recommend the first quarter.** Its items go in the record's *Next* with Work rows,
-   like anything else immediate.
+   **The plan is ours.** The client never sees it, only each quarter's first pass (Kaza,
+   cal 2026-10-19).
+3. **Recommend the first quarter.** Each fix is its own Work item in *Next*, ordered by
+   importance among everything else there, so the client can approve them one at a time.
+   Expect the dev to cut the hours. The audit agent priced cal's first quarter at 16 h, and
+   Kaza quoted 4.
 
 ### Later quarters
 
