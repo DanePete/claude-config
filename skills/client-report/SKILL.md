@@ -923,7 +923,8 @@ The reader closes what they've read and keeps the page to what they're working t
   The nav highlights only an open section.
 - **A section's description line stays with its heading.** It sits between the `h2` and
   the collapsing body, not inside it, so a closed section still says what it's for
-  (Kaza, cal 2026-10-19).
+  (Kaza, cal 2026-10-19). Only where a section already has one: don't write a
+  description for every section just so each heading has a line under it.
 - **Toggling must not move the heading** (Kaza: "the header lowers, then moves back up").
   Keep the space *above* every heading constant and give an open section its extra room
   *below* (`section:has(> h2 [aria-expanded="true"]){padding-bottom}`); padding that
