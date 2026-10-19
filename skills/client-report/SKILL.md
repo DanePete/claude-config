@@ -18,6 +18,11 @@ measured against what their site is for. When a line reads as selling rather tha
 helping them grow, it's aimed wrong, so rewrite it toward what they gain (Kaza,
 Meridian Display 2026-09-28).
 
+The same holds for what we offer them to buy. An offer of little value to the client,
+such as a higher maintenance plan their site doesn't need, helps us, not them, and it
+shows eventually. Treat clients the way we would want to be treated (Kaza, cal
+2026-10-19).
+
 **The deliverable is one HTML file.** Self-contained, branded, opens by
 double-click in any browser, zips for email. Clients open these in a browser —
 they do not read markdown, and a parallel `<report>.md` twin is not wanted.
@@ -457,6 +462,15 @@ smaller genre.
    each mapped to something on their site, and the section got sharper for it.
 4. **Checked** — site-update's Phase 5 verification, in their vocabulary. *Careers
    listing and its job search filters*, not *`/careers` returned 200*.
+4a. **POM+** — POM+ clients only (roster in
+   [memory/pom/levels.md](../../memory/pom/levels.md)), filled by the
+   [pom-plus](../pom-plus/SKILL.md) passes. One-word subheadings: *Logs*,
+   *Performance*, *Bots*, *SEO*, *Accessibility*. Each is a short finding in the
+   client's terms, set against last round where a number moved. *Accessibility*
+   carries the year plan, split into quarters by importance, with each quarter's
+   status once it runs. The split is a direction, not a schedule: say so in a
+   line, and front-loading is fine. The quarter's actual work is quoted in *Next*,
+   not here.
 5. **Next** — only when something is actually coming that the client needs to
    know about. A paragraph whose message is "nothing is required of you" is
    nothing, so cut it. On ilc a line about core 12's release date and core 11
@@ -469,6 +483,12 @@ smaller genre.
    Write it as a plain statement of what we can do for their visitors: *"We can
    help buyers find the right business faster."* Not a question and not a
    "How we…" fragment (Kaza, cal 2026-10-19). Keep it to one short line.
+6a. **Plan** — offer the next POM plan up, only when it is the right plan for
+   this site, and never one that isn't approved yet. Which plan fits, and the rule
+   behind offering it, are in [memory/pom/levels.md](../../memory/pom/levels.md).
+   Name what the plan would do for *this* site, from what the round found: a
+   commerce site's bot traffic, a listing site's search. When it doesn't fit, cut
+   the section rather than offer it anyway.
 7. **The studio mark**, centred at the very bottom. For August Ash that means the A
    shape alone, not the wordmark. See
    [doc-studio-mark](../../memory/preferences/doc-studio-mark.md). Once a

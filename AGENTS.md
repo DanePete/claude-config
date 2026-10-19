@@ -259,6 +259,11 @@ These files are authoritative and kept current by the team. Prefer conventions h
 - **LiveChat from your own trigger** — `vendor/augustash/claude-config/memory/drupal/livechat-custom-launcher.md`  
   putting chat in a menu instead of the floating bubble; also a chat window that opens with its title bar off-screen
 
+## Pom
+
+- **POM plans** — `vendor/augustash/claude-config/memory/pom/levels.md`  
+  at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
+
 ## Augustash internal modules
 
 - **Augustash repositories** — `vendor/augustash/claude-config/memory/augustash/repositories.md`  

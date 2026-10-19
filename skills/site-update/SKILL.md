@@ -1,6 +1,6 @@
 ---
 name: site-update
-description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
+description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On a POM+ client it also hands off to pom-plus. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
 ---
 
 # Site update pass
@@ -27,6 +27,13 @@ pages — including one authenticated form for anything whose *widget* changed.
 request; see
 [d11-symfony-runtime](../../memory/drupal/d11-symfony-runtime.md) for a case
 where `drush status` reported perfect health through a full anonymous WSOD.
+
+## Know the client's plan
+
+Before anything else, look the client up in
+[memory/pom/levels.md](../../memory/pom/levels.md). On **POM** this skill is the whole
+round. On **POM+**, load [pom-plus](../pom-plus/SKILL.md) after Phase 5: it adds a log,
+performance, bot and SEO pass every round, and an accessibility scan every quarter.
 
 ---
 

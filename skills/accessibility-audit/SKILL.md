@@ -1,6 +1,6 @@
 ---
 name: accessibility-audit
-description: Test a site's accessibility and produce a defensible record of what was found — for an ADA demand letter or lawsuit, a client asking "are we compliant?", a pre-launch check, or a VPAT/remediation scope. Covers the layered method (rule engine, structural checks, real screen-reader output), the traps that produce false findings, and how to attribute third-party defects. NOT for fixing one known accessibility bug you have already identified — just fix it. Not a substitute for testing with an actual screen-reader user.
+description: Test a site's accessibility and produce a defensible record of what was found — for an ADA demand letter or lawsuit, a client asking "are we compliant?", a pre-launch check, a VPAT/remediation scope, or the quarterly POM+ scan (scheduled by the pom-plus skill). Covers the layered method (rule engine, structural checks, real screen-reader output), the traps that produce false findings, and how to attribute third-party defects. NOT for fixing one known accessibility bug you have already identified — just fix it. Not a substitute for testing with an actual screen-reader user.
 ---
 
 # Accessibility audit
