@@ -388,9 +388,12 @@ regardless, so "what did you do to our site last month" has a file to point at.
 
 **The HTML is sent; a Markdown summary is kept.**
 
-- **To send:** `~/Desktop/<Client> Website Maintenance - <Month Year>.html`. It has a
-  readable filename with spaces, because it gets attached to an email. Never commit
-  it.
+- **To send:** `.claude/docs/pom/<Client> Website Maintenance - <Month Year>.html` in
+  the project, **committed** (Kaza, cal 2026-10-19). It has a readable filename with
+  spaces, because it gets attached to an email. A doc with companion files (screenshots,
+  an appendix) gets a dated folder instead: `.claude/docs/pom/<YYYY.MM>/`. When the
+  client sends back their approved copy, save it beside the original as
+  `… - approved.html` and commit it, so the approvals are on record.
 - **To keep:** `.claude/memory/records/<round>.md` (for example `2026.09.md`),
   committed and indexed in the project's `MEMORY.md`. It holds:
   - what was updated
@@ -401,12 +404,11 @@ regardless, so "what did you do to our site last month" has a file to point at.
 
   The next round, run by whoever picks it up, starts by reading it. It carries the
   context; this skill carries the design (Kaza, Meridian Display 2026-09-28).
-- **Why not the HTML in the repo:** on WordPress on Pantheon the repo root *is* the
-  docroot, so `meridiandisplay.com/readme.html` returns 200. A committed record would
-  be public, and records list unpatched vulnerabilities. Pantheon returned 404 for
-  `.md` files in the repo, including at the root, which is why project memory is safe
-  there. On another host (WP Engine), confirm `.md` isn't served before committing any
-  memory that names a vulnerability.
+- **Before the first commit on a WordPress site, check `.claude/` isn't served.** On
+  WordPress on Pantheon the repo root *is* the docroot (`meridiandisplay.com/readme.html`
+  returns 200), and these records list unpatched vulnerabilities and prices. Request
+  the doc's URL on the dev environment; it must not return 200. On Drupal only `web/`
+  is served, so the repo root is safe.
 
 Evidence, framing, design and components (§1–2, §7) all apply, as does the §8
 integrity check. **Ignore §4's ten-section pitch structure**: this is a much

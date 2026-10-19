@@ -25,6 +25,12 @@ on sisal 2026-10-07: *"we don't publish things to the claude.ai cloud, we work l
 Make it a working, responsive prototype he can resize and click, opened in his
 browser (Firefox Developer Edition).
 
+**POM maintenance records are the exception: they're committed** to
+`.claude/docs/pom/` in the project (Kaza, cal 2026-10-19), so the record, the client's
+approved copy and the round's notes travel together. See client-report §6, including the
+WordPress check that `.claude/` isn't served. Everything below still holds for other
+deliverables.
+
 **Not in the site repo either.** Kaza's rule, on atr 2026-08-26: *"I don't want
 these committed or stored in the site."* A report written during a maintenance
 round went to `private/reports/` on the reasoning below — and on a
