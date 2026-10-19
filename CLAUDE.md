@@ -105,7 +105,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [BigPipe is not viable on Pantheon](memory/drupal/bigpipe-pantheon.md) — lazy_builder is a no-op there; also how to actually diagnose whether a page caches
 - [GTranslate integration](memory/drupal/gtranslate-integration.md) — choosing hosted-subdomain vs the subdirectory addon, which saturates PHP-FPM
 - [Cache bin that survives drush cr](memory/drupal/persistent-cache-bin.md) — keeping a warm store from being wiped by a full cache flush
-- [Short edge TTL vs tag-purge for volatile pages](memory/drupal/edge-ttl-vs-tag-purge.md) — giving ONE page a short external Cache-Control, and why TTL beats tag-purge
+- [Edge TTL apart from the browser TTL](memory/drupal/edge-ttl-vs-tag-purge.md) — giving one page a shorter edge TTL, or the edge a longer one than browsers; and why TTL beats tag-purge
 - [A Solr core keeps documents under an old site hash](memory/drupal/solr-stale-site-hash.md) — a Search API view returns far more results than the site has content, while status says 100% and clear + reindex change nothing
 - [A cloned environment reports 100% indexed and returns nothing](memory/drupal/solr-empty-after-content-clone.md) — search is dead on a freshly cloned environment while status says 100%; also before trusting search-api:status after any DB copy
 - [An autocomplete endpoint is a PHP worker per keystroke](memory/drupal/autocomplete-per-keystroke.md) — building or reviewing an as-you-type search box, or worker saturation traced to a suggest URL

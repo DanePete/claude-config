@@ -1,6 +1,6 @@
 ---
-name: Short edge TTL vs tag-purge for volatile pages
-description: A block/render #cache max-age never sets the external Cache-Control (that comes from the global system.performance:cache.page.max_age); to give ONE page a short edge TTL, set the RESPONSE max-age in a response subscriber/middleware, keyed by cache tag. Time-sensitive pages should ride a short TTL, not edge tag-purge — purge (both pantheon_clear_edge_all and per-tag) silently dies in a Pantheon Global CDN outage while TTL keeps working.
+name: Edge TTL apart from the browser TTL, and tag-purge vs TTL
+description: Setting the EDGE TTL apart from the browser one, in either direction. A block/render #cache max-age never sets the external Cache-Control (that comes from the global system.performance:cache.page.max_age); to give ONE page a short edge TTL, set the RESPONSE max-age in a response subscriber/middleware, keyed by cache tag. Time-sensitive pages should ride a short TTL, not edge tag-purge — purge (both pantheon_clear_edge_all and per-tag) silently dies in a Pantheon Global CDN outage while TTL keeps working.
 type: reference
 ---
 
@@ -15,6 +15,18 @@ it can't shorten a positive TTL. **To give ONE page a short edge TTL, set the
 RESPONSE max-age** (`$response->setMaxAge()` / `setSharedMaxAge()`) in a
 `KernelEvents::RESPONSE` subscriber or a middleware — never via block/render
 max-age. Confirm with the real response header (`curl -sI`), not the render array.
+
+**The other direction — a LONGER edge TTL than browsers get — is
+`Surrogate-Control: max-age=N`, set in the same kind of RESPONSE subscriber.**
+Raising `cache.page.max_age` instead lengthens the browser's copy too, and a
+browser is never purged. Verified on Pantheon (md, 2026-10-19): browser
+`max-age=60` + `Surrogate-Control: max-age=604800` kept the edge serving HITs
+well past age 60, and Fastly strips the header before it leaves — so a client
+`curl` never shows it; confirm the deploy by the code, not the header.
+⚠ Not `s-maxage`: a Cloudflare in front honours that, and Pantheon's purges never
+reach Cloudflare. Reference impl: `md` →
+`md_core/src/EventSubscriber/EdgeCacheLifetime.php` (only public, positive
+max-age responses; never overrides max-age 0 or private).
 
 **Two edge-freshness mechanisms, one reliable:** TTL (Fastly re-fetches when
 `max-age` elapses — never failed) and surrogate-key **tag purge** (fragile). In a

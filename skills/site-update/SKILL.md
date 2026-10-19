@@ -546,6 +546,26 @@ one renewal conversation covering both beats two. On atr the blocked extension
 had no subscription at all, while a live one had 11 days left — the second item
 was the more useful half of the report.
 
+**A wall in front of a known-exploited flaw is not a hold.** Grade the stuck
+version against a vulnerability database before writing it up (client-report's
+urgency rule). If it carries an unauthenticated flaw that is being exploited,
+waiting on the client's renewal leaves live open for as long as they take, so look
+for a stopgap you can ship today. Usually that's the plugin's free edition. On su
+(2026-10-19) WPForms Pro sat expired at 1.9.8.6 under a CVSS 9 unauthenticated
+file upload; Lite 2.0.2.2 covered every field the one live form used, so Pro came
+out and Lite went in the same day. Three things made that call safe:
+
+- **Read live's usage, not the local copy's.** The local DB was ten months old and
+  still showed a file-upload form embedded on Careers. Live had retired it. A
+  read-only SQL query through `terminus connection:info --field=mysql_command` is
+  enough.
+- **Submit the form for real, with production mail switched off.** Local still
+  holds the client's mail-API key, so deactivate that plugin first and let Mailpit
+  catch the message. A captcha will block a scripted submit; its provider's test
+  keys get past it, and you restore the real ones afterwards (snapshot first).
+- **Check live for signs the flaw was used**, read-only: scripts under `files/`,
+  admin accounts, recent registrations. That answer goes in the record.
+
 ---
 
 ## Phase 4 — Land it
@@ -838,6 +858,13 @@ reporting them:
 - **`terminus wp` can exit 0 printing nothing.** Never take silence as success on
   Pantheon. See
   [wp-cli-silent-on-pantheon](../../memory/wordpress/wp-cli-silent-on-pantheon.md).
+- **A root `wp-cli/wp-cli` require breaks wp-cli everywhere.** It installs the
+  framework without the command bundle, and both ddev and Pantheon run
+  `vendor/bin/wp` ahead of their own full wp-cli. So `core`, `plugin`, `user`,
+  `eval` and `db` fail as *"not a registered wp command"*, locally *and* under
+  `terminus wp`. That stops the launcher's database updates and any per-environment
+  plugin activation. Drop the require; both environments ship a full wp-cli of
+  their own.
 - **A plugin that generates a file into the web root** bakes in whatever URL it
   was generated under — a local run ships `.ddev.site` URLs to production. See
   [aioseo-llms-txt-static-file](../../memory/wordpress/aioseo-llms-txt-static-file.md).
