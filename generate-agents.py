@@ -27,6 +27,8 @@ TOPIC_TITLES = {
     "drupal": "Drupal",
     "wordpress": "WordPress",
     "augustash": "Augustash internal modules",
+    "standards": "August Ash standards",
+    "pom": "Augustash internal modules",
 }
 
 # Preferences first — they're cross-cutting and set the collaboration tone.

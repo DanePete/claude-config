@@ -634,11 +634,14 @@ curl -sk -c "$J" -b "$J" -o /tmp/o.html -w '%{http_code}\n' "https://<site>.ddev
 grep -oiE "the website encountered|TypeError|ArgumentCountError" /tmp/o.html
 ```
 
-### Hold the standard log settings
+### Apply the August Ash standards
 
-Every site runs with cron logging off and a 10,000-row dblog. Check it each round and
-apply it where it's missing, in its own commit:
-[dblog-standard](../../memory/drupal/dblog-standard.md).
+Every round, on every plan, walk the *August Ash standards* in the index
+([how standards work](../../memory/standards/how-they-work.md)). Apply any standard
+the site is missing, each in its own commit, unless the project's
+`.claude/memory/standards-overrides.md` declines it. Standards are a baseline that
+devs may override, not rules. When the round turns up a fix every site should have,
+write it up as a new standard.
 
 ### When a core *minor* bump breaks something
 

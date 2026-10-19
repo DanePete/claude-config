@@ -72,6 +72,11 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [A legacy URL's pageviews say nothing about the words in it](memory/preferences/traffic-count-is-not-a-search-signal.md) — before citing an old URL's traffic as evidence for a word, a label, a slug or a heading
 - [Prove code is dead against its consumers](memory/preferences/prove-code-is-dead.md) — before deleting code that looks dead, or concluding a change is a no-op because saved state is unchanged
 
+#### August Ash standards
+
+- [How standards work](memory/standards/how-they-work.md) — every update round, before writing a standard, or when a dev wants to override one
+- [Drupal log settings](memory/standards/drupal-log-settings.md) — cron logging off, 10,000-row dblog; also a log that reaches back only hours
+
 #### Cloudflare
 
 - [WAF rules silently break SSL renewal](memory/cloudflare/waf-blocks-acme-renewal.md) — before adding or reviewing any WAF/geo/bot rule; the site looks fine for two months, then every browser rejects it
@@ -83,7 +88,6 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 
 #### Drupal
 
-- [Standard log settings](memory/drupal/dblog-standard.md) — each update round, or a dblog that reaches back only hours because cron lines fill it
 - [Drupal caching](memory/drupal/caching.md) — cache debugging, session poisoning, Exo component cache, Redis compress_length
 - [D11.4 symfony/runtime allow-plugin](memory/drupal/d11-symfony-runtime.md) — every web request WSODs after a 11.4 bump while drush still works fine
 - [A stored NULL placeholder WSODs every order page on D11](memory/drupal/commerce-log-null-placeholder-d11.md) — admin order pages 500 right after a D11 deploy, old and new alike; the data is far older than the outage

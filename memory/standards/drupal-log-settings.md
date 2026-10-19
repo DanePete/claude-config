@@ -1,13 +1,13 @@
 ---
-name: dblog-standard
-description: Every Drupal site we maintain runs with cron logging off and a 10,000-row dblog limit; check it each update round.
+name: drupal-log-settings
+description: Standard — every Drupal site runs with cron logging off and a 10,000-row dblog limit.
 metadata:
   type: project
 ---
 
-# Standard log settings
+# Standard: Drupal log settings
 
-Every Drupal site we maintain runs with:
+The baseline for every Drupal site we maintain:
 
 | Config | Value | Default |
 |---|---|---|
@@ -20,7 +20,7 @@ and 404s roll off within hours. On cal (2026-10-19) 783 of the 1,000 rows were c
 live's log reached back about three hours, so an error from the morning was already gone by
 afternoon. Kaza made it the standard for every site the same day.
 
-**How to apply:** site-update checks it each round, on every plan:
+**How to apply:** site-update applies it each round, on every plan (see [[how-they-work]]):
 
 ```bash
 ddev drush cget system.cron logging; ddev drush cget dblog.settings row_limit
