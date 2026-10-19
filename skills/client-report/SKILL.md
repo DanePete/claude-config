@@ -486,6 +486,10 @@ smaller genre.
    button that opens *Next*; a Fix per heading read as duplicates (Kaza). *Accessibility* says what was
    tested and what already works. The year plan isn't shown: it's ours, in the
    project's `.claude/memory/accessibility-plan.md`.
+   **Every AshenRayne client gets this section too**, untiered and unnamed: a plain
+   one-word heading (*Health* on dmx) and never the word POM. When nothing is quoted
+   there is no *Next*, so a finding that needs action gets its own right-aligned Fix
+   pointing at the item that acts on it, usually the Idea (dmx 2026.10).
 5. **Next**: where the action is (Kaza, cal 2026-10-19). Work from the ordinary POM
    round comes first, Urgent first and then by importance. Then come the POM+ headings
    that have work, mirrored from *POM+* in the same order, each holding its own items
