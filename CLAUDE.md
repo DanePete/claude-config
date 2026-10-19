@@ -72,6 +72,12 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [A legacy URL's pageviews say nothing about the words in it](memory/preferences/traffic-count-is-not-a-search-signal.md) — before citing an old URL's traffic as evidence for a word, a label, a slug or a heading
 - [Prove code is dead against its consumers](memory/preferences/prove-code-is-dead.md) — before deleting code that looks dead, or concluding a change is a no-op because saved state is unchanged
 
+#### August Ash standards
+
+- [How standards work](memory/standards/how-they-work.md) — every update round, before writing a standard, or when a dev wants to override one
+- [Outbound call timeouts](memory/standards/outbound-call-timeouts.md) — any call to a vendor during a page request; also php-slow led by a third-party call, or workers maxing out
+- [Drupal log settings](memory/standards/drupal-log-settings.md) — cron logging off, 10,000-row dblog; also a log that reaches back only hours
+
 #### Cloudflare
 
 - [WAF rules silently break SSL renewal](memory/cloudflare/waf-blocks-acme-renewal.md) — before adding or reviewing any WAF/geo/bot rule; the site looks fine for two months, then every browser rejects it
@@ -79,6 +85,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [Cloudflare WAF and event tool](memory/cloudflare/waf-rule-tool.md) — before hand-rolling Cloudflare API calls, when a valid token reads as Invalid API Token, or for Free-plan rate limiting limits
 - [A Single Redirect needs its own token permission](memory/cloudflare/single-redirect-permission.md) — a redirect rule 403s on a token that works for everything else; also before pointing a retired domain at its replacement
 - [A WAF rule keyed on http.referer inverts](memory/cloudflare/referer-is-not-a-security-condition.md) — before gating a rule on referer, or when a bot rule fires far less than the traffic it targets
+- [Proxying a Pantheon site through Cloudflare](memory/cloudflare/proxying-pantheon-ssl-mode.md) — before orange-clouding a Pantheon domain; a 301 to the identical URL; or trusting a rule on a zone that may be DNS-only
 
 #### Drupal
 
@@ -93,6 +100,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [A DB push makes cim uninstall the whole dev split at once](memory/drupal/config-split-db-push-mass-uninstall.md) — `cim` dies "terminated abnormally" and half-applied after pushing a local DB to Pantheon; re-running walks it forward
 - [A redirect pass built on aliases and hrefs cannot see view paths](memory/drupal/redirect-discovery-misses-view-paths.md) — a legacy URL with real traffic 404s and is absent from the redirect batch; nothing was looking for its kind
 - [A redirect never fires while its source path still has an alias](memory/drupal/redirect-shadowed-by-alias.md) — a correct 301 sits in the table unreachable; retiring a node is three steps, not two
+- [Visitor IPs behind Cloudflare](memory/drupal/visitor-ip-behind-cloudflare.md) — Drupal logs or flood control show Cloudflare IPs; before pasting the CF-Connecting-IP snippet into settings.php
 - [Gating a Drupal file takes three things](memory/drupal/private-file-gate.md) — a restricted file still downloads though `file_managed` says `private://`; also after any migration whose source had private files
 - [BigPipe is not viable on Pantheon](memory/drupal/bigpipe-pantheon.md) — lazy_builder is a no-op there; also how to actually diagnose whether a page caches
 - [GTranslate integration](memory/drupal/gtranslate-integration.md) — choosing hosted-subdomain vs the subdirectory addon, which saturates PHP-FPM
@@ -122,6 +130,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [The Postmark plugin sends no attachments](memory/drupal/postmark-drops-attachments.md) — before ticking a webform email handler's attachments on a Postmark site; the submit throws where Postmark actually sends
 - [Commerce's required price blocks every variation save](memory/drupal/commerce-price-required-on-a-catalog.md) — an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - [A fixed media alt still renders the old one](memory/drupal/media-thumbnail-alt.md) — an alt corrected on the media entity while cards and product pages keep printing the old text
+- [A scheduled transition with no state loops forever](memory/drupal/scheduler-scmi-revision-loop.md) — cron warns "Unpublishing failed … returned a failure code" every run; a node with tens of thousands of revisions
 - [Webforms are live-only config](memory/drupal/webforms-live-only-config.md) — before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - [Webform drops '#attached' from an element's YAML](memory/drupal/webform-element-attached-dropped.md) — a field renders with its data attributes and nothing listening to them
 - [Drupal PHPUnit testing](memory/drupal/phpunit-testing.md) — DDEV setup; D9/10 vs D11 phpunit.xml; PHPUnit 11 metadata; fixtures that pass or fail for the wrong reason
@@ -143,6 +152,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [Cachetags garbage collection](memory/drupal/cachetags-garbage-collection.md) — the cachetags table has no GC and grows unbounded
 - [A node access rebuild permanently caches every listing empty](memory/drupal/node-access-rebuild-empties-listings.md) — listings show their empty message while the content plainly exists; reads as content loss or a stalled search index
 - [Exo list "Enhanced Cache" keys on almost nothing](memory/drupal/exo-list-enhanced-cache.md) — before ticking Enhanced Cache on an entity list; also when every page shows the results of whichever one was hit first
+- [An exo modal whose class is another modal's id is deleted](memory/drupal/exo-modal-class-collision.md) — a modal in the server HTML is missing from the DOM and its trigger does nothing; also before giving modals a shared class
 - [Exo optional link field](memory/drupal/exo-alchemist-optional-link.md) — `required: FALSE` is a no-op on a link field
 - [Exo modifier checkbox + class](memory/drupal/exo-alchemist-modifier-checkbox.md) — adding a per-instance toggle that emits a class
 - [Exo slider mobile overflow](memory/drupal/exo-alchemist-slider-mobile-overflow.md) — a slider that overflows on mobile only
@@ -158,8 +168,9 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 
 #### Augustash internal modules
 
+- [POM plans](memory/pom/levels.md) — at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
 - [Augustash repositories](memory/augustash/repositories.md) — GitHub orgs to check before building from scratch; also who a handle is, before naming a module's maintainer
-- [Deploys run through launcher](memory/augustash/launcher-deploy.md) — before any Pantheon deploy, or reaching for raw `terminus env:deploy`; the tool, its invocation, and why Claude hands live over
+- [Deploys run through launcher](memory/augustash/launcher-deploy.md) — before any Pantheon deploy, or reaching for raw `terminus env:deploy`; the tool, its invocation, and running live when asked
 - [Neo module skills sync](memory/augustash/neo-skills-sync.md) — after bumping a neo module, the project's `.claude/skills/` copies still hold the old text
 - [Alchemist layout Save needs a second click](memory/augustash/neo-alchemist-layout-save-confirm.md) — edits sit in a draft behind a confirm modal; reads exactly like a persistence bug
 - [neo_alchemist seeds props with schema examples](memory/augustash/neo-alchemist-example-seeding.md) — content on the page nobody authored; editors see repeater rows they never created, or examples you deleted still showing as defaults
@@ -177,7 +188,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 - [component:// srcs get no image style](memory/augustash/neo-image-local-src-no-derivatives.md) — images that load slowly, or a naturalWidth far bigger than the slot, while the twig plainly asks for a crop
 - [A spent neo-animate reveal seals a stacking context](memory/augustash/neo-animate-identity-transform-stacking.md) — a sibling won't layer between two children no matter what z-index it gets
 - [Neo's metatag defaults leave the social tags unresolvable](memory/augustash/neo-metatag-description-slogan.md) — a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
-- [neo_modal lets Tab out of an open modal](memory/augustash/neo-modal-no-inert.md) — Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
+- [neo_modal focus on close, and why not inert](memory/augustash/neo-modal-no-inert.md) — closing a neo modal drops focus on <body>; also before making a page inert to trap focus
 - [neo_icon renders an empty span for a style-prefixed id](memory/augustash/neo-icon-id-prefix.md) — an icon silently renders empty; also before pasting what `neoi-list` prints
 - [drupal_cache_protection](memory/augustash/drupal_cache_protection.md) — tracking-param strip/redirect, plus the facets, search, node_access and empty-listing submodules; also before acting on a listing report, when its robots rules are missing from robots.txt, or a custom f[] param 400s
 - [recently_read (augustash fork)](memory/augustash/recently-read.md) — a fork we own; never re-sync with upstream, the divergence is the point
@@ -299,7 +310,7 @@ Same rule as the memory index: a line per skill, saying when it fires. The
 authoritative trigger is each SKILL.md's own `description:` frontmatter — that's
 what Claude Code actually loads for discovery, so keep it sharp there.
 
-- [accessibility-audit](skills/accessibility-audit/SKILL.md) — testing a site's accessibility and writing a defensible record: an ADA demand letter, a compliance question, or a pre-launch check
+- [accessibility-audit](skills/accessibility-audit/SKILL.md) — testing a site's accessibility and writing a defensible record: an ADA demand letter, a compliance question, or a pre-launch check; also the quarterly POM+ scan
 - [client-proposal-review](skills/client-proposal-review/SKILL.md) — a client hands over a set of decisions (a menu, a design round, a feature list) and some of it would make the site worse
 - [client-report](skills/client-report/SKILL.md) — writing any client doc: a pitch, an audit, a request response or the monthly maintenance record; owns the doc design system
 - [content-audit](skills/content-audit/SKILL.md) — reducing a legacy CMS's content before migrating it, plus the overlap sweeps for both sides of the migration
@@ -308,4 +319,5 @@ what Claude Code actually loads for discovery, so keep it sharp there.
 - [firefox-devtools](skills/firefox-devtools/SKILL.md) — driving a real Firefox from Claude: console, network, DOM, logpoints and profiling on a running site, for Firefox-specific bugs or devs who prefer its DevTools to Chrome's
 - [log-audit](skills/log-audit/SKILL.md) — auditing site traffic: an integration broke, a client reports errors from a system you can't see, or a dev drops a log export for a health-and-security sweep; also sizing a facet-crawler challenge threshold
 - [memory-management](skills/memory-management/SKILL.md) — writing, curating, or auditing a memory: qualification, tier, index-entry form, and the commit steps
+- [pom-plus](skills/pom-plus/SKILL.md) — an update round for a POM+ client: the per-round log, performance, bot and search passes, and the quarterly accessibility scan
 - [site-update](skills/site-update/SKILL.md) — a dependency round on a site (Drupal or WordPress); owns patch triage, so also when a patch fails to apply or an edited one seems ignored; and after upgrading ddev

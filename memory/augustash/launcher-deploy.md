@@ -32,10 +32,12 @@ stopped a hand-rolled deploy mid-command to say so.
 - **Use the tool, never raw `terminus env:deploy` / `terminus drush … deploy`**, and don't
   bolt a `workflow:list` polling loop around it — it has its own wait.
 - **Don't narrate the procedure** — say what the deploy carries ([[dont-narrate-the-deploy]]).
-- **Claude usually can't run `.test`/`.live` itself.** Auto mode's classifier blocks
-  production deploys by outcome, so `l t.<site>.live` is refused just like `env:deploy`. Hand
-  it over as `! l t.<site>.live` so the output lands in the session, then verify on live.
-  Dev is fine to run once asked ([[confirm-before-live-terminus]]).
+- **When asked to deploy to live, run it.** The alias isn't defined in Claude's shell, so call
+  the script: `~/Projects/launcher/launcher.sh t.<site>.live` (backgrounded — the walk takes
+  minutes). Auto mode's classifier has refused production deploys before; only if it refuses,
+  hand it over as `! l t.<site>.live`. Don't hand it over pre-emptively — on sisal
+  2026-10-16 Claude did, and Kaza answered "I said run it"; it then ran clean. Dev is fine
+  to run once asked ([[confirm-before-live-terminus]]).
 - **Run it straight after the push.** Launcher waits for the pushed commit to show on dev and
   for its build to finish before promoting (launcher `02660e4`, 2026-09-29), and since
   `cdb665d` (2026-10-08) does the same on a multidev, reading its own branch; before that a

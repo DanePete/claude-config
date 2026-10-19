@@ -89,6 +89,15 @@ These files are authoritative and kept current by the team. Prefer conventions h
 - **Prove code is dead against its consumers** — `vendor/augustash/claude-config/memory/preferences/prove-code-is-dead.md`  
   before deleting code that looks dead, or concluding a change is a no-op because saved state is unchanged
 
+## August Ash standards
+
+- **How standards work** — `vendor/augustash/claude-config/memory/standards/how-they-work.md`  
+  every update round, before writing a standard, or when a dev wants to override one
+- **Outbound call timeouts** — `vendor/augustash/claude-config/memory/standards/outbound-call-timeouts.md`  
+  any call to a vendor during a page request; also php-slow led by a third-party call, or workers maxing out
+- **Drupal log settings** — `vendor/augustash/claude-config/memory/standards/drupal-log-settings.md`  
+  cron logging off, 10,000-row dblog; also a log that reaches back only hours
+
 ## Cloudflare
 
 - **WAF rules silently break SSL renewal** — `vendor/augustash/claude-config/memory/cloudflare/waf-blocks-acme-renewal.md`  
@@ -101,6 +110,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a redirect rule 403s on a token that works for everything else; also before pointing a retired domain at its replacement
 - **A WAF rule keyed on http.referer inverts** — `vendor/augustash/claude-config/memory/cloudflare/referer-is-not-a-security-condition.md`  
   before gating a rule on referer, or when a bot rule fires far less than the traffic it targets
+- **Proxying a Pantheon site through Cloudflare** — `vendor/augustash/claude-config/memory/cloudflare/proxying-pantheon-ssl-mode.md`  
+  before orange-clouding a Pantheon domain; a 301 to the identical URL; or trusting a rule on a zone that may be DNS-only
 
 ## Drupal
 
@@ -126,6 +137,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a legacy URL with real traffic 404s and is absent from the redirect batch; nothing was looking for its kind
 - **A redirect never fires while its source path still has an alias** — `vendor/augustash/claude-config/memory/drupal/redirect-shadowed-by-alias.md`  
   a correct 301 sits in the table unreachable; retiring a node is three steps, not two
+- **Visitor IPs behind Cloudflare** — `vendor/augustash/claude-config/memory/drupal/visitor-ip-behind-cloudflare.md`  
+  Drupal logs or flood control show Cloudflare IPs; before pasting the CF-Connecting-IP snippet into settings.php
 - **Gating a Drupal file takes three things** — `vendor/augustash/claude-config/memory/drupal/private-file-gate.md`  
   a restricted file still downloads though `file_managed` says `private://`; also after any migration whose source had private files
 - **BigPipe is not viable on Pantheon** — `vendor/augustash/claude-config/memory/drupal/bigpipe-pantheon.md`  
@@ -184,6 +197,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   an editor ticks a field, presses Save and nothing happens; also before placing a 0.00 placeholder anywhere
 - **A fixed media alt still renders the old one** — `vendor/augustash/claude-config/memory/drupal/media-thumbnail-alt.md`  
   an alt corrected on the media entity while cards and product pages keep printing the old text
+- **A scheduled transition with no state loops forever** — `vendor/augustash/claude-config/memory/drupal/scheduler-scmi-revision-loop.md`  
+  cron warns "Unpublishing failed … returned a failure code" every run; a node with tens of thousands of revisions
 - **Webforms are live-only config** — `vendor/augustash/claude-config/memory/drupal/webforms-live-only-config.md`  
   before reading a form's setup from `config/`, or when a webform fix we remember has no trace in git
 - **Webform drops '#attached' from an element's YAML** — `vendor/augustash/claude-config/memory/drupal/webform-element-attached-dropped.md`  
@@ -226,6 +241,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   listings show their empty message while the content plainly exists; reads as content loss or a stalled search index
 - **Exo list "Enhanced Cache" keys on almost nothing** — `vendor/augustash/claude-config/memory/drupal/exo-list-enhanced-cache.md`  
   before ticking Enhanced Cache on an entity list; also when every page shows the results of whichever one was hit first
+- **An exo modal whose class is another modal's id is deleted** — `vendor/augustash/claude-config/memory/drupal/exo-modal-class-collision.md`  
+  a modal in the server HTML is missing from the DOM and its trigger does nothing; also before giving modals a shared class
 - **Exo optional link field** — `vendor/augustash/claude-config/memory/drupal/exo-alchemist-optional-link.md`  
   `required: FALSE` is a no-op on a link field
 - **Exo modifier checkbox + class** — `vendor/augustash/claude-config/memory/drupal/exo-alchemist-modifier-checkbox.md`  
@@ -253,10 +270,15 @@ These files are authoritative and kept current by the team. Prefer conventions h
 
 ## Augustash internal modules
 
+- **POM plans** — `vendor/augustash/claude-config/memory/pom/levels.md`  
+  at the start of every update round, and before offering a client a higher maintenance plan; who is on POM+
+
+## Augustash internal modules
+
 - **Augustash repositories** — `vendor/augustash/claude-config/memory/augustash/repositories.md`  
   GitHub orgs to check before building from scratch; also who a handle is, before naming a module's maintainer
 - **Deploys run through launcher** — `vendor/augustash/claude-config/memory/augustash/launcher-deploy.md`  
-  before any Pantheon deploy, or reaching for raw `terminus env:deploy`; the tool, its invocation, and why Claude hands live over
+  before any Pantheon deploy, or reaching for raw `terminus env:deploy`; the tool, its invocation, and running live when asked
 - **Neo module skills sync** — `vendor/augustash/claude-config/memory/augustash/neo-skills-sync.md`  
   after bumping a neo module, the project's `.claude/skills/` copies still hold the old text
 - **Alchemist layout Save needs a second click** — `vendor/augustash/claude-config/memory/augustash/neo-alchemist-layout-save-confirm.md`  
@@ -291,8 +313,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a sibling won't layer between two children no matter what z-index it gets
 - **Neo's metatag defaults leave the social tags unresolvable** — `vendor/augustash/claude-config/memory/augustash/neo-metatag-description-slogan.md`  
   a share card titled with a heading from mid-page, one meta description site-wide, or none; also before setting a site slogan
-- **neo_modal lets Tab out of an open modal** — `vendor/augustash/claude-config/memory/augustash/neo-modal-no-inert.md`  
-  Tab walks out of a neo modal into the page or the one beneath; closing one drops focus on <body>
+- **neo_modal focus on close, and why not inert** — `vendor/augustash/claude-config/memory/augustash/neo-modal-no-inert.md`  
+  closing a neo modal drops focus on <body>; also before making a page inert to trap focus
 - **neo_icon renders an empty span for a style-prefixed id** — `vendor/augustash/claude-config/memory/augustash/neo-icon-id-prefix.md`  
   an icon silently renders empty; also before pasting what `neoi-list` prints
 - **drupal_cache_protection** — `vendor/augustash/claude-config/memory/augustash/drupal_cache_protection.md`  

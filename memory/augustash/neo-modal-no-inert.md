@@ -1,35 +1,34 @@
 ---
-name: neo_modal lets Tab out of an open modal
-description: "Tab walks out of a neo modal into the page or the modal underneath, and closing one leaves focus on <body>."
+name: neo_modal focus — Tab is trapped since 1.0.83, focus return on close is not
+description: "Closing a neo modal leaves focus on <body>; also before reaching for inert to keep focus in a modal, and before reusing md's modal-inert.js."
 type: project
 ---
 
-# neo_modal lets Tab out of an open modal
+# neo_modal focus: Tab is trapped since 1.0.83, focus return on close is not
 
-neo_modal marks each modal `role="dialog" aria-modal="true"` but makes nothing behind it
-inert, so keyboard focus walks out of an open modal into the page. With a nested modal it
-walks into the faded modal underneath, including its form. Closing a modal also leaves focus
-on `<body>` instead of on the link that opened it.
+Before **neo_modal 1.0.83**, Tab walked out of an open modal into the page, or into the faded
+modal underneath with a nested one. 1.0.83 (`a9a8885`, 2026-10-15) fixes that with a
+document-level Tab handler that wraps Tab at the top modal's edges. It makes nothing inert.
 
-What neo does give you to build on:
+**Don't make the page inert to keep focus in a modal.** That was our first fix: md's
+`web/modules/custom/md_core/js/modal-inert.js` (DMX Power, 2026-10-13), and our upstream PR
+built on `contain()`. jacerider rejected the PR because inert also kills clicks, and libraries
+render popups for fields inside the modal into `<body>`: CKEditor 5 balloons, autocomplete
+menus, tooltips, select dropdowns. Upstream's wrap leaves focus alone whenever it sits
+outside the modal, so those popups keep working.
 
-- `NeoModal::restack()` stamps every modal below the top with `data-neo-modal--depth`, so the
-  top one is the open `.neo-modal` without that attribute.
-- The `.neo-modals` wrapper is **removed when the last modal closes** and recreated on the next
-  open. An observer attached to the first wrapper silently goes deaf after one open/close cycle.
+**Still unfixed upstream:** closing a modal leaves focus on `<body>`, not on the link that
+opened it. md's script also does this, by snapshotting the focused element when a modal opens
+over a layer.
 
-**Why:** Found on md (DMX Power, 2026-10-13): the careers modal opens a position modal over
-itself. The site fix is `web/modules/custom/md_core/js/modal-inert.js`. It makes the page,
-the toolbars and the modals underneath inert, snapshots the focused element when a modal
-opens over a layer, and returns focus to it when that modal closes.
+Building on neo: `NeoModal::restack()` stamps every modal below the top with
+`data-neo-modal--depth`. The `.neo-modals` wrapper is **removed when the last modal closes**
+and recreated on the next open, so an observer attached to the first wrapper silently goes
+deaf after one open/close cycle.
 
-**Upstream fix, 2026-10-14:** `NeoModal::contain()`, called after each `restack()`, on
-`kazajhodo/neo_modal` develop (`fa72344`), with a Nightwatch case in `modalSmokeTest.js`. It
-spares `[aria-live]` (inerting `#drupal-live-announce` silences `Drupal.announce()`) and skips
-modals with no backdrop. PR to jacerider opened 2026-10-14.
-
-**How to apply:** Once a neo_modal release carries `contain()`, delete md's script and its
-attachment in `md_core_page_attachments()`; until then, on another neo site, reuse that script
-rather than writing a new one. When testing it in headless Firefox,
-note that a scripted `focus()` fires no `focusin` while the window lacks system focus, so
-design around what is focused at the moment a modal opens rather than tracking focus events.
+**How to apply:** once md is on ≥1.0.83, cut `modal-inert.js` down to the focus-return part
+(the inert half now duplicates the trap and breaks body-level popups), and drop it entirely
+once neo returns focus itself. Don't reuse the inert script on another neo site. When testing
+focus in headless Firefox, a scripted `focus()` fires no `focusin` while the window lacks
+system focus, so design around what is focused at the moment a modal opens rather than
+tracking focus events.

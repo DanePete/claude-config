@@ -1,6 +1,6 @@
 ---
 name: site-update
-description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
+description: Run a routine dependency-update pass on a client site — Drupal (composer) or WordPress. Starts at the Pantheon upstream — Drupal, Drupal 7 and WordPress each have one, and no package manager will bring it. Covers the phase order that keeps the site bootable, patch triage and the composer-patches mechanics that make an edited patch silently not apply, which bumps to take and which to hold, what to do when a licence or marketplace paygate blocks one, and the verification that catches a break the tooling reported as success, and ends every round by handing off to the client-report skill for the client record. On a POM+ client it also hands off to pom-plus. On WordPress it covers the WooCommerce round. Owns patch handling for every Drupal skill. Also use after upgrading ddev itself, to re-assert the project scaffolding. Use for scheduled or ad-hoc maintenance rounds. NOT for a major core version increment — that's an upgrade, see drupal-11-upgrade — and not for adding a new dependency.
 ---
 
 # Site update pass
@@ -27,6 +27,13 @@ pages — including one authenticated form for anything whose *widget* changed.
 request; see
 [d11-symfony-runtime](../../memory/drupal/d11-symfony-runtime.md) for a case
 where `drush status` reported perfect health through a full anonymous WSOD.
+
+## Know the client's plan
+
+Before anything else, look the client up in
+[memory/pom/levels.md](../../memory/pom/levels.md). On **POM** this skill is the whole
+round. On **POM+**, load [pom-plus](../pom-plus/SKILL.md) after Phase 5: it adds a log,
+performance, bot and search pass every round, and an accessibility scan every quarter.
 
 ---
 
@@ -459,9 +466,13 @@ take it. Stable → alpha/beta/rc: **no**, ever, even if it's a higher number.
 
 **Hold — and say why in the reply, don't silently skip:**
 
-- **Suite members.** A package versioned in lockstep with a family
-  (`jacerider/escort` 4.x pairs with Aeon, 5.x with Neo). Bumping one member of a
-  suite in isolation breaks it. Update the suite together or not at all.
+- **Suite members.** A package versioned in lockstep with a family. Bumping one
+  member of a suite in isolation breaks it. Update the suite together or not at all.
+  **Prove the membership before holding on it:** the new major's `require` and its
+  diff against the old branch say whether it depends on the family. A jacerider
+  package is not a suite member by authorship. `jacerider/escort` was held on cal
+  (2026-10-19) as "5.x is Neo"; 5.0 requires only core and micon, and is a D10/D11
+  compatibility pass that 4.0 needed, since 4.0 still called services D11 removed.
 - **Pinned by the upstream.** `tecnickcom/tcpdf` is `^6.7` in
   `pantheon-upstreams/drupal-project`. Widening the root constraint fights the
   upstream for no gain. Check `composer why <pkg>` before assuming a root require
@@ -535,6 +546,26 @@ one renewal conversation covering both beats two. On atr the blocked extension
 had no subscription at all, while a live one had 11 days left — the second item
 was the more useful half of the report.
 
+**A wall in front of a known-exploited flaw is not a hold.** Grade the stuck
+version against a vulnerability database before writing it up (client-report's
+urgency rule). If it carries an unauthenticated flaw that is being exploited,
+waiting on the client's renewal leaves live open for as long as they take, so look
+for a stopgap you can ship today. Usually that's the plugin's free edition. On su
+(2026-10-19) WPForms Pro sat expired at 1.9.8.6 under a CVSS 9 unauthenticated
+file upload; Lite 2.0.2.2 covered every field the one live form used, so Pro came
+out and Lite went in the same day. Three things made that call safe:
+
+- **Read live's usage, not the local copy's.** The local DB was ten months old and
+  still showed a file-upload form embedded on Careers. Live had retired it. A
+  read-only SQL query through `terminus connection:info --field=mysql_command` is
+  enough.
+- **Submit the form for real, with production mail switched off.** Local still
+  holds the client's mail-API key, so deactivate that plugin first and let Mailpit
+  catch the message. A captcha will block a scripted submit; its provider's test
+  keys get past it, and you restore the real ones afterwards (snapshot first).
+- **Check live for signs the flaw was used**, read-only: scripts under `files/`,
+  admin accounts, recent registrations. That answer goes in the record.
+
 ---
 
 ## Phase 4 — Land it
@@ -591,7 +622,19 @@ curl -sk -o /dev/null -w '%{http_code}\n' https://<site>.ddev.site/
 curl -sk https://<site>.ddev.site/ | grep -oiE "the website encountered|TypeError|Fatal error"
 ddev drush ws --count=25 --severity=Error
 ddev drush core:requirements --severity=1
+ddev drush cron && ddev drush php:eval 'echo date("c", \Drupal::state()->get("system.cron_last"));'
 ```
+
+**Cron has to complete, not just start.** Nothing else in this list runs it, and it
+runs code no page touches: every module's `hook_cron()` and every queue worker. One
+`\Error` (a `TypeError`, a removed-API call) aborts the whole run, the failing queue
+item is never deleted, so *every* later run dies on the same item and the work
+queued behind it — feed syncs, scheduler, search indexing — silently stops. The
+site looks perfect. On metro a D11 deploy did exactly this; a NeoGov jobs listing
+sat three weeks stale before anyone noticed. `drush cron` must exit 0 and
+`cron_last` must read *now*. Run it against a fresh pull of the live DB: queue
+workers only execute when their queue holds items, and an empty local queue
+proves nothing.
 
 Then **exercise what you actually changed**. Find where the updated module is
 used and hit it:
@@ -610,6 +653,17 @@ curl -sk -c "$J" -b "$J" -L -o /dev/null "$URL"
 curl -sk -c "$J" -b "$J" -o /tmp/o.html -w '%{http_code}\n' "https://<site>.ddev.site/node/<id>/edit"
 grep -oiE "the website encountered|TypeError|ArgumentCountError" /tmp/o.html
 ```
+
+### Apply the August Ash standards
+
+Every round, on every plan, walk the *August Ash standards* in the index
+([how standards work](../../memory/standards/how-they-work.md)). Apply any standard
+the site is missing, each in its own commit, unless the project's
+`.claude/memory/standards-overrides.md` declines it. Some standards are a fix to the
+client's site rather than a setting of ours; those become a quoted *Next* item instead
+(the standards memory says which). Standards are a baseline that
+devs may override, not rules. When the round turns up a fix every site should have,
+write it up as a new standard.
 
 ### When a core *minor* bump breaks something
 
@@ -804,6 +858,13 @@ reporting them:
 - **`terminus wp` can exit 0 printing nothing.** Never take silence as success on
   Pantheon. See
   [wp-cli-silent-on-pantheon](../../memory/wordpress/wp-cli-silent-on-pantheon.md).
+- **A root `wp-cli/wp-cli` require breaks wp-cli everywhere.** It installs the
+  framework without the command bundle, and both ddev and Pantheon run
+  `vendor/bin/wp` ahead of their own full wp-cli. So `core`, `plugin`, `user`,
+  `eval` and `db` fail as *"not a registered wp command"*, locally *and* under
+  `terminus wp`. That stops the launcher's database updates and any per-environment
+  plugin activation. Drop the require; both environments ship a full wp-cli of
+  their own.
 - **A plugin that generates a file into the web root** bakes in whatever URL it
   was generated under — a local run ships `.ddev.site` URLs to production. See
   [aioseo-llms-txt-static-file](../../memory/wordpress/aioseo-llms-txt-static-file.md).
@@ -829,6 +890,11 @@ code. See
 before any `terminus` against `.live`/`.test`
 ([confirm-before-live-terminus](../../memory/preferences/confirm-before-live-terminus.md)).
 
+After a live deploy, come back past the next hourly cron and check that
+`system.cron_last` on live moved (`terminus drush <site>.live -- php:eval` as in
+Phase 5, read-only). Local cron passing doesn't prove live's queues, which hold
+different items.
+
 ---
 
 **WordPress needs its database updates run on every environment.** A WooCommerce bump
@@ -851,6 +917,9 @@ that lands with the upgrade. A hold list that quietly becomes an upgrade scope i
 worth surfacing before the client asks.
 
 ### Every round ends with a client record
+
+Reviewed by the dev before it goes anywhere, built one idea at a time: see
+[client-report](../client-report/SKILL.md)'s review rule.
 
 **Write it with the [client-report](../client-report/SKILL.md) skill, §6 *The
 maintenance record*.** That section owns the record end to end: where it is saved,
