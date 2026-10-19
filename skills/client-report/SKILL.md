@@ -434,21 +434,17 @@ smaller genre.
    `--indent` is the heading icon's width plus its gap
    (`calc(var(--bm) + var(--bm-gap))`), and the section body sits at
    `calc(var(--indent) * 1.5)`, half an indent past the title, so it reads as
-   belonging to it (cal 2026-10; flush with the title read as unindented, Kaza on dmx
-   2026.10). A sub-heading's text steps in another half indent. On a phone the body
-   drops to 12px. The description line stays at `--indent`, level with the title. The table takes the indent on both sides, and its
+   belonging to it (cal 2026-10-19). su's and dmx's October records shipped flush with
+   the title and Kaza caught both, so carry it on every doc. A sub-heading's text steps
+   in another half indent. On a phone the body drops to 12px. The description line
+   stays at `--indent`, level with the title. The table takes the indent on both sides, and its
    caption line rides with it. Everything else takes it on the left only. On a
    phone the table gives back its right side, or the component column wraps
    to six lines. One `section > :not(h2)` rule does it, so give component
    blocks `margin-block`, not `margin:0`, or they drop back out of the
    indent. Kaza's standard, sisal 2026-09-23. It replaced a narrower centred
    44rem column, which was too much margin and gave the table a treatment of
-   its own. **Since cal 2026-10-19 the body steps half an indent further in**
-   (`.sec-body{margin-left:calc(var(--indent) * 1.5)}`, 12px on a phone), so it
-   reads as sitting under the heading rather than level with it. The section's
-   description line stays at `--indent`, level with the heading text. su's
-   October record shipped without the step and Kaza caught it, so carry it on
-   every doc. All three column heads share the small-caps label style. A `.num` rule
+   its own. All three column heads share the small-caps label style. A `.num` rule
    applied to the `th` makes FROM/TO render as large mono with a stray arrow
    beside COMPONENT, so reset `thead th.num` and keep the arrow on the value
    cells only.
