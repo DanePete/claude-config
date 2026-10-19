@@ -478,8 +478,10 @@ smaller genre.
    heading per pass: *Access log*, *Error log*, *Performance*, *Bot protection*,
    *Search*, *Accessibility*. Each heading is a write-up in the client's terms: what
    the pass found and what we did in the round. **Keep it terse**: the problem in one
-   plain sentence, then "Let's fix it." (Kaza: *"HubSpot emails are bypassing cache,
-   instead of respecting it. Lets fix it."*). Explanation belongs on the item in *Next*,
+   plain sentence, then a short line that turns it to action (Kaza: *"HubSpot emails are
+   bypassing cache, instead of respecting it. Lets fix it."*). Vary that line from heading
+   to heading ("Let's change that.", "That's a quick fix."); the same phrase under every
+   heading reads as a template (Kaza). Explanation belongs on the item in *Next*,
    not here. Work already done gets a clause, not a paragraph. The section ends in one centred **Fix**
    button that opens *Next*; a Fix per heading read as duplicates (Kaza). *Accessibility* says what was
    tested and what already works. The year plan isn't shown: it's ours, in the
