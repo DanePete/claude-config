@@ -477,7 +477,10 @@ smaller genre.
    [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*, with one
    heading per pass: *Access log*, *Error log*, *Performance*, *Bot protection*,
    *Search*, *Accessibility*. Each heading is a write-up in the client's terms: what
-   the pass found and what we did in the round. The section ends in one centred **Fix**
+   the pass found and what we did in the round. **Keep it terse**: the problem in one
+   plain sentence, then "Let's fix it." (Kaza: *"HubSpot emails are bypassing cache,
+   instead of respecting it. Lets fix it."*). Explanation belongs on the item in *Next*,
+   not here. Work already done gets a clause, not a paragraph. The section ends in one centred **Fix**
    button that opens *Next*; a Fix per heading read as duplicates (Kaza). *Accessibility* says what was
    tested and what already works. The year plan isn't shown: it's ours, in the
    project's `.claude/memory/accessibility-plan.md`.
