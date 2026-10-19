@@ -475,14 +475,14 @@ smaller genre.
    [memory/pom/levels.md](../../memory/pom/levels.md)), placed before *Next*, with one
    heading per pass: *Access log*, *Error log*, *Performance*, *Bot protection*,
    *Search*, *Accessibility*. Each heading is a write-up in the client's terms: what
-   the pass found and what we did in the round. A heading whose pass produced work ends
-   in a **Fix** button that jumps to that heading in *Next*. *Accessibility* says what was
+   the pass found and what we did in the round. The section ends in one centred **Fix**
+   button that opens *Next*; a Fix per heading read as duplicates (Kaza). *Accessibility* says what was
    tested and what already works. The year plan isn't shown: it's ours, in the
    project's `.claude/memory/accessibility-plan.md`.
 5. **Next**: where the action is (Kaza, cal 2026-10-19). Work from the ordinary POM
    round comes first, Urgent first and then by importance. Then come the POM+ headings
    that have work, mirrored from *POM+* in the same order, each holding its own items
-   (a `.next-group` with an `id` the Fix button targets). Findings live in POM+ and
+   (a `.next-group`). Findings live in POM+ and
    actions live in Next, so the two never repeat each other, and a pass with nothing to
    act on (a quiet bot month) gets no Next heading. Only when something is actually
    coming that the client needs to know about. A paragraph whose message is "nothing

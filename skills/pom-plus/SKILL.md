@@ -21,7 +21,7 @@ findings, sorted three ways:
 - **Fixed in the round.** Small, safe and clearly ours: a missing redirect, a stray
   `noindex`. Commit it on its own, per site-update Phase 6.
 - **Quoted.** Worth doing and bigger than the round. It goes in the record's *Next*, under
-  that pass's heading, with a Work row. The pass's write-up in *POM+* links to it.
+  that pass's heading, with a Work row.
 - **Watched.** Not worth acting on yet. One line in the round record
   (`.claude/memory/records/<round>.md`), so next round can tell a trend from a blip.
 
@@ -197,5 +197,5 @@ skill, so the project's lock doesn't need to move for it.
 [client-report](../client-report/SKILL.md) §6 owns the layout. *POM+* has one heading per
 pass (*Access log*, *Error log*, *Performance*, *Bot protection*, *Search*,
 *Accessibility*) carrying the findings; *Next* mirrors the headings that have work and
-carries the items, and each POM+ heading's Fix button jumps to its twin. Write each finding in the
+carries the items; one Fix button at the foot of POM+ opens Next. Write each finding in the
 client's terms, the same as *Checked*.
