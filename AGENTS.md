@@ -135,6 +135,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   a redirect rule 403s on a token that works for everything else; also before pointing a retired domain at its replacement
 - **A WAF rule keyed on http.referer inverts** — `vendor/augustash/claude-config/memory/cloudflare/referer-is-not-a-security-condition.md`  
   before gating a rule on referer, or when a bot rule fires far less than the traffic it targets
+- **A Pantheon site's own loopback arrives through Cloudflare** — `vendor/augustash/claude-config/memory/cloudflare/pantheon-loopback-through-cloudflare.md`  
+  before challenging or blocking a cloud ASN (Google Cloud, Azure) on a Pantheon site; also Action Scheduler quietly backing up
 - **Proxying a Pantheon site through Cloudflare** — `vendor/augustash/claude-config/memory/cloudflare/proxying-pantheon-ssl-mode.md`  
   before orange-clouding a Pantheon domain; a 301 to the identical URL; or trusting a rule on a zone that may be DNS-only
 
@@ -180,6 +182,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
   an index stuck short of 100% with that 400 on every write, and clear + reindex failing identically
 - **A cloned environment reports 100% indexed and returns nothing** — `vendor/augustash/claude-config/memory/drupal/solr-empty-after-content-clone.md`  
   search is dead on a freshly cloned environment while status says 100%; also before trusting search-api:status after any DB copy
+- **search_api's post-request indexing dies without a request** — `vendor/augustash/claude-config/memory/drupal/search-api-post-request-indexing-no-request.md`  
+  an item saved to index at once stays pending till cron, with isCleanUrl() given null in the PHP log
 - **An autocomplete endpoint is a PHP worker per keystroke** — `vendor/augustash/claude-config/memory/drupal/autocomplete-per-keystroke.md`  
   building or reviewing an as-you-type search box, or worker saturation traced to a suggest URL
 - **On a login-walled site every probe is a full render** — `vendor/augustash/claude-config/memory/drupal/login-wall-scanner-probes.md`  
@@ -392,8 +396,17 @@ These files are authoritative and kept current by the team. Prefer conventions h
 - **New Relic audit tool** — `vendor/augustash/claude-config/memory/augustash/newrelic-audit-tool.md`  
   NerdGraph puller + report generator for Pantheon worker-saturation exhibits
 
+## Chat
+
+- **Text (LiveChat) Customer Chat API in your own window** — `vendor/augustash/claude-config/memory/chat/text-customer-chat-api.md`  
+  wiring Text/LiveChat live chat into your own UI; a reader token 401s `identity_exception`, or availability reads online with nobody there
+- **Anthropic PHP SDK in a WordPress plugin** — `vendor/augustash/claude-config/memory/chat/anthropic-php-sdk-wordpress.md`  
+  adding the Claude SDK to a WordPress plugin; "No PSR-18 HTTP client" on the first call, or deciding where its 24 MB vendor lives
+
 ## WordPress
 
+- **FoundationPress header breaks on wide portrait windows** — `vendor/augustash/claude-config/memory/wordpress/foundationpress-portrait-header.md`  
+  a desktop window taller than wide shows the hamburger beside the full menu and loses search; also CSS changes reaching visitors a week late
 - **WooCommerce Pantheon cache** — `vendor/augustash/claude-config/memory/wordpress/woocommerce-pantheon-cache.md`  
   cart cookies bust edge cache site-wide; before installing the fix, check it is even reachable and read the safety interaction
 - **WooCommerce purchase gate seams** — `vendor/augustash/claude-config/memory/wordpress/woocommerce-purchase-gate-seams.md`  
@@ -412,5 +425,9 @@ These files are authoritative and kept current by the team. Prefer conventions h
   wp-admin and get_option() show pre-clone settings, and the site behaves that way too; also before guarding a destructive script on an option
 - **AIOSEO nulls its Head object in AJAX and cron** — `vendor/augustash/claude-config/memory/wordpress/aioseo-rest-head-null-ajax-cron.md`  
   WooCommerce product webhooks fail and it reads as a broken scheduler; the queue looks healthy while events silently stop
+- **A plugin calling the site on itself holds PHP workers** — `vendor/augustash/claude-config/memory/wordpress/background-loopback-holds-workers.md`  
+  max_children clumps while staff edit; slow log parked in wp_remote_post; SearchWP indexing on a small Pantheon plan
+- **WordPress robots.txt on Pantheon** — `vendor/augustash/claude-config/memory/wordpress/robots-txt-on-pantheon.md`  
+  before changing robots rules on a WordPress site, or a rule that shows in robots.txt yet crawlers ignore
 - **PHP session GC never runs on Pantheon** — `vendor/augustash/claude-config/memory/wordpress/pantheon-session-gc-never-runs.md`  
   the database is mostly one session table; also before reserving a quiet window to rebuild a bloated table

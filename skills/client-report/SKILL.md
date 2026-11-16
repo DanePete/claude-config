@@ -198,6 +198,25 @@ platform the site never calls, data already synced but never displayed, a metric
 already calculated and sent to analytics instead of to users. These are cheap,
 credible and flattering to propose.
 
+**Connect or build is the client's choice; say what tips it.** When a pitch offers to read
+from a system they already run or build them one of their own, don't frame the build as the
+fallback for having nothing. Name the reasons a client would choose to own it: high license
+fees, the software making them work its way, wanting control of where it goes. The core of it,
+in Kaza's words (su 2026-11-04): *"it's about making a system around you, not you fitting a
+system with everyone else."* Connecting stays the default when what they have works.
+
+**A first concept pitch proposes ideas; it doesn't scope them.** When the client hasn't
+committed to anything yet, the page's one job is for them to like what we made and start
+building with us. Keep each idea to what it would do for them, keep the demos, and leave
+out the spec and the questions: they may not want the idea at all, and a page of question
+boxes asks for work before they've said yes. The sequence goes in the page instead: the
+site and its framework first, then one idea at a time in the order they choose, each with
+its own doc where the detail and the questions live. Hold the questions in the appendix for
+those docs. On su (2026-11-06) the page had grown nine question boxes with Save, and the
+ideas had grown specs; Kaza's call: *"There's not really a reason to ask questions here,
+they may not even be interested… we just need them to like what we made and start building
+with us."* The questions and the answers-in-file Save (§7) belong to the docs that follow.
+
 **Lead the questions with the generative one.** Ask what data, APIs and systems they
 already have access to *before* the scoping questions. It changes what's possible,
 not just what's affordable — and it routinely surfaces assets nobody remembered.
@@ -314,7 +333,8 @@ temptation is always to over-write.
    first at no cost, then fast visible wins, then foundation, then differentiators.
 7. **What we already have** — the inventory of their own data and integrations, and
    what combining them unlocks. Sets up the questions.
-8. **What we need from you** — questions, generative one first.
+8. **What we need from you** — questions, generative one first. Not in a first concept
+   pitch (see *A first concept pitch proposes ideas* in §2).
 9. **Why this team** — a specific, dated, verifiable story. See below.
 10. **Why this is the moment** — close on possibility, built only from findings
     already established above.
@@ -415,6 +435,13 @@ Every [site-update](../site-update/SKILL.md) round ends with one, not just the
 blocked ones. The page written for atr existed because the client had to *act* on
 a lapsed subscription, but the standing habit is one short record per round
 regardless, so "what did you do to our site last month" has a file to point at.
+
+**Work the client approved from a record doesn't get a record of its own.** The record that
+offered it is its paper trail: the client's approval lives in their returned copy, and the
+work rides to the next round's record only where it changed something they'll see. On sal
+2026-11-03, after the approved LearnDash 5 / PHP 8.3 work shipped, Claude started rewriting
+the October record from plan to done. Kaza: *"We don't need to do a report on this work, this
+is work from a report."* Update the round's memory record instead.
 
 **The HTML is sent; a Markdown summary is kept.**
 
@@ -1050,6 +1077,10 @@ whatever the length.
   Everything after the heading sits in one `.sec-body` wrapper, which carries the
   heading indent in place of the per-child `section > :not(h2)` rule. A caption that
   set its own left indent then has to drop it, or it doubles.
+- **Groups nested inside a section fold the same way, one level down** (Kaza, su 2026-11-07):
+  a chevron after the subheading, one group open at a time, the first one open when the
+  parent opens. Returning from a detail opened out of a group (a contact card) keeps that
+  group open rather than resetting to the first.
 - **One section open at a time, the first one on load** (Kaza, cal 2026-10-19).
   Opening a section, by its heading or the nav, closes whichever was open, and clicking
   an open heading closes it. A `#hash` on load opens that section instead of the first.
@@ -1263,6 +1294,14 @@ anything with neither (a task for the client's own team) is not.
 - State lives in the markup as `data-approved="true"`, and the saved file is a snapshot
   reset to how the page ships (sections open, script-added controls stripped), so the
   returned copy opens with their choices marked and still reads in full without script.
+  **On a page whose scripts draw into it, snapshot the source, not the live DOM** (su
+  proposal 2026-11-04). Cloning `document.documentElement` there saves every scene, clip-path
+  and inserted element the scripts added, and they run again on reopen and draw a second
+  copy. Capture the page as it shipped in the first statement of the main script
+  (`var DOC_SRC='<!DOCTYPE html>\n'+document.documentElement.outerHTML`, before anything
+  writes to the page), then on Save parse it with `DOMParser`, write each answer into its
+  textarea's `textContent` by id, and serialize. Prove it with a reopen: load the snapshot
+  with `document.write` and check the drawn elements count the same as a fresh load.
 - **The client's own tasks get a done toggle instead** (Kaza, cal 2026-10-19). A list
   they work through themselves, like cal's 37 listings to check, isn't approvable work,
   but they should be able to tick it off. Each entry is a small card with a red **×**
