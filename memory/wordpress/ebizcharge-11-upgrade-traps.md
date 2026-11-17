@@ -56,3 +56,11 @@ body.woocommerce-checkout #order_review:not(:has(.blockUI:not(#cc-form > .blockU
 
 A rule keyed on `> .blockUI` is wrong: WooCommerce never blocks `#order_review` itself, so
 that version removes the refresh fade altogether.
+
+**The better fix is to drop the fade entirely** (atr, 2026-11-17). Even the legitimate refresh
+fade reads as *disabled*, and on a slow connection the block lasts long enough for customers to
+call it broken. Set `#order_review { opacity: 1 }`, then restyle the blockUI overlay as busy:
+`opacity: 1 !important` (so Flatsome's spinner isn't faded too), a light translucent background,
+`cursor: progress`, the spinner `position: sticky; top: calc(50vh - 20px)` so a tall payment box
+keeps it in view, and an "Updating your order…" label on `#payment > .blockUI::after`. The
+`:has()` override above becomes unnecessary. See atr's `themes/atrix/style.css`.
