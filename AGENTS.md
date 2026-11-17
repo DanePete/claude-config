@@ -354,6 +354,8 @@ These files are authoritative and kept current by the team. Prefer conventions h
 
 - **WooCommerce Pantheon cache** — `vendor/augustash/claude-config/memory/wordpress/woocommerce-pantheon-cache.md`  
   cart cookies bust edge cache site-wide; before installing the fix, check it is even reachable and read the safety interaction
+- **EBizCharge 11 upgrade traps** — `vendor/augustash/claude-config/memory/wordpress/ebizcharge-11-upgrade-traps.md`  
+  after upgrading EBizCharge from 5.x; also customers can't type a card, can't untick Save Card, or checkout looks faded
 - **WooCommerce purchase gate seams** — `vendor/augustash/claude-config/memory/wordpress/woocommerce-purchase-gate-seams.md`  
   forcing login before purchase takes four hooks, only one of them a real rule
 - **LearnDash closed-course button URL** — `vendor/augustash/claude-config/memory/wordpress/learndash-closed-course-button-url.md`  
