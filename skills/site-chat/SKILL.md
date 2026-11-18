@@ -175,5 +175,22 @@ for a theme bug that surfaced here.
   Check a position-read row by comparing the stored values per segment against the printed
   row; don't eyeball it. And re-extract every year after a parser change and diff the values:
   the years that didn't fall back to position must not move.
+- **The first real coaching exposed four gaps, each found by asking the coached questions
+  again after learning** (EM, 2026-11-18). Do that every time you touch learning; a passing
+  test set doesn't show the coaching took.
+  1. *The chat couldn't read the site.* Theme content lives outside post_content: ACF blocks
+     keep text in block attributes, and articles and events keep it in meta fields. Every page
+     reached the AI as a bare title. Check that a page excerpt has text before trusting page answers.
+  2. *The learner didn't know the pipeline.* "Open that year's files" became a note promising
+     a search. Tell the learner what the chat can and can't do. It routes lessons to the step
+     that acts on them (search wording goes to screening), turns impossible steps into possible
+     ones, and lists what it couldn't apply for the team on the report.
+  3. *Naming a page doesn't make search find it.* One combined query buried "Deep Dive". The
+     screen returns `page_titles` a note names, fetched directly (ignore ®/™) and keyed into the cache.
+  4. *A fact in a note loses to "answer only from sources".* Team-stated facts are their own
+     list, served as a citable source ("Enterprise Minnesota team"). A figure without a survey
+     source passes only if it appears word for word in a cited page or fact.
+  Also: retry a failing test case once (one screen miss rolled back a night's learning), and
+  have the learner rewrite old notes that predate its current rules.
 - A refresh token was printed into a session log by a diagnostic call. Never echo
   token-bearing API responses; revoke and re-authorize before launch if it happens.
