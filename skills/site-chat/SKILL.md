@@ -167,5 +167,13 @@ for a theme bug that surfaced here.
   column; order doesn't), then prove each label: a banner column's base n must equal the
   TOTAL-column count of the answer it represents. Ran the tests with the years loaded but
   hidden first: they must fail ("cannot answer") before they pass, or they test nothing.
+- **A position-read row was "verified" and was a column off.** EM's 2018 Q40 row was checked
+  by eye, called correct, and found shifted a column a week later when 2019 hit the same
+  bug. Cause: a label wider than the label column ran past the cut, so its underline's last
+  dash read as a `-` value (25 tokens, 24 columns) and every answer was stored clipped
+  ("LESS THAN 1" for "LESS THAN 10%", in every year). Fix: never split a word at the cut.
+  Check a position-read row by comparing the stored values per segment against the printed
+  row; don't eyeball it. And re-extract every year after a parser change and diff the values:
+  the years that didn't fall back to position must not move.
 - A refresh token was printed into a session log by a diagnostic call. Never echo
   token-bearing API responses; revoke and re-authorize before launch if it happens.
