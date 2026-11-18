@@ -150,5 +150,22 @@ for a theme bug that surfaced here.
 - The cache keyed on screen terms never hit (terms drift); keyed on picks it did.
 - A small-company question hit a general cached answer until the screen was told to
   select breakdowns for named company types.
+- **Releasing a year broke the test set, and nothing noticed for a week.** Undated test
+  questions get the newest released year, so EM's 2025 figures (87%, 80%) failed once 2026
+  (88%, 81%) released, which also blocks nightly learning. Updating the test figures is
+  part of every release. Pin historical checks to a named year ("In 2015, …") and assert
+  that year's source label, so they don't move.
+- **The survey-pick cap has to grow with the years loaded.** A cap of three made "how has
+  confidence changed since 2015?" cite 2026/2025/2022 and drop the year the reader named.
+  Raised to six, and the screen is told to take the same question from each year for a
+  trend, always including the earliest and latest. Each extra year also grows the catalog
+  (EM, five years: 274 lines, ~10k tokens to the screen per question); prompt-cache it if
+  volume makes that matter.
+- **Old reports parse with the same code; only the column map is new.** EM's 2015, 2018
+  and 2022 Meeting Street crosstabs extracted with the 2025 parser unchanged. Write
+  `columns.json` from the header's bottom-line words *in order* (word positions drift a
+  column; order doesn't), then prove each label: a banner column's base n must equal the
+  TOTAL-column count of the answer it represents. Ran the tests with the years loaded but
+  hidden first: they must fail ("cannot answer") before they pass, or they test nothing.
 - A refresh token was printed into a session log by a diagnostic call. Never echo
   token-bearing API responses; revoke and re-authorize before launch if it happens.
