@@ -190,9 +190,13 @@ for a theme bug that surfaced here.
   statewide/oversample columns (take the first), and trend tables with one column per
   wave (take the last). Encoding junk (`&`, `$`, `!` or `"` for spaces) cleans with sed. A trend
   topline also holds top-line results for waves you have no crosstabs for.
-- **The catalog grows with every year, and the screen reads it on every question.** At 15
-  years it was ~29k tokens, and a plain answer went from ~1.8¢ to ~3.2¢. It changes only on
-  release, so prompt-cache it once the history is loaded.
+- **Measure where the money goes before reaching for a fix.** EM's catalog grew to ~29k tokens
+  at 15 years, but on Haiku that's ~0.3¢ a question. The rise in a plain answer from ~1.8¢ to
+  ~3.2¢ came from the Opus answer reading real page text once pages were readable: the cost
+  of using the content. Prompt caching pays only when requests sharing a prefix start under
+  5 minutes apart (1-hour TTL: three or more reads within the hour). At EM's 1–4 questions a
+  day every entry would expire and each question would pay the write premium, so it would
+  cost more. Revisit when traffic is steady.
 - **The first real coaching exposed four gaps, each found by asking the coached questions
   again after learning** (EM, 2026-11-18). Do that every time you touch learning; a passing
   test set doesn't show the coaching took.
