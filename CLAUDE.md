@@ -244,6 +244,7 @@ no more. Open the file the moment a line looks relevant; that's the whole design
 
 - [FoundationPress header breaks on wide portrait windows](memory/wordpress/foundationpress-portrait-header.md) — a desktop window taller than wide shows the hamburger beside the full menu and loses search; also CSS changes reaching visitors a week late
 - [WooCommerce Pantheon cache](memory/wordpress/woocommerce-pantheon-cache.md) — cart cookies bust edge cache site-wide; before installing the fix, check it is even reachable and read the safety interaction
+- [EBizCharge 11 upgrade traps](memory/wordpress/ebizcharge-11-upgrade-traps.md) — after upgrading EBizCharge from 5.x; also customers can't type a card, can't untick Save Card, or checkout looks faded
 - [WooCommerce purchase gate seams](memory/wordpress/woocommerce-purchase-gate-seams.md) — forcing login before purchase takes four hooks, only one of them a real rule
 - [LearnDash closed-course button URL](memory/wordpress/learndash-closed-course-button-url.md) — a closed course's buy button points at live from every other environment
 - [WP security-header CSP silently breaks analytics](memory/wordpress/rsssl-csp-enforce-analytics.md) — analytics cliffs overnight while the site looks fine; two header plugins intersect
@@ -352,6 +353,7 @@ what Claude Code actually loads for discovery, so keep it sharp there.
 - [accessibility-audit](skills/accessibility-audit/SKILL.md) — testing a site's accessibility and writing a defensible record: an ADA demand letter, a compliance question, or a pre-launch check; also the quarterly POM+ scan
 - [accessibility-compliance](skills/accessibility-compliance/SKILL.md) — a client's accessibility standing or plan is being reported: what the law asks of this site, all 50 criteria, ranking, and their "Your requirements" page
 - [ai-visibility](skills/ai-visibility/SKILL.md) — tracking whether a brand shows up in ChatGPT, Gemini, Copilot or Perplexity answers, running a weekly round, or deciding what to change to appear
+- [brand-lab](skills/brand-lab/SKILL.md) — designing a logo, mark, crest, monogram or wordmark, or choosing a brand typeface, as a live vector lab the owner steers by eye
 - [client-proposal-review](skills/client-proposal-review/SKILL.md) — a client hands over a set of decisions (a menu, a design round, a feature list) and some of it would make the site worse
 - [client-report](skills/client-report/SKILL.md) — writing any client doc: a pitch, an audit, a request response or the monthly maintenance record; owns the doc design system
 - [content-audit](skills/content-audit/SKILL.md) — reducing a legacy CMS's content before migrating it, plus the overlap sweeps for both sides of the migration

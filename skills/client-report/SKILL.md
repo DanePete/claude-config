@@ -390,6 +390,13 @@ claiming each finding recorded all eight requested fields was written, then foun
 false for two of the three. An adversarial reader checks exactly these. Verify, then
 write the claim that survives verification.
 
+**A screenshot is a claim, so take it in the state the doc describes.** On atr's card-checkout
+report (2026-11-17) the first screenshot of the fixed payment form was taken on a local site still
+in the broken configuration: it showed the locked Save Card box and "an account will be created",
+the two things the page beside it said were fixed. Before embedding one, make the environment match
+production for everything in frame, then check every visible detail against the doc's claims, not
+just the feature it was taken to show.
+
 **State a status on every peer, or on none.** A summary table where one row ended
 "Corrected" and the others ended without a status implied the others were not corrected —
 when in truth one needed no correction and one had an improvement pending. Parallel rows
